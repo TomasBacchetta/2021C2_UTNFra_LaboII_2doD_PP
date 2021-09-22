@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using Personas;
 
 namespace Equipos
 {
@@ -13,10 +14,14 @@ namespace Equipos
         }
 
         private string id;
-        private DateTime tiempoInicioUso;
-        private DateTime tiempoFinUso;
         private TipoEquipo tipoDeEquipo;
+        private Stack<Cliente> usuarios;
+        public bool enUso;
+        
 
+        
+
+       
         public TipoEquipo TipoDeEquipo
         {
             get
@@ -32,46 +37,23 @@ namespace Equipos
                 return this.id;
             }
         }
-
-        public DateTime TiempoInicioUso
-        {
-            get
-            {
-                return this.tiempoInicioUso;
-            }
-            set
-            {
-                this.tiempoInicioUso = value;
-            }
-        }
-        public DateTime TiempoFinUso
-        {
-            get
-            {
-                return this.TiempoFinUso;
-            }
-            set
-            {
-                this.TiempoFinUso = value;
-            }
-        }
+        
 
         public Equipo(string id, TipoEquipo tipoDeEquipo)
         {
             this.id = id;
-            this.tiempoInicioUso = DateTime.MinValue;
-            this.tiempoFinUso = DateTime.MaxValue;
             this.tipoDeEquipo = tipoDeEquipo;
+            this.usuarios = new Stack<Cliente>();
+            this.enUso = false;
+            
         }
-        public string Mostrar()
+        public virtual string Mostrar()
         {
             StringBuilder buffer = new StringBuilder();
 
             buffer.AppendLine($"Id: #{this.id}");
-            if (this.tiempoInicioUso != DateTime.MinValue)
-            {
-                buffer.AppendLine($"Tiempo inicio de uso: {this.tiempoInicioUso}");
-            }
+            
+            
 
             return $"{buffer}";
 
@@ -120,7 +102,7 @@ namespace Equipos
 
         }
 
-        public new string Mostrar()
+        public override string Mostrar()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -131,7 +113,7 @@ namespace Equipos
 
         }
 
-
+        
 
     }
 
@@ -157,7 +139,7 @@ namespace Equipos
             
         
         }
-        public new string Mostrar()
+        public override string Mostrar()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -224,7 +206,42 @@ namespace Equipos
             return lista;
         }
 
+        public static bool operator ==(Computadora comp, Cliente usuario)
+        {
+            bool matchJuegos = false;
+            bool matchSoftware = false;
+            bool matchPerifericos = false;
 
+            ClienteDeComputadora auxUsuario = (ClienteDeComputadora)usuario;
+            foreach (string juego in comp.juegos)
+            {
+                if (auxUsuario.JuegosFavoritos.Contains(juego))
+                {
+                    matchJuegos = true;
+                }
+            }
+            foreach (string software in comp.software)
+            {
+                if (auxUsuario.ProgramasFavoritos.Contains(software))
+                {
+                    matchSoftware = true;
+                }
+            }
+            foreach (string periferico in comp.perifericos)
+            {
+                if (auxUsuario.PerifericosFavoritos.Contains(periferico))
+                {
+                    matchPerifericos = true;
+                }
+            }
+
+            return matchJuegos && matchSoftware && matchPerifericos;
+        }
+
+        public static bool operator !=(Computadora comp, Cliente usuario)
+        {
+            return !(comp == usuario);
+        }
 
     }
 }

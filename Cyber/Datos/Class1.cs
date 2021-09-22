@@ -1,13 +1,106 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/*
 
-private static string[] listaRam = new string[] { "512 mb", "256 mb", "128 mb" };
-
- */
 namespace Datos
 {
+    public class NumeroTelefono
+    {
+        /*
+         Local: $1.00 por minuto. Se reconoce a una llamada como local cuando el prefijo contiene un '11' o '011' luego del código de país (54 - 11 - #### - ####).
+            Larga distancia: $2.50 por minuto. Se reconoce a una llamada como de larga distancia cuando el prefijo contiene un número distinto de '11' o '011' luego del código de país (54 - #### - #### - ####).
+            Internacional: $5.00 por minuto. Se reconoce a una llamada como de larga distancia cuando el código de país es distinto de '54'.
+         */
+        public string GenerarNumeroTelefono()
+        {
+            Random rnd = new Random();
+            int primerPrefijo;
+            int segundoPrefijo;
+
+            if (rnd.Next(0, 5) > 3)// 1 en 5 chance de que sea internacional
+            {
+                primerPrefijo = rnd.Next(1, 99);
+                segundoPrefijo = rnd.Next(1, 99);
+            }
+            else
+            {
+                primerPrefijo = 54;
+                if (rnd.Next(0, 3) > 0)// 2 en 3 chance de que sea local
+                {
+
+                    segundoPrefijo = 11;
+                }
+                else
+                {
+                    segundoPrefijo = rnd.Next(9, 30);
+                }
+
+            }
+
+            return $"{primerPrefijo}-{segundoPrefijo}-{rnd.Next(2000,9999)}-{rnd.Next(2000,9000)}";
+
+        }
+    }
+    public class NombresPersonas : Carga
+    {
+        private string[] nombresPersonas = new string[]
+        {
+            "Tomás","Juan","Pedro","Leandro","Lautaro","Maximiliano","Juan Francisco","Ramón","Florencia","Anna","Horacio","Pablo","Jorge"
+            ,"Ricardo","Jorgelina","Jesús","Johnny","Sergio","Esteban","Gustavo","Simón","Artemio","Néstor","León","Catalina","Rodrigo"
+            ,"Fernando","Norma","Agustina","Cristina","Germán","Brian","José","Jorge","Mauricio","José Luis","Federico","Silvia","Claudia"
+        };
+
+        public string this[int indice]
+        {
+            get
+            {
+                if (indice > 0 && indice < nombresPersonas.Length)
+                {
+                    return nombresPersonas[indice];
+                }
+                else
+                {
+                    return nombresPersonas[0];
+                }
+
+            }
+
+        }
+        public string CargarDatos()
+        {
+            return CargarDatoUnitario(nombresPersonas);
+        }
+    }
+    public class ApellidosPersonas : Carga
+    {
+        private string[] apellidosPersonas = new string[]
+        {
+            "Ruiz","Peretti","Fernández","Santos","Lampone","Medina","Rago","Roth","Ibn Batutta","Corsi","Rossi","Russo","Mamani"
+            ,"Quispe","Rodríguez","Tazzone","Rosatti","Bertone","Posca","Smith","Barclay","Guzmán","Fritz","De León","Bagratión","Flores"
+            ,"Jiménez","Blanco","Negri","Bustamante","Cázeres","López","Ramírez","García","Corleone","Sánchez","Roy","Tumini","Mosca"
+        };
+
+        public string this[int indice]
+        {
+            get
+            {
+                if (indice > 0 && indice < apellidosPersonas.Length)
+                {
+                    return apellidosPersonas[indice];
+                }
+                else
+                {
+                    return apellidosPersonas[0];
+                }
+
+            }
+
+        }
+        public string CargarDatos()
+        {
+            return CargarDatoUnitario(apellidosPersonas);
+        }
+    }
     public class Programas:Carga
     {
         private string[] programas = new string[]
@@ -34,6 +127,8 @@ namespace Datos
         {
             return CargarDatosLista(programas);
         }
+
+       
     }
 
     public class Juegos : Carga
@@ -61,6 +156,8 @@ namespace Datos
         {
             return CargarDatosLista(juegos);
         }
+
+        
     }
 
     public class Perifericos : Carga
@@ -88,6 +185,8 @@ namespace Datos
         {
             return CargarDatosLista(perifericos);
         }
+
+        
     }
 
     public class Cpus : Carga
@@ -210,7 +309,7 @@ namespace Datos
             Random numRandom = new Random();
             bool yaEsta = false;
 
-            for (int x = 0; x < numRandom.Next(1, datos.Length + 1); x++)
+            for (int x = 0; x < numRandom.Next(1, datos.Length*2); x++)
             {
                 int indice = numRandom.Next(0, datos.Length);
                 if (lista.Count == 0)
@@ -245,6 +344,8 @@ namespace Datos
 
             
         }
+
+        
     }
 
 }

@@ -5,10 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Datos\Datos.csproj" />
     <ProjectReference Include="..\Equipos\Equipos.csproj" />
     <ProjectReference Include="..\Personas\Personas.csproj" />
-    <ProjectReference Include="..\Sesion\Sesion.csproj" />
   </ItemGroup>
 
 </Project>
