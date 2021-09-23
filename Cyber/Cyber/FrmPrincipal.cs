@@ -36,8 +36,6 @@ namespace Cyber
             }
             
             richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
-
-
         }
 
         private void buttonMostrarEquipo_Click(object sender, EventArgs e)
@@ -49,11 +47,9 @@ namespace Cyber
                 {
                     FrmVerEquipo form2 = new FrmVerEquipo(cyber1, item.Tag.ToString(), this);
                     form2.Show();
-                    
                 }
             }
             
-
         }
 
         private void buttonEcharCliente_Click(object sender, EventArgs e)
@@ -72,7 +68,6 @@ namespace Cyber
                 }
             }
 
-            
         }
 
         private void buttonAsignar_Click(object sender, EventArgs e)
@@ -80,40 +75,44 @@ namespace Cyber
            
             int respuesta = 0;
             string idEquipo = ""; ;
-            foreach (RadioButton item in groupBoxEquipos.Controls)
+            if (cyber1.ColaClientes.Count > 0)
             {
-                if (item.Checked == true)
+                foreach (RadioButton item in groupBoxEquipos.Controls)
                 {
-                    idEquipo = item.Tag.ToString();
-                    respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
-                    
-                    
-                    break;
-                }
-            }
+                    if (item.Checked == true)
+                    {
+                        idEquipo = item.Tag.ToString();
+                        respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
 
-            if (respuesta == 1 || respuesta == 2)
-            {
-                richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
-                cyber1.BuscarEquipoPorId(idEquipo).enUso = true;
-                this.ImprimirEtiquetaEquipo(idEquipo);
-                this.reproducirSonidoAsignarCliente();
-                MessageBox.Show("Cliente cargado a la cola del equipo.\nSi este está ocupado deberá esperar");
-                
-            } else
-            {
-                if (respuesta == -1)
+
+                        break;
+                    }
+                }
+
+                if (respuesta == 1 || respuesta == 2)
                 {
-                    MessageBox.Show("El cliente no está interesado en esta computadora. \nRecuerde que debe haber presentes por lo menos un favorito de cada categoría");
-                } else
+                    richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+                    cyber1.BuscarEquipoPorId(idEquipo).enUso = true;
+                    this.ImprimirEtiquetaEquipo(idEquipo);
+                    this.reproducirSonidoAsignarCliente();
+                    MessageBox.Show("Cliente cargado a la cola del equipo.\nSi este está ocupado deberá esperar");
+
+                }
+                else
                 {
-                    MessageBox.Show("El cliente no vino para utilizar eso");
+                    if (respuesta == -1)
+                    {
+                        MessageBox.Show("El cliente no está interesado en esta computadora. \nRecuerde que debe haber presentes por lo menos un favorito de cada categoría");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El cliente no vino para utilizar eso");
+                    }
                 }
             }
             
+            
         }
-
-        
 
         public void ImprimirEtiquetaEquipo(string idEquipo)
         {

@@ -76,12 +76,19 @@ namespace Cyber
                     
                     cyber1.ObtenerAtenderProximoClienteSubcola(idEquipo);
                     this.sesionActual = cyber1.BuscarProximaSesionActivaDeUnEquipo(idEquipo);
-                    richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
+                    if (cyber1.ObtenerSubColaClientes(idEquipo).Count == 0)
+                    {
+                        richTextBoxProximoCliente.Text = "";
+                    } else
+                    {
+                        richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
+                    }
+                    
 
-                } else
+                } /*else
                 {
                     richTextBoxProximoCliente.Text = "";
-                }
+                }*/
 
                 
                 richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).Mostrar();
