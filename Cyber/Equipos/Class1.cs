@@ -149,16 +149,19 @@ namespace Equipos
             {
                 buffer.AppendLine(item);
             }
+            buffer.Append($"------\n");
             buffer.AppendLine($"Lista de Juegos: ");
             foreach (string item in this.juegos)
             {
                 buffer.AppendLine(item);
             }
+            buffer.Append($"------\n");
             buffer.AppendLine($"Lista de Periféricos: ");
             foreach (string item in this.perifericos)
             {
                 buffer.AppendLine(item);
             }
+            buffer.Append($"------\n");
             buffer.AppendLine($"Cpu: {this.cpu}");
             buffer.AppendLine($"Placa de video: {this.placaVideo}");
             buffer.AppendLine($"Ram: {this.ram}");

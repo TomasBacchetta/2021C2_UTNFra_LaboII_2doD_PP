@@ -287,13 +287,13 @@ namespace Cyber
             // 
             this.richTextBoxDatosCliente.Location = new System.Drawing.Point(789, 59);
             this.richTextBoxDatosCliente.Name = "richTextBoxDatosCliente";
-            this.richTextBoxDatosCliente.Size = new System.Drawing.Size(150, 212);
+            this.richTextBoxDatosCliente.Size = new System.Drawing.Size(169, 227);
             this.richTextBoxDatosCliente.TabIndex = 3;
             this.richTextBoxDatosCliente.Text = "";
             // 
             // buttonEcharCliente
             // 
-            this.buttonEcharCliente.Location = new System.Drawing.Point(875, 277);
+            this.buttonEcharCliente.Location = new System.Drawing.Point(894, 292);
             this.buttonEcharCliente.Name = "buttonEcharCliente";
             this.buttonEcharCliente.Size = new System.Drawing.Size(64, 23);
             this.buttonEcharCliente.TabIndex = 5;
@@ -303,7 +303,7 @@ namespace Cyber
             // 
             // buttonAsignar
             // 
-            this.buttonAsignar.Location = new System.Drawing.Point(789, 277);
+            this.buttonAsignar.Location = new System.Drawing.Point(789, 292);
             this.buttonAsignar.Name = "buttonAsignar";
             this.buttonAsignar.Size = new System.Drawing.Size(64, 23);
             this.buttonAsignar.TabIndex = 6;

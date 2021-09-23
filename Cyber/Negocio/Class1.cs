@@ -10,14 +10,20 @@ namespace Negocio
     public class CyberCafe
     {
         private List<Equipo> listaEquipos;
-        public Queue<Cliente> colaClientes;
+        private Queue<Cliente> colaClientes;
         private int cantidadComputadoras;
         private int cantidadCabinas;
         private int cantidadClientes;
-        public List<Sesion> sesiones;
-        public Dictionary<string, Queue<Cliente>> subColaClientes;
+        private List<Sesion> sesiones;
+        private Dictionary<string, Queue<Cliente>> subColaClientes;
 
-        
+        public List<Sesion> Sesiones
+        {
+            get
+            {
+                return this.sesiones;
+            }
+        }
         public int CantidadComputadoras
         {
             get
@@ -42,7 +48,13 @@ namespace Negocio
             }
         }
 
-       
+        public Queue<Cliente> ColaClientes
+        {
+            get
+            {
+                return this.colaClientes;
+            }
+        }
 
         public int CantidadClientes
         {
@@ -201,13 +213,11 @@ namespace Negocio
                             this.colaClientes.Dequeue();
 
                         return 1;
-                        
-
                     }
-                        else
-                        {
-                            return -1;
-                        }
+                    else
+                    {
+                        return -1;
+                    }
                 } else
                 {
                     this.CargarClienteEnSubCola(idEquipo);
@@ -228,26 +238,32 @@ namespace Negocio
 
         public Cliente ObtenerProximoCliente()
         {
-            return this.colaClientes.Peek();
+            return this.ColaClientes.Peek();
         }
 
         public Cliente ObtenerAtenderProximoCliente()
         {
-            return this.colaClientes.Dequeue();
+            return this.ColaClientes.Dequeue();
         }
 
         public Cliente ObtenerProximoClienteSubcola(string idEquipo)
         {
-            return this.subColaClientes[idEquipo].Peek();
+            return this.ObtenerSubColaClientes(idEquipo).Peek();
         }
 
         public Cliente ObtenerAtenderProximoClienteSubcola(string idEquipo)
         {
-           return this.subColaClientes[idEquipo].Dequeue();
+           return this.ObtenerSubColaClientes(idEquipo).Dequeue();
                         
         }
 
+        
+        public Queue<Cliente> ObtenerSubColaClientes(string idEquipo)
+        {
+            return this.subColaClientes[idEquipo];
+        }
 
+        
 
         public Sesion BuscarProximaSesionActivaDeUnEquipo(string idEquipo)
         {

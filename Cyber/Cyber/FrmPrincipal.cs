@@ -11,6 +11,8 @@ using Equipos;
 using Negocio;
 using Personas;
 using Sesiones;
+using System.Media;
+using Cyber.Properties;
 
 namespace Cyber
 {
@@ -57,11 +59,11 @@ namespace Cyber
         private void buttonEcharCliente_Click(object sender, EventArgs e)
         {
             
-            if (cyber1.colaClientes.Count > 0)
+            if (cyber1.ColaClientes.Count > 0)
             {
-                cyber1.colaClientes.Dequeue();
-
-                if (cyber1.colaClientes.Count == 0)
+                cyber1.ColaClientes.Dequeue();
+                this.reproducirSonidoEcharCliente();
+                if (cyber1.ColaClientes.Count == 0)
                 {
                     richTextBoxDatosCliente.Text = "No hay más clientes";
                 } else
@@ -95,7 +97,9 @@ namespace Cyber
                 richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
                 cyber1.BuscarEquipoPorId(idEquipo).enUso = true;
                 this.ImprimirEtiquetaEquipo(idEquipo);
+                this.reproducirSonidoAsignarCliente();
                 MessageBox.Show("Cliente cargado a la cola del equipo.\nSi este está ocupado deberá esperar");
+                
             } else
             {
                 if (respuesta == -1)
@@ -127,12 +131,26 @@ namespace Cyber
             {
                 if (!(item.Tag is null) && item.Tag.ToString() == idEquipo)
                 {
-                    item.Text = $"{item.Tag} -{estado}\n{cyber1.subColaClientes[idEquipo].Count} clientes en cola";
+                    item.Text = $"{item.Tag} -{estado}\n{cyber1.ObtenerSubColaClientes(idEquipo).Count} clientes en cola";
                 }
             }
 
         }
+
+
+        private void reproducirSonidoAsignarCliente()
+        {
+            SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.YEAH1);
+            sonidoAsignarCliente.Play();
+        }
+        private void reproducirSonidoEcharCliente()
+        {
+            SoundPlayer sonidoEcharCliente = new SoundPlayer(Cyber.Properties.Resources.BOO);
+            sonidoEcharCliente.Play();
+            
+        }
+
         
-        
+
     }
 }

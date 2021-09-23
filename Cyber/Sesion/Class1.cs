@@ -4,10 +4,10 @@ using Equipos;
 
 namespace Sesiones
 {
-    public class Sesion
+    public abstract class Sesion
     {
-        private Cliente usuarioActual;
-        private string idEquipo;
+        protected Cliente usuarioActual;
+        protected string idEquipo;
         protected DateTime tiempoInicio;
         protected DateTime tiempoFinUso;
         protected double costoTotal;

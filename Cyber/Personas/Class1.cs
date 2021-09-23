@@ -119,21 +119,22 @@ namespace Personas
         public override string MostrarCliente()
         {
             StringBuilder buffer = new StringBuilder();
-
-            buffer.AppendLine($"Juegos favoritos:");
-            foreach (string item in this.juegosFavoritos)
-            {
-                buffer.Append($"{item} ");
-            }
             buffer.AppendLine($"\nProgramas favoritos:");
             foreach (string item in this.programasFavoritos)
             {
-                buffer.Append($"{item} ");
+                buffer.AppendLine($"{item} ");
             }
-            buffer.AppendLine($"\nPeriféricos favoritos:");
+            buffer.Append($"------\n");
+            buffer.AppendLine($"Juegos favoritos:");
+            foreach (string item in this.juegosFavoritos)
+            {
+                buffer.AppendLine($"{item} ");
+            }
+            buffer.Append($"-------\n");
+            buffer.AppendLine($"Periféricos favoritos:");
             foreach (string item in this.perifericosFavoritos)
             {
-                buffer.Append($"{item} ");
+                buffer.AppendLine($"{item} ");
             }
 
 
