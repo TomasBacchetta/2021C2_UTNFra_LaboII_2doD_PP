@@ -95,6 +95,7 @@ namespace Sesiones
         {
             long tiempoMinReal;
             long tiempoSegReal;
+            long tiempoMinRetorno = 0;
 
             tiempoMinReal = this.tiempoFinUso.Minute - this.tiempoInicio.Minute;
             tiempoSegReal = this.tiempoFinUso.Second - this.tiempoInicio.Second;
@@ -106,10 +107,11 @@ namespace Sesiones
             if (tiempoSegReal < 0)
             {
                 tiempoSegReal += 60;
+                tiempoMinReal -= 1;
             }
-            tiempoSegReal += tiempoMinReal * 60;
+            tiempoMinRetorno = tiempoSegReal + tiempoMinReal * 60;
 
-            return tiempoSegReal;
+            return tiempoMinRetorno;
         }
 
         

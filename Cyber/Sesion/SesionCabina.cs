@@ -26,9 +26,9 @@ namespace Sesiones
             {
                 if (value == false)//la sesion se crea con este atributo en true, por lo que una vez cambiado nunca podra volver a ser true
                 {
-                    base.enCurso = value;
-                    base.tiempoFinUso = DateTime.Now;
-                    base.costoTotal = this.CalcularCosto();
+                    this.enCurso = value;
+                    this.tiempoFinUso = DateTime.Now;
+                    this.costoTotal = this.CalcularCosto();
                     this.tipoDeLlamada = this.DeterminarTipoDeLlamada();
                 }
 
