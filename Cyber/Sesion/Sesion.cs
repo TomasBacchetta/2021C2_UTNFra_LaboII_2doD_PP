@@ -1,6 +1,7 @@
 ﻿using System;
 using Personas;
 using Equipos;
+using System.Text;
 
 namespace Sesiones
 {
@@ -88,6 +89,18 @@ namespace Sesiones
             this.tiempoFinUso = DateTime.MaxValue;
             this.enCurso = true;
             costoTotal = 0;
+        }
+
+        public virtual string MostrarSesion()
+        {
+            StringBuilder buffer = new StringBuilder();
+
+            buffer.AppendLine($"Id Equipo: {this.idEquipo}");
+            buffer.AppendLine($"Usuario: {this.usuarioActual}");
+            buffer.AppendLine($"Duración de la sesión: {this.CalcularMinutosPasados()} minutos");
+            
+
+            return $"{buffer}";
         }
 
 

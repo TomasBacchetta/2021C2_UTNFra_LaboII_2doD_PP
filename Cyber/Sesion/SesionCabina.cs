@@ -33,14 +33,23 @@ namespace Sesiones
                 }
 
             }
-
-
         }
-
 
         public SesionCabina(Cliente usuarioActual, string idEquipo) : base(usuarioActual, idEquipo)
         {
 
+        }
+
+        public override string MostrarSesion()
+        {
+            StringBuilder buffer = new StringBuilder();
+
+            ClienteDeTelefono auxUsuario = (ClienteDeTelefono)this.UsuarioActual;
+
+            buffer.AppendLine($"Número marcado: {auxUsuario.Telefono}");
+            buffer.AppendLine($"Tipo de llamada: {this.DeterminarTipoDeLlamada()}");
+
+            return $"{base.MostrarSesion()} {buffer}";
         }
         public double CalcularCosto()
         {

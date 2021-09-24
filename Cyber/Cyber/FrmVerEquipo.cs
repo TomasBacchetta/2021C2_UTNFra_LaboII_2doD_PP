@@ -58,7 +58,7 @@ namespace Cyber
 
         private void buttonTerminarSesion_Click(object sender, EventArgs e)
         {
-            if (!(sesionActual is null))
+            if (!(this.sesionActual is null) && this.sesionActual.EnCurso == true)
             {
                 this.sesionActual.EnCurso = false;
                 sesionActual.EnCurso = false;
@@ -104,11 +104,6 @@ namespace Cyber
                 formPrincipal.ImprimirEtiquetaEquipo(idEquipo);
             }
 
-
-            
-
-
-
         }
         private void reproducirSonidoFacturacion()
         {
@@ -126,6 +121,24 @@ namespace Cyber
         {
             SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.TPBUSY);
             sonidoAsignarCliente.Play();
+        }
+
+        private void buttonHistorialSesiones_Click(object sender, EventArgs e)
+        {
+            Equipo auxEquipo = cyber1.BuscarEquipoPorId(idEquipo);
+            List<Sesion> listaSesionEquipo = new List<Sesion>();
+
+            foreach (Sesion item in cyber1.Sesiones)
+            {
+                if (item.IdEquipo == this.idEquipo)
+                {
+                    listaSesionEquipo.Add(item);
+                }
+            }
+
+
+            FrmHistorialEquipo form3 = new FrmHistorialEquipo(listaSesionEquipo);
+            form3.Show();
         }
     }
 }

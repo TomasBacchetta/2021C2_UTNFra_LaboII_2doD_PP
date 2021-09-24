@@ -30,10 +30,18 @@ namespace Sesiones
             }
         }
 
+         
 
         public SesionComputadora(Cliente usuarioActual, string idEquipo) : base(usuarioActual, idEquipo)
         {
 
+        }
+
+        public override string MostrarSesion()
+        {
+            
+
+            return $"{base.MostrarSesion()}";
         }
         public double CalcularCosto()
         {
