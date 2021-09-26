@@ -34,7 +34,7 @@ Cosas que faltan del codigo:
 -Aprovechar más la sobrecarga
 -Comprobar y afianzar los niveles de protección
 -Comentar lo que sea necesario, que para esta correccion casi no fue hecho
--
+
 
 Cosas que van mas alla de lo pedido pero que no se haran en el parcial:
 -El por que se genera todo al azar responde a la idea de convertir en este programa en un videojuego, pero para que esto tenga sentido deberia haber visto hilos, ya que quiero que el tiempo de uso de las computadoras este determinado por atributos del cliente (por ejemplo, "Felicidad"). Sea realista o no, yo buscaria una forma de que sea conveniente economicamente que el cliente este el mayor tiempo posible en una maquina, y se pueda aumentar esta felicidad por diversos atributos propios del equipo (de ahi que seleccionar la maquina mas conveniente sea muy importante). La felicidad permitira que el cliente pueda gastar dinero en otros productos como gaseosas, caramelos, cigarrillos (solo en la sesion nocturna). También estaria  la posibilidad de que aparezcan grupos de clientes y formen una LAN PARTY, donde el consumo de estos productos aumentará.
