@@ -29,6 +29,7 @@ Cosas que faltan de la funcionalidad:
 -Una facturacion mas detallada
 -Ese historial general podría utilizar MDIs ya que estamos hablando de varios equipos
 -Afinar el motor que genera datos al azar
+-Todavía no se me ocurrió una funcionalidad inédita no pedida
 
 Cosas que faltan del codigo:
 -Aprovechar más la sobrecarga
