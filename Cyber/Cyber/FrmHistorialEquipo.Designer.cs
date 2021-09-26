@@ -47,6 +47,7 @@ namespace Cyber
             this.ClientSize = new System.Drawing.Size(370, 450);
             this.Controls.Add(this.richTextBoxHistorial);
             this.Name = "FrmHistorialEquipo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmHistorialEquipo";
             this.Load += new System.EventHandler(this.FrmHistorialEquipo_Load);
             this.ResumeLayout(false);

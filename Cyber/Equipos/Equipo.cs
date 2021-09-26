@@ -15,7 +15,6 @@ namespace Equipos
 
         private string id;
         private TipoEquipo tipoDeEquipo;
-        private Stack<Cliente> usuarios;
         public bool enUso;
         
 
@@ -43,7 +42,6 @@ namespace Equipos
         {
             this.id = id;
             this.tipoDeEquipo = tipoDeEquipo;
-            this.usuarios = new Stack<Cliente>();
             this.enUso = false;
             
         }
@@ -53,8 +51,7 @@ namespace Equipos
 
             buffer.AppendLine($"Id: #{this.id}");
             
-            
-
+           
             return $"{buffer}";
 
         }
@@ -78,6 +75,8 @@ namespace Equipos
         {
             return !(e == id);
         }
+        
+        
 
     }
 

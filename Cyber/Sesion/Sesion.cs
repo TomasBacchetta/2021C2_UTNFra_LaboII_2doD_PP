@@ -63,23 +63,8 @@ namespace Sesiones
             }
         }
         
-        public virtual bool EnCurso
-        {
-            get
-            {
-                return this.enCurso;
-            }
-            set
-            {
-                if (value == false)//la sesion se crea con este atributo en true, por lo que una vez cambiado nunca podra volver a ser true
-                {
-                    this.enCurso = value;
-                    this.tiempoFinUso = DateTime.Now;
-                    
-                }
-
-            }
-        }
+        public abstract bool EnCurso { get; set; }
+       
         
         public Sesion(Cliente usuarioActual, string idEquipo)
         {
@@ -96,8 +81,9 @@ namespace Sesiones
             StringBuilder buffer = new StringBuilder();
 
             buffer.AppendLine($"Id Equipo: {this.idEquipo}");
-            buffer.AppendLine($"Usuario: {this.usuarioActual}");
+            buffer.AppendLine($"Usuario: {this.usuarioActual.Nombre} {this.usuarioActual.Apellido}");
             buffer.AppendLine($"Duración de la sesión: {this.CalcularMinutosPasados()} minutos");
+            buffer.AppendLine($"Monto facturado: ${this.costoTotal}");
             
 
             return $"{buffer}";

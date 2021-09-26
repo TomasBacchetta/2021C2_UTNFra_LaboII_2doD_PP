@@ -63,7 +63,7 @@ namespace Cyber
                 this.sesionActual.EnCurso = false;
                 sesionActual.EnCurso = false;
                 this.reproducirSonidoFacturacion();
-                MessageBox.Show($"Monto facturado:{sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
+                MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
                 
                 
                 cyber1.BuscarEquipoPorId(idEquipo).enUso = false;

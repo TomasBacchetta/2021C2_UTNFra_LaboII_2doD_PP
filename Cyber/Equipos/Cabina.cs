@@ -13,7 +13,7 @@ namespace Equipos
             A_Disco, Con_Teclado
         }
 
-        private string id;
+        
         private Tipo tipo;
         private string marca;
 

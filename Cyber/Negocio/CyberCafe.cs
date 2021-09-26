@@ -201,7 +201,7 @@ namespace Negocio
             {
                 if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
                 {
-                    if ((Computadora)auxEquipo == this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
+                    if ((Computadora)auxEquipo | this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
                         {
                             this.CargarClienteEnSubCola(idEquipo);
                             if (auxEquipo.enUso == false)
@@ -212,11 +212,11 @@ namespace Negocio
                              }
                             this.colaClientes.Dequeue();
 
-                        return 1;
+                        return 1;//logro cargar en una computadora
                     }
                     else
                     {
-                        return -1;
+                        return -1;//no pudo cargar en una computadora
                     }
                 } else
                 {
@@ -228,12 +228,12 @@ namespace Negocio
                         
                     }
                     this.colaClientes.Dequeue();
-                    return 2;
+                    return 2;//logro cargar en una cabina
                 }
                 
                 
             }
-            return -2;
+            return -2;//el equipo no era el indicado para el cliente
         }
 
         public Cliente ObtenerProximoCliente()

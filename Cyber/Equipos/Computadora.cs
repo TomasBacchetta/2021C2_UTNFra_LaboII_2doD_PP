@@ -17,7 +17,8 @@ namespace Equipos
         private string ram;
 
 
-
+     
+        
         public Computadora(string id, List<string> software, List<string> juegos, List<string> perifericos, string cpu, string placaVideo, string ram) : base(id, TipoEquipo.Computadora)
         {
             this.software = software;
@@ -98,8 +99,14 @@ namespace Equipos
             }
             return lista;
         }
+        /// <summary>
+        /// Determina si una computadora cumple con los requisitos de un usuario tanto en software como en juegos y perifercos 
+        /// </summary>
+        /// <param name="comp"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
 
-        public static bool operator ==(Computadora comp, Cliente usuario)
+        public static bool operator |(Computadora comp, Cliente usuario)
         {
             bool matchJuegos = false;
             bool matchSoftware = false;
@@ -130,11 +137,7 @@ namespace Equipos
 
             return matchJuegos && matchSoftware && matchPerifericos;
         }
-
-        public static bool operator !=(Computadora comp, Cliente usuario)
-        {
-            return !(comp == usuario);
-        }
+        
 
     }
 }

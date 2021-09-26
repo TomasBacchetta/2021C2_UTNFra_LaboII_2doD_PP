@@ -11,7 +11,9 @@ namespace Sesiones
 {
     public class SesionComputadora : Sesion
     {
-
+        private List<string> softwareUtilizado;
+        private List<string> juegosUtilizados;
+        private List<string> perifericosUtilizados;
         public override bool EnCurso
         {
             get
@@ -22,15 +24,13 @@ namespace Sesiones
             {
                 if (value == false)//la sesion se crea con este atributo en true, por lo que una vez cambiado nunca podra volver a ser true
                 {
-                    base.enCurso = value;
-                    base.tiempoFinUso = DateTime.Now;
-                    base.costoTotal = this.CalcularCosto();
+                    this.enCurso = value;
+                    this.tiempoFinUso = DateTime.Now;
+                    this.costoTotal = this.CalcularCosto();
                 }
 
             }
         }
-
-         
 
         public SesionComputadora(Cliente usuarioActual, string idEquipo) : base(usuarioActual, idEquipo)
         {
