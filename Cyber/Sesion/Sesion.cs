@@ -8,18 +8,26 @@ namespace Sesiones
     public abstract class Sesion
     {
         protected Cliente usuarioActual;
-        protected string idEquipo;
+        protected Equipo equipoEnUso;
         protected DateTime tiempoInicio;
         protected DateTime tiempoFinUso;
         protected double costoTotal;
         protected bool enCurso;
 
 
+        public Equipo Equipo
+        {
+            get
+            {
+                return equipoEnUso;
+            }
+        }
+
         public string IdEquipo
         {
             get
             {
-                return this.idEquipo;
+                return this.Equipo.Id;
             }
         }
         public Cliente UsuarioActual
@@ -66,10 +74,10 @@ namespace Sesiones
         public abstract bool EnCurso { get; set; }
        
         
-        public Sesion(Cliente usuarioActual, string idEquipo)
+        public Sesion(Cliente usuarioActual, Equipo equipoEnUso)
         {
             this.usuarioActual = usuarioActual;
-            this.idEquipo = idEquipo;
+            this.equipoEnUso = equipoEnUso;
             this.tiempoInicio = DateTime.Now;
             this.tiempoFinUso = DateTime.MaxValue;
             this.enCurso = true;
@@ -80,10 +88,14 @@ namespace Sesiones
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.AppendLine($"Id Equipo: {this.idEquipo}");
             buffer.AppendLine($"Usuario: {this.usuarioActual.Nombre} {this.usuarioActual.Apellido}");
-            buffer.AppendLine($"Duración de la sesión: {this.CalcularMinutosPasados()} minutos");
-            buffer.AppendLine($"Monto facturado: ${this.costoTotal}");
+            buffer.AppendLine($"Id Equipo: {this.IdEquipo}");
+            if (this.enCurso == false)
+            {
+                buffer.AppendLine($"Duración de la sesión: {this.CalcularMinutosPasados()} minutos");
+                buffer.AppendLine($"Monto facturado: ${this.costoTotal}");
+            }
+            
             
 
             return $"{buffer}";
@@ -114,7 +126,7 @@ namespace Sesiones
         }
 
         
-        
+       
         
 
     }

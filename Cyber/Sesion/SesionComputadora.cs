@@ -32,20 +32,82 @@ namespace Sesiones
             }
         }
 
-        public SesionComputadora(Cliente usuarioActual, string idEquipo) : base(usuarioActual, idEquipo)
+        public SesionComputadora(Cliente usuarioActual, Equipo equipo) : base(usuarioActual, equipo)
         {
-
+            this.softwareUtilizado = DeterminarProgramasUtilizados();
+            this.juegosUtilizados = DeterminarJuegosUtilizados();
+            this.perifericosUtilizados = DeterminarPerifericosUtilizados();
         }
 
         public override string MostrarSesion()
         {
+            StringBuilder buffer = new StringBuilder();
+            buffer.AppendLine($"Programas utilizados:");
+            foreach (string programa in this.softwareUtilizado)
+            {
+                buffer.AppendLine($"-{programa}");
+            }
             
-
-            return $"{base.MostrarSesion()}";
+            buffer.AppendLine($"Juegos utilizados:");
+            foreach (string juego in this.juegosUtilizados)
+            {
+                buffer.AppendLine($"-{juego}");
+            }
+            buffer.AppendLine($"Periféricos utilizados:");
+            foreach (string periferico in this.perifericosUtilizados)
+            {
+                buffer.AppendLine($"-{periferico}");
+            }
+            return $"{base.MostrarSesion()} {buffer}";
         }
         public double CalcularCosto()
         {
             return base.CalcularMinutosPasados() * 0.5F;
+        }
+
+        public List<string> DeterminarProgramasUtilizados()
+        {
+            List<string> programasUtilizados= new List<string>();
+
+            foreach (string program in this.usuarioActual.ProgramasFavoritos)
+            {
+                if (this.equipoEnUso.Software.Contains(program))
+                {
+                    programasUtilizados.Add(program);
+                }
+            }
+
+            return programasUtilizados;
+        }
+
+        public List<string> DeterminarJuegosUtilizados()
+        {
+            List<string> juegosUtilizados = new List<string>();
+
+            foreach (string juego in this.usuarioActual.JuegosFavoritos)
+            {
+                if (this.equipoEnUso.Juegos.Contains(juego))
+                {
+                    juegosUtilizados.Add(juego);
+                }
+            }
+
+            return juegosUtilizados;
+        }
+
+        public List<string> DeterminarPerifericosUtilizados()
+        {
+            List<string> perifericosUtilizados = new List<string>();
+
+            foreach (string periferico in this.usuarioActual.PerifericosFavoritos)
+            {
+                if (this.equipoEnUso.Perifericos.Contains(periferico))
+                {
+                    perifericosUtilizados.Add(periferico);
+                }
+            }
+
+            return perifericosUtilizados;
         }
 
 

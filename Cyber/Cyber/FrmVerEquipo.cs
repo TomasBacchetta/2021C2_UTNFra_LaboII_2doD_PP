@@ -38,11 +38,11 @@ namespace Cyber
             if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
                 this.Text = $"Computadora {auxEquipo.Id}";
-                this.reproducirSonidoVerComputadora();
+                ArchivosMedia.ReproducirSonidoVerComputadora();
             } else
             {
                 this.Text = $"Teléfono {auxEquipo.Id}";
-                this.reproducirSonidoVerTelefono();
+                ArchivosMedia.ReproducirSonidoVerTelefono();
             }
             if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
             {
@@ -51,7 +51,7 @@ namespace Cyber
             
             if (!(sesionActual is null))
             {
-                richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.UsuarioActual.Nombre} {sesionActual.UsuarioActual.Apellido}");
+                richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.MostrarSesion()}");
             }
             
         }
@@ -62,7 +62,7 @@ namespace Cyber
             {
                 this.sesionActual.EnCurso = false;
                 sesionActual.EnCurso = false;
-                this.reproducirSonidoFacturacion();
+                ArchivosMedia.ReproducirSonidoFacturacion();
                 MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
                 
                 
@@ -72,7 +72,7 @@ namespace Cyber
 
                 if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
                 {
-                    cyber1.CargarSesionNueva(idEquipo);
+                    cyber1.CargarSesionNueva(cyber1.BuscarEquipoPorId(idEquipo));
                     
                     cyber1.ObtenerAtenderProximoClienteSubcola(idEquipo);
                     this.sesionActual = cyber1.BuscarProximaSesionActivaDeUnEquipo(idEquipo);
@@ -105,6 +105,7 @@ namespace Cyber
             }
 
         }
+        /*
         private void reproducirSonidoFacturacion()
         {
             SoundPlayer sonidoFacturacion = new SoundPlayer(Cyber.Properties.Resources.cash2);
@@ -122,10 +123,10 @@ namespace Cyber
             SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.TPBUSY);
             sonidoAsignarCliente.Play();
         }
-
+        */
         private void buttonHistorialSesiones_Click(object sender, EventArgs e)
         {
-            Equipo auxEquipo = cyber1.BuscarEquipoPorId(idEquipo);
+            
             List<Sesion> listaSesionEquipo = new List<Sesion>();
 
             foreach (Sesion item in cyber1.Sesiones)

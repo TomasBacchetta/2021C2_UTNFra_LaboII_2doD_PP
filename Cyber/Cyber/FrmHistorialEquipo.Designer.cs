@@ -48,7 +48,7 @@ namespace Cyber
             this.Controls.Add(this.richTextBoxHistorial);
             this.Name = "FrmHistorialEquipo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmHistorialEquipo";
+            this.Text = "Historial del Equipo";
             this.Load += new System.EventHandler(this.FrmHistorialEquipo_Load);
             this.ResumeLayout(false);
 

@@ -52,6 +52,7 @@ namespace Cyber
             this.richTextBoxDatosCliente = new System.Windows.Forms.RichTextBox();
             this.buttonEcharCliente = new System.Windows.Forms.Button();
             this.buttonAsignar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxEquipos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -275,9 +276,9 @@ namespace Cyber
             // 
             // buttonMostrarEquipo
             // 
-            this.buttonMostrarEquipo.Location = new System.Drawing.Point(409, 378);
+            this.buttonMostrarEquipo.Location = new System.Drawing.Point(387, 378);
             this.buttonMostrarEquipo.Name = "buttonMostrarEquipo";
-            this.buttonMostrarEquipo.Size = new System.Drawing.Size(97, 46);
+            this.buttonMostrarEquipo.Size = new System.Drawing.Size(134, 60);
             this.buttonMostrarEquipo.TabIndex = 2;
             this.buttonMostrarEquipo.Text = "Ver Equipo";
             this.buttonMostrarEquipo.UseVisualStyleBackColor = true;
@@ -311,12 +312,22 @@ namespace Cyber
             this.buttonAsignar.UseVisualStyleBackColor = true;
             this.buttonAsignar.Click += new System.EventHandler(this.buttonAsignar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(811, 388);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 50);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Historial e Informes";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Cyber.Properties.Resources.big_poster_filme_matrix_reloaded_lo01_tamanho_90x60_cm_matrix_2;
             this.ClientSize = new System.Drawing.Size(980, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.labelComputadoras);
             this.Controls.Add(this.buttonAsignar);
@@ -361,5 +372,6 @@ namespace Cyber
         private System.Windows.Forms.Label labelComputadoras;
         private System.Windows.Forms.Label labelCabinas;
         private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.Button button1;
     }
 }

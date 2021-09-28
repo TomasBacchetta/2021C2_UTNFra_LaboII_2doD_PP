@@ -167,15 +167,15 @@ namespace Negocio
             
         }
 
-        public void CargarSesionNueva(string idEquipo)
+        public void CargarSesionNueva(Equipo equipo)
         {
-            if (this.BuscarEquipoPorId(idEquipo).TipoDeEquipo == Equipo.TipoEquipo.Computadora)
+            if (equipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
-                SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteSubcola(idEquipo), idEquipo);
+                SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteSubcola(equipo.Id), equipo);
                 this.sesiones.Add(sesionNueva);
             } else
             {
-                SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteSubcola(idEquipo), idEquipo);
+                SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteSubcola(equipo.Id), equipo);
                 this.sesiones.Add(sesionNueva);
             }
             
@@ -206,7 +206,7 @@ namespace Negocio
                             this.CargarClienteEnSubCola(idEquipo);
                             if (auxEquipo.enUso == false)
                             {
-                                this.CargarSesionNueva(idEquipo);
+                                this.CargarSesionNueva(auxEquipo);
                                 this.subColaClientes[idEquipo].Dequeue();
                                 
                              }
@@ -223,7 +223,7 @@ namespace Negocio
                     this.CargarClienteEnSubCola(idEquipo);
                     if (auxEquipo.enUso == false)
                     {
-                        this.CargarSesionNueva(idEquipo);
+                        this.CargarSesionNueva(auxEquipo);
                         this.subColaClientes[idEquipo].Dequeue();
                         
                     }

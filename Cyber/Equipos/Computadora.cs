@@ -17,8 +17,28 @@ namespace Equipos
         private string ram;
 
 
-     
-        
+        public override List<string> Software
+        {
+            get
+            {
+                return this.software;
+            }
+        }
+        public override List<string> Juegos
+        {
+            get
+            {
+                return this.juegos;
+            }
+        }
+        public override List<string> Perifericos
+        {
+            get
+            {
+                return this.perifericos;
+            }
+        }
+
         public Computadora(string id, List<string> software, List<string> juegos, List<string> perifericos, string cpu, string placaVideo, string ram) : base(id, TipoEquipo.Computadora)
         {
             this.software = software;

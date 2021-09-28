@@ -36,7 +36,15 @@ namespace Equipos
                 return this.id;
             }
         }
+
+        public virtual List<string> Software { get; }
+       
+        public virtual List<string> Juegos { get; }
         
+        public virtual List<string> Perifericos { get; }
+
+           
+
 
         public Equipo(string id, TipoEquipo tipoDeEquipo)
         {

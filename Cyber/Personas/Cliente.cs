@@ -15,7 +15,13 @@ namespace Personas
         private long documento;
         private TipoCliente tipoDeCliente;
 
+        public virtual List<string> JuegosFavoritos { get; }
+       
 
+        public virtual List<string> ProgramasFavoritos { get; }
+       
+
+        public virtual List<string> PerifericosFavoritos{ get; }
         public string Nombre
         {
             get

@@ -58,7 +58,7 @@ namespace Cyber
             if (cyber1.ColaClientes.Count > 0)
             {
                 cyber1.ColaClientes.Dequeue();
-                this.reproducirSonidoEcharCliente();
+                ArchivosMedia.ReproducirSonidoEcharCliente();
                 if (cyber1.ColaClientes.Count == 0)
                 {
                     richTextBoxDatosCliente.Text = "No hay más clientes";
@@ -94,7 +94,7 @@ namespace Cyber
                     richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
                     cyber1.BuscarEquipoPorId(idEquipo).enUso = true;
                     this.ImprimirEtiquetaEquipo(idEquipo);
-                    this.reproducirSonidoAsignarCliente();
+                    ArchivosMedia.ReproducirSonidoAsignarCliente();
                     MessageBox.Show("Cliente cargado a la cola del equipo.\nSi este está ocupado deberá esperar");
 
                 }
@@ -136,7 +136,7 @@ namespace Cyber
 
         }
 
-
+        /*
         private void reproducirSonidoAsignarCliente()
         {
             SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.YEAH1);
@@ -150,6 +150,6 @@ namespace Cyber
         }
 
         
-
+        */
     }
 }

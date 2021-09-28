@@ -35,7 +35,7 @@ namespace Sesiones
             }
         }
 
-        public SesionCabina(Cliente usuarioActual, string idEquipo) : base(usuarioActual, idEquipo)
+        public SesionCabina(Cliente usuarioActual, Equipo equipo) : base(usuarioActual, equipo)
         {
 
         }
