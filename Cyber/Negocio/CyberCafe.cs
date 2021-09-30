@@ -84,18 +84,68 @@ namespace Negocio
         {
             NombresPersonas nombres = new NombresPersonas();
             ApellidosPersonas apellidos = new ApellidosPersonas();
-            Juegos juegosFavoritos = new Juegos();
-            Programas programasFavoritos = new Programas();
-            Perifericos perifericosFavoritos = new Perifericos();
             NumeroTelefono numeroTelefono = new NumeroTelefono();
             Random dni = new Random();
-            Random tipoClienteRnd = new Random();
+            Random rnd = new Random();
+            Carga datos1 = new Carga();
+            Carga datos2 = new Carga();
+            Carga datos3 = new Carga();
+            int chanceCategorias;
+            int chanceTipoCategoria;
+
             for (int x = 0; x < this.cantidadClientes; x++)
             {
-                if (tipoClienteRnd.Next(0,5) < 3)
+                if (rnd.Next(0,5) < 3)//chance de 3/5 de que sea cliente de computadora
                 {
-                    this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), juegosFavoritos.CargarDatos(), programasFavoritos.CargarDatos(), perifericosFavoritos.CargarDatos()));
-                } else
+                    chanceCategorias = rnd.Next(0, 5);
+                    if (chanceCategorias < 2)//chance de 2/5 de que tenga una sola categoria favorita
+                    {
+                        chanceTipoCategoria = rnd.Next(1, 4);
+                        switch (chanceTipoCategoria)//chance de 1/3 de que sea alguna de las 3 categorías
+                        {
+                            case 1:
+                                datos1 = new Juegos();
+                                break;
+                            case 2:
+                                datos1 = new Programas();
+                                break;
+                            case 3:
+                                datos1 = new Perifericos();
+                                break;
+                        }
+                        this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), datos1));
+                    }
+                    else
+                    {
+                        if (chanceCategorias < 4)//chance 2/5 de que tenga dos categorias favoritas
+                        {
+                            chanceTipoCategoria = rnd.Next(1, 4);
+                            switch (chanceTipoCategoria)//chance de 1/3 de que tenga alguna de las combinaciones posibles de categorias
+                            {
+                                case 1:
+                                    datos1 = new Juegos();
+                                    datos2 = new Programas();
+                                    break;
+                                case 2:
+                                    datos1 = new Programas();
+                                    datos2 = new Perifericos();
+                                    break;
+                                case 3:
+                                    datos1 = new Juegos();
+                                    datos2 = new Perifericos();
+                                    break;
+                            }
+                            this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), datos1, datos2));
+                        } else//chance de 1/5 que tenga 3 categorias favoritas
+                        {
+                            datos1 = new Juegos();
+                            datos2 = new Programas();
+                            datos3 = new Perifericos();
+                            this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), datos1, datos2, datos3));
+                        }
+                    }
+                   
+                } else//chance de 2/5 de que sea cliente de teléfono
                 {
                     this.colaClientes.Enqueue(new ClienteDeTelefono(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), numeroTelefono.GenerarNumeroTelefono()));
                 }
@@ -130,7 +180,7 @@ namespace Negocio
             {
                 Random num = new Random();
 
-                this.listaEquipos.Add(new Cabina($"T0{x + 1}", (Cabina.Tipo)num.Next(0, 2), marcasTelefono.CargarDato()));
+                this.listaEquipos.Add(new Cabina($"T0{x + 1}", (Cabina.Tipo)num.Next(0, 2), marcasTelefono.CargarDato(), (Cabina.TipoLlamadaCabina)num.Next(0, 2)));
 
             }
         }
@@ -201,7 +251,7 @@ namespace Negocio
             {
                 if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
                 {
-                    if ((Computadora)auxEquipo | this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
+                    if ((Computadora)auxEquipo == this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
                         {
                             this.CargarClienteEnSubCola(idEquipo);
                             if (auxEquipo.enUso == false)

@@ -81,44 +81,7 @@ namespace Equipos
             return $"{base.Mostrar()}{buffer}";
         }
 
-
-        /// <summary>
-        /// Carga datos en una lista de forma pseudo-aleatoria
-        /// </summary>
-        /// <param name="datos">el array de strings a cargar</param>
-        /// <returns>Devuelve una lista con los datos cargados</returns>
-        private static List<string> CargarDatos(string[] datos)
-        {
-            List<string> lista = new List<string>();
-            Random numRandom = new Random();
-            bool yaEsta = false;
-
-            for (int x = 0; x < numRandom.Next(1, datos.Length + 1); x++)
-            {
-                int indice = numRandom.Next(0, datos.Length);
-                if (lista.Count == 0)
-                {
-                    lista.Add(datos[indice]);
-                }
-                else
-                {
-                    foreach (string item in lista)
-                    {
-                        if (item == datos[indice])
-                        {
-                            yaEsta = true;
-                            break;
-                        }
-
-                    }
-                    if (!yaEsta)
-                    {
-                        lista.Add(datos[indice]);
-                    }
-                }
-            }
-            return lista;
-        }
+        
         /// <summary>
         /// Determina si una computadora cumple con los requisitos de un usuario tanto en software como en juegos y perifercos 
         /// </summary>
@@ -126,38 +89,64 @@ namespace Equipos
         /// <param name="usuario"></param>
         /// <returns></returns>
 
-        public static bool operator |(Computadora comp, Cliente usuario)
+        public static bool operator ==(Computadora comp, Cliente usuario)
         {
             bool matchJuegos = false;
             bool matchSoftware = false;
             bool matchPerifericos = false;
 
             ClienteDeComputadora auxUsuario = (ClienteDeComputadora)usuario;
-            foreach (string juego in comp.juegos)
+            if (auxUsuario.JuegosFavoritos.Count > 0)
             {
-                if (auxUsuario.JuegosFavoritos.Contains(juego))
+                foreach (string juego in comp.juegos)
                 {
-                    matchJuegos = true;
+                    if (auxUsuario.JuegosFavoritos.Contains(juego))
+                    {
+                        matchJuegos = true;
+                    }
                 }
-            }
-            foreach (string software in comp.software)
+            } else
             {
-                if (auxUsuario.ProgramasFavoritos.Contains(software))
-                {
-                    matchSoftware = true;
-                }
+                matchJuegos = true;//si no hay elementos favoritos de esa categoria, se ignora el match (se establece como true)
             }
-            foreach (string periferico in comp.perifericos)
+
+            if (auxUsuario.ProgramasFavoritos.Count > 0)
             {
-                if (auxUsuario.PerifericosFavoritos.Contains(periferico))
+                foreach (string software in comp.software)
                 {
-                    matchPerifericos = true;
+                    if (auxUsuario.ProgramasFavoritos.Contains(software))
+                    {
+                        matchSoftware = true;//si no hay elementos favoritos de esa categoria, se ignora el match (se establece como true)
+                    }
                 }
+            } else
+            {
+                matchSoftware = true;
             }
+
+            if (auxUsuario.PerifericosFavoritos.Count > 0)
+            {
+                foreach (string periferico in comp.perifericos)
+                {
+                    if (auxUsuario.PerifericosFavoritos.Contains(periferico))
+                    {
+                        matchPerifericos = true;//si no hay elementos favoritos de esa categoria, se ignora el match (se establece como true)
+                    }
+                }
+            } else
+            {
+                matchPerifericos = true;
+            }
+                
 
             return matchJuegos && matchSoftware && matchPerifericos;
         }
-        
+
+
+        public static bool operator !=(Computadora comp, Cliente usuario)
+        {
+            return !(comp == usuario);
+        }
 
     }
 }

@@ -6,6 +6,8 @@ namespace Datos
 {
     public class Carga
     {
+
+        
         public static List<string> CargarDatosLista(string[] datos)
         {
             List<string> lista = new List<string>();
@@ -38,6 +40,8 @@ namespace Datos
             }
             return lista;
         }
+
+       
 
         public static string CargarDatoUnitario(string[] datos)
         {

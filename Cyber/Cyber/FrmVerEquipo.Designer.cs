@@ -40,13 +40,13 @@ namespace Cyber
             // 
             this.richTextBoxDatosEquipo.Location = new System.Drawing.Point(23, 30);
             this.richTextBoxDatosEquipo.Name = "richTextBoxDatosEquipo";
-            this.richTextBoxDatosEquipo.Size = new System.Drawing.Size(234, 346);
+            this.richTextBoxDatosEquipo.Size = new System.Drawing.Size(234, 388);
             this.richTextBoxDatosEquipo.TabIndex = 0;
             this.richTextBoxDatosEquipo.Text = "";
             // 
             // buttonTerminarSesion
             // 
-            this.buttonTerminarSesion.Location = new System.Drawing.Point(78, 382);
+            this.buttonTerminarSesion.Location = new System.Drawing.Point(83, 424);
             this.buttonTerminarSesion.Name = "buttonTerminarSesion";
             this.buttonTerminarSesion.Size = new System.Drawing.Size(114, 42);
             this.buttonTerminarSesion.TabIndex = 1;
@@ -56,7 +56,7 @@ namespace Cyber
             // 
             // richTextBoxProximoCliente
             // 
-            this.richTextBoxProximoCliente.Location = new System.Drawing.Point(269, 51);
+            this.richTextBoxProximoCliente.Location = new System.Drawing.Point(269, 230);
             this.richTextBoxProximoCliente.Name = "richTextBoxProximoCliente";
             this.richTextBoxProximoCliente.Size = new System.Drawing.Size(170, 188);
             this.richTextBoxProximoCliente.TabIndex = 2;
@@ -65,7 +65,7 @@ namespace Cyber
             // labelSubColaClientes
             // 
             this.labelSubColaClientes.AutoSize = true;
-            this.labelSubColaClientes.Location = new System.Drawing.Point(269, 33);
+            this.labelSubColaClientes.Location = new System.Drawing.Point(269, 212);
             this.labelSubColaClientes.Name = "labelSubColaClientes";
             this.labelSubColaClientes.Size = new System.Drawing.Size(170, 15);
             this.labelSubColaClientes.TabIndex = 3;
@@ -73,7 +73,7 @@ namespace Cyber
             // 
             // buttonHistorialSesiones
             // 
-            this.buttonHistorialSesiones.Location = new System.Drawing.Point(336, 382);
+            this.buttonHistorialSesiones.Location = new System.Drawing.Point(336, 424);
             this.buttonHistorialSesiones.Name = "buttonHistorialSesiones";
             this.buttonHistorialSesiones.Size = new System.Drawing.Size(103, 42);
             this.buttonHistorialSesiones.TabIndex = 4;
@@ -85,7 +85,7 @@ namespace Cyber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 436);
+            this.ClientSize = new System.Drawing.Size(451, 478);
             this.Controls.Add(this.buttonHistorialSesiones);
             this.Controls.Add(this.labelSubColaClientes);
             this.Controls.Add(this.richTextBoxProximoCliente);

@@ -38,10 +38,12 @@ namespace Cyber
             if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
                 this.Text = $"Computadora {auxEquipo.Id}";
+                ArchivosMedia.AsignarFondoPantallaComputadora(this);
                 ArchivosMedia.ReproducirSonidoVerComputadora();
             } else
             {
                 this.Text = $"Teléfono {auxEquipo.Id}";
+                ArchivosMedia.AsignarFondoPantallaCabina(this);
                 ArchivosMedia.ReproducirSonidoVerTelefono();
             }
             if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)

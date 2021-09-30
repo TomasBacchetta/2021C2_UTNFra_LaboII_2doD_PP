@@ -27,6 +27,8 @@ namespace Datos
                 }
             }
         }
+
+        
         public List<string> CargarDatos()
         {
             return CargarDatosLista(juegos);

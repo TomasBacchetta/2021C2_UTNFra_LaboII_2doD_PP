@@ -52,12 +52,14 @@ namespace Cyber
             this.richTextBoxDatosCliente = new System.Windows.Forms.RichTextBox();
             this.buttonEcharCliente = new System.Windows.Forms.Button();
             this.buttonAsignar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonHist = new System.Windows.Forms.Button();
             this.groupBoxEquipos.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxEquipos
             // 
+            this.groupBoxEquipos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxEquipos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBoxEquipos.Controls.Add(this.radioButton15);
             this.groupBoxEquipos.Controls.Add(this.radioButton10);
             this.groupBoxEquipos.Controls.Add(this.radioButton14);
@@ -73,7 +75,7 @@ namespace Cyber
             this.groupBoxEquipos.Controls.Add(this.radioButton3);
             this.groupBoxEquipos.Controls.Add(this.radioButton2);
             this.groupBoxEquipos.Controls.Add(this.radioButton1);
-            this.groupBoxEquipos.Location = new System.Drawing.Point(152, 37);
+            this.groupBoxEquipos.Location = new System.Drawing.Point(152, 103);
             this.groupBoxEquipos.Name = "groupBoxEquipos";
             this.groupBoxEquipos.Size = new System.Drawing.Size(620, 335);
             this.groupBoxEquipos.TabIndex = 0;
@@ -247,6 +249,7 @@ namespace Cyber
             // 
             // lblCliente
             // 
+            this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCliente.AutoSize = true;
             this.lblCliente.Location = new System.Drawing.Point(789, 41);
             this.lblCliente.Name = "lblCliente";
@@ -256,9 +259,10 @@ namespace Cyber
             // 
             // labelComputadoras
             // 
+            this.labelComputadoras.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelComputadoras.AutoSize = true;
             this.labelComputadoras.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelComputadoras.Location = new System.Drawing.Point(24, 230);
+            this.labelComputadoras.Location = new System.Drawing.Point(24, 334);
             this.labelComputadoras.Name = "labelComputadoras";
             this.labelComputadoras.Size = new System.Drawing.Size(122, 21);
             this.labelComputadoras.TabIndex = 11;
@@ -266,9 +270,10 @@ namespace Cyber
             // 
             // labelCabinas
             // 
+            this.labelCabinas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCabinas.AutoSize = true;
             this.labelCabinas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCabinas.Location = new System.Drawing.Point(46, 88);
+            this.labelCabinas.Location = new System.Drawing.Point(40, 195);
             this.labelCabinas.Name = "labelCabinas";
             this.labelCabinas.Size = new System.Drawing.Size(70, 21);
             this.labelCabinas.TabIndex = 10;
@@ -276,7 +281,8 @@ namespace Cyber
             // 
             // buttonMostrarEquipo
             // 
-            this.buttonMostrarEquipo.Location = new System.Drawing.Point(387, 378);
+            this.buttonMostrarEquipo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonMostrarEquipo.Location = new System.Drawing.Point(406, 446);
             this.buttonMostrarEquipo.Name = "buttonMostrarEquipo";
             this.buttonMostrarEquipo.Size = new System.Drawing.Size(134, 60);
             this.buttonMostrarEquipo.TabIndex = 2;
@@ -286,15 +292,17 @@ namespace Cyber
             // 
             // richTextBoxDatosCliente
             // 
+            this.richTextBoxDatosCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.richTextBoxDatosCliente.Location = new System.Drawing.Point(789, 59);
             this.richTextBoxDatosCliente.Name = "richTextBoxDatosCliente";
-            this.richTextBoxDatosCliente.Size = new System.Drawing.Size(169, 227);
+            this.richTextBoxDatosCliente.Size = new System.Drawing.Size(169, 256);
             this.richTextBoxDatosCliente.TabIndex = 3;
-            this.richTextBoxDatosCliente.Text = "";
+            this.richTextBoxDatosCliente.Text = "Cyber";
             // 
             // buttonEcharCliente
             // 
-            this.buttonEcharCliente.Location = new System.Drawing.Point(894, 292);
+            this.buttonEcharCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonEcharCliente.Location = new System.Drawing.Point(894, 332);
             this.buttonEcharCliente.Name = "buttonEcharCliente";
             this.buttonEcharCliente.Size = new System.Drawing.Size(64, 23);
             this.buttonEcharCliente.TabIndex = 5;
@@ -304,7 +312,8 @@ namespace Cyber
             // 
             // buttonAsignar
             // 
-            this.buttonAsignar.Location = new System.Drawing.Point(789, 292);
+            this.buttonAsignar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAsignar.Location = new System.Drawing.Point(789, 332);
             this.buttonAsignar.Name = "buttonAsignar";
             this.buttonAsignar.Size = new System.Drawing.Size(64, 23);
             this.buttonAsignar.TabIndex = 6;
@@ -312,22 +321,24 @@ namespace Cyber
             this.buttonAsignar.UseVisualStyleBackColor = true;
             this.buttonAsignar.Click += new System.EventHandler(this.buttonAsignar_Click);
             // 
-            // button1
+            // buttonHist
             // 
-            this.button1.Location = new System.Drawing.Point(811, 388);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 50);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Historial e Informes";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonHist.Location = new System.Drawing.Point(798, 430);
+            this.buttonHist.Name = "buttonHist";
+            this.buttonHist.Size = new System.Drawing.Size(160, 51);
+            this.buttonHist.TabIndex = 13;
+            this.buttonHist.Text = "Historial e Infomes";
+            this.buttonHist.UseVisualStyleBackColor = true;
+            this.buttonHist.Click += new System.EventHandler(this.buttonHist_Click);
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Cyber.Properties.Resources.big_poster_filme_matrix_reloaded_lo01_tamanho_90x60_cm_matrix_2;
-            this.ClientSize = new System.Drawing.Size(980, 450);
-            this.Controls.Add(this.button1);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(980, 518);
+            this.Controls.Add(this.buttonHist);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.labelComputadoras);
             this.Controls.Add(this.buttonAsignar);
@@ -336,6 +347,7 @@ namespace Cyber
             this.Controls.Add(this.richTextBoxDatosCliente);
             this.Controls.Add(this.buttonMostrarEquipo);
             this.Controls.Add(this.groupBoxEquipos);
+            this.MinimumSize = new System.Drawing.Size(996, 557);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPrincipal";
@@ -372,6 +384,6 @@ namespace Cyber
         private System.Windows.Forms.Label labelComputadoras;
         private System.Windows.Forms.Label labelCabinas;
         private System.Windows.Forms.Label lblCliente;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonHist;
     }
 }

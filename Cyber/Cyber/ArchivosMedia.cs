@@ -39,5 +39,17 @@ namespace Cyber
 
         }
 
+        public static void AsignarFondoPantallaComputadora(FrmVerEquipo form)
+        {
+            form.BackgroundImage = Properties.Resources.fondoComputadora;
+            form.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        }
+        public static void AsignarFondoPantallaCabina(FrmVerEquipo form)
+        {
+            form.BackgroundImage = Properties.Resources.fondoCabina;
+            form.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        }
+
+
     }
 }

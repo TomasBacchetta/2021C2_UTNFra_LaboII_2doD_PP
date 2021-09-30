@@ -26,6 +26,7 @@ namespace Cyber
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            
             foreach (Control item in groupBoxEquipos.Controls)
             {
 
@@ -46,7 +47,7 @@ namespace Cyber
                 if (item.Checked)
                 {
                     FrmVerEquipo form2 = new FrmVerEquipo(cyber1, item.Tag.ToString(), this);
-                    form2.Show();
+                    form2.ShowDialog();
                 }
             }
             
@@ -136,20 +137,10 @@ namespace Cyber
 
         }
 
-        /*
-        private void reproducirSonidoAsignarCliente()
+        private void buttonHist_Click(object sender, EventArgs e)
         {
-            SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.YEAH1);
-            sonidoAsignarCliente.Play();
+            FrmHistorialGeneral formHistorial = new FrmHistorialGeneral();
+            formHistorial.Show();
         }
-        private void reproducirSonidoEcharCliente()
-        {
-            SoundPlayer sonidoEcharCliente = new SoundPlayer(Cyber.Properties.Resources.BOO);
-            sonidoEcharCliente.Play();
-            
-        }
-
-        
-        */
     }
 }

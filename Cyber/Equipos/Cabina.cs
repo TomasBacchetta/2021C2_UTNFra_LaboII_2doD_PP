@@ -13,17 +13,23 @@ namespace Equipos
             A_Disco, Con_Teclado
         }
 
-        
+        public enum TipoLlamadaCabina
+        {
+            Local, Todas
+        }
+
+
         private Tipo tipo;
+        private TipoLlamadaCabina tipoLlamadaCabina;
         private string marca;
 
 
 
-        public Cabina(string id, Tipo tipo, string marca) : base(id, TipoEquipo.Cabina)
+        public Cabina(string id, Tipo tipo, string marca, TipoLlamadaCabina tipoLlamadaCabina) : base(id, TipoEquipo.Cabina)
         {
             this.tipo = tipo;
             this.marca = marca;
-
+            this.tipoLlamadaCabina = tipoLlamadaCabina;
 
         }
 
@@ -33,6 +39,13 @@ namespace Equipos
 
             buffer.AppendLine($"Tipo: {this.tipo}");
             buffer.AppendLine($"Marca: {this.marca}");
+            buffer.AppendLine($"Compatible con llamadas: ");
+            buffer.AppendLine("Local");
+            if (tipoLlamadaCabina == TipoLlamadaCabina.Todas)
+            {
+                buffer.AppendLine("Larga distancia");
+                buffer.AppendLine("Internacional");
+            }
 
             return $"{base.Mostrar()}{buffer}";
 
