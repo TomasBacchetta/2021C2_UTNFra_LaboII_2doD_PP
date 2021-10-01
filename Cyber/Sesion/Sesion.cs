@@ -102,11 +102,11 @@ namespace Sesiones
         }
 
 
-        public double CalcularMinutosPasados()
+        public long CalcularMinutosPasados()
         {
             long tiempoMinReal;
             long tiempoSegReal;
-            long tiempoMinRetorno = 0;
+            long tiempoMinRetorno;
 
             tiempoMinReal = this.tiempoFinUso.Minute - this.tiempoInicio.Minute;
             tiempoSegReal = this.tiempoFinUso.Second - this.tiempoInicio.Second;

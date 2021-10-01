@@ -26,29 +26,48 @@ namespace Cyber
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            
+            int indiceRadio = 0;
+            int indiceImagen = 0;
             foreach (Control item in groupBoxEquipos.Controls)
             {
-
+                if (item is RadioButton)
+                {
+                    item.Tag = cyber1.Equipos[indiceRadio].Id;
+                    this.ImprimirEtiquetaEquipo(item.Tag.ToString());
+                    indiceRadio++;
+                }
+                if (item is PictureBox)
+                {
+                    item.Tag = $"I{cyber1.Equipos[indiceImagen].Id}";
+                    PictureBox pict = (PictureBox)item;
+                    pict.BackgroundImage = Resources.pcLIBRE;
+                    pict.BackgroundImageLayout = ImageLayout.Stretch;
+                    indiceImagen++;
+                }
                 
-                item.Tag = cyber1.Equipos[groupBoxEquipos.Controls.IndexOf(item)].Id;
-                this.ImprimirEtiquetaEquipo(item.Tag.ToString());
 
             }
             
             richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+
+            
         }
 
         private void buttonMostrarEquipo_Click(object sender, EventArgs e)
         {
             
-            foreach (RadioButton item in groupBoxEquipos.Controls)
+            foreach (Control item in groupBoxEquipos.Controls)
             {
-                if (item.Checked)
+                if (item is RadioButton)
                 {
-                    FrmVerEquipo form2 = new FrmVerEquipo(cyber1, item.Tag.ToString(), this);
-                    form2.ShowDialog();
+                    RadioButton auxRadioButton = (RadioButton)item;
+                    if (auxRadioButton.Checked == true)
+                    {
+                        FrmVerEquipo form2 = new FrmVerEquipo(cyber1, item.Tag.ToString(), this);
+                        form2.ShowDialog();
+                    }
                 }
+                
             }
             
         }
@@ -75,18 +94,24 @@ namespace Cyber
         {
            
             int respuesta = 0;
-            string idEquipo = ""; ;
+            string idEquipo = ""; 
+            
             if (cyber1.ColaClientes.Count > 0)
             {
-                foreach (RadioButton item in groupBoxEquipos.Controls)
+                foreach (Control item in groupBoxEquipos.Controls)
                 {
-                    if (item.Checked == true)
+                    if (item is RadioButton)
                     {
-                        idEquipo = item.Tag.ToString();
-                        respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
+                        RadioButton auxRadioButton = (RadioButton)item;
+                        if (auxRadioButton.Checked == true)
+                        {
+                            idEquipo = item.Tag.ToString();
+                            respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
 
 
-                        break;
+                            break;
+                        }
+                        
                     }
                 }
 
@@ -103,7 +128,7 @@ namespace Cyber
                 {
                     if (respuesta == -1)
                     {
-                        MessageBox.Show("El cliente no está interesado en esta computadora. \nRecuerde que debe haber presentes por lo menos un favorito de cada categoría");
+                        MessageBox.Show("El equipo no cumple los requerimientos del cliente.");
                     }
                     else
                     {
@@ -127,19 +152,23 @@ namespace Cyber
                 estado = "LIBRE";
             }
 
-            foreach (RadioButton item in groupBoxEquipos.Controls)
+            foreach (Control item in groupBoxEquipos.Controls)
             {
-                if (!(item.Tag is null) && item.Tag.ToString() == idEquipo)
+                if (item is RadioButton)
                 {
-                    item.Text = $"{item.Tag} -{estado}\n{cyber1.ObtenerSubColaClientes(idEquipo).Count} clientes en cola";
+                    if (!(item.Tag is null) && item.Tag.ToString() == idEquipo)
+                    {
+                        item.Text = $"{item.Tag} -{estado}\n{cyber1.ObtenerSubColaClientes(idEquipo).Count} clientes en cola";
+                    }
                 }
+                
             }
 
         }
 
         private void buttonHist_Click(object sender, EventArgs e)
         {
-            FrmHistorialGeneral formHistorial = new FrmHistorialGeneral();
+            FrmHistorialGeneral formHistorial = new FrmHistorialGeneral(this.cyber1);
             formHistorial.Show();
         }
     }

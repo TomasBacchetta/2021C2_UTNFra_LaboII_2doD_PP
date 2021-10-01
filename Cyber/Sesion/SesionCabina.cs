@@ -5,17 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Personas;
 using Equipos;
+using static Personas.ClienteDeTelefono;
 
 namespace Sesiones
 {
     public class SesionCabina : Sesion
     {
-        public enum TipoLlamada
-        {
-            Local, LargaDistancia, Internacional
-        }
-
-        private TipoLlamada tipoDeLlamada;
+        
+       
         public override bool EnCurso
         {
             get
@@ -29,7 +26,7 @@ namespace Sesiones
                     this.enCurso = value;
                     this.tiempoFinUso = DateTime.Now;
                     this.costoTotal = this.CalcularCosto();
-                    this.tipoDeLlamada = this.DeterminarTipoDeLlamada();
+                    
                 }
 
             }
@@ -47,7 +44,7 @@ namespace Sesiones
             ClienteDeTelefono auxUsuario = (ClienteDeTelefono)this.UsuarioActual;
 
             buffer.AppendLine($"Número marcado: {auxUsuario.Telefono}");
-            buffer.AppendLine($"Tipo de llamada: {this.DeterminarTipoDeLlamada()}");
+            buffer.AppendLine($"Tipo de llamada: {auxUsuario.TipoDeLlamada}");
 
             return $"{base.MostrarSesion()} {buffer}";
         }
@@ -55,7 +52,7 @@ namespace Sesiones
         {
             double multiplicador = 0;
 
-            switch (this.tipoDeLlamada)
+            switch (this.usuarioActual.TipoDeLlamada)
             {
                 case TipoLlamada.Local:
                     multiplicador = 1;
@@ -69,25 +66,6 @@ namespace Sesiones
             }
             return base.CalcularMinutosPasados() * multiplicador;
         }
-
-        public TipoLlamada DeterminarTipoDeLlamada()
-        {
-            ClienteDeTelefono auxUsuario = (ClienteDeTelefono)this.UsuarioActual;
-
-            string telefono = auxUsuario.Telefono;
-
-            if ($"{telefono[0]}{telefono[1]}" == "54")
-            {
-                if ($"{telefono[3]}{telefono[4]}" == "11")
-                {
-                    return TipoLlamada.Local;
-                }
-                return TipoLlamada.LargaDistancia;
-            }
-            else
-            {
-                return TipoLlamada.Internacional;
-            }
-        }
+       
     }
 }

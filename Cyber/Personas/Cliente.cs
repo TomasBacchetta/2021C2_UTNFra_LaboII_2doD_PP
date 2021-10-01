@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Personas.ClienteDeTelefono;
 
 namespace Personas
 {
@@ -22,6 +23,9 @@ namespace Personas
        
 
         public virtual List<string> PerifericosFavoritos{ get; }
+
+        public virtual TipoLlamada TipoDeLlamada { get; }
+
         public string Nombre
         {
             get

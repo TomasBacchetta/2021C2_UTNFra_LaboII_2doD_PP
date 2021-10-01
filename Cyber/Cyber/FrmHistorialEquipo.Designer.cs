@@ -36,6 +36,7 @@ namespace Cyber
             // 
             this.richTextBoxHistorial.Location = new System.Drawing.Point(42, 33);
             this.richTextBoxHistorial.Name = "richTextBoxHistorial";
+            this.richTextBoxHistorial.ReadOnly = true;
             this.richTextBoxHistorial.Size = new System.Drawing.Size(286, 384);
             this.richTextBoxHistorial.TabIndex = 0;
             this.richTextBoxHistorial.Text = "";

@@ -5,6 +5,7 @@ using Datos;
 using Personas;
 using Sesiones;
 
+
 namespace Negocio
 {
     public class CyberCafe
@@ -179,8 +180,16 @@ namespace Negocio
             for (int x = 0; x < this.cantidadCabinas; x++)
             {
                 Random num = new Random();
+                Cabina.TipoLlamadaCabina tipoLlamadaCabina;
+                if (num.Next(0,5) > 2)//chance de 2/5 de que la cabina tenga llamadas larga distancia e internacionales
+                {
+                    tipoLlamadaCabina = Cabina.TipoLlamadaCabina.Todas;
+                } else
+                {
+                    tipoLlamadaCabina = Cabina.TipoLlamadaCabina.Local;
+                }
 
-                this.listaEquipos.Add(new Cabina($"T0{x + 1}", (Cabina.Tipo)num.Next(0, 2), marcasTelefono.CargarDato(), (Cabina.TipoLlamadaCabina)num.Next(0, 2)));
+                this.listaEquipos.Add(new Cabina($"T0{x + 1}", (Cabina.Tipo)num.Next(0, 2), marcasTelefono.CargarDato(), tipoLlamadaCabina));
 
             }
         }
@@ -244,40 +253,47 @@ namespace Negocio
         public int AsignarClienteAEquipo(string idEquipo)
         {
 
-           Equipo auxEquipo = BuscarEquipoPorId(idEquipo);
+            Equipo auxEquipo = BuscarEquipoPorId(idEquipo);
 
-           if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Cabina && this.ObtenerProximoCliente().TipoDeCliente == Cliente.TipoCliente.ClienteTelefono ||
-                auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora && this.ObtenerProximoCliente().TipoDeCliente == Cliente.TipoCliente.ClienteComputadora)
+            if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Cabina && this.ObtenerProximoCliente().TipoDeCliente == Cliente.TipoCliente.ClienteTelefono ||
+                 auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora && this.ObtenerProximoCliente().TipoDeCliente == Cliente.TipoCliente.ClienteComputadora)
             {
                 if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
                 {
                     if ((Computadora)auxEquipo == this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
+                    {
+                        this.CargarClienteEnSubCola(idEquipo);
+                        if (auxEquipo.enUso == false)
                         {
-                            this.CargarClienteEnSubCola(idEquipo);
-                            if (auxEquipo.enUso == false)
-                            {
-                                this.CargarSesionNueva(auxEquipo);
-                                this.subColaClientes[idEquipo].Dequeue();
-                                
-                             }
-                            this.colaClientes.Dequeue();
+                            this.CargarSesionNueva(auxEquipo);
+                            this.subColaClientes[idEquipo].Dequeue();
+
+                        }
+                        this.colaClientes.Dequeue();
 
                         return 1;//logro cargar en una computadora
                     }
                     else
                     {
-                        return -1;//no pudo cargar en una computadora
+                        return -1;//no pudo cargar 
                     }
                 } else
                 {
-                    this.CargarClienteEnSubCola(idEquipo);
-                    if (auxEquipo.enUso == false)
+                    if ((Cabina)auxEquipo == ObtenerProximoCliente())
                     {
-                        this.CargarSesionNueva(auxEquipo);
-                        this.subColaClientes[idEquipo].Dequeue();
-                        
+                        this.CargarClienteEnSubCola(idEquipo);
+                        if (auxEquipo.enUso == false)
+                        {
+                            this.CargarSesionNueva(auxEquipo);
+                            this.subColaClientes[idEquipo].Dequeue();
+
+                        }
+                        this.colaClientes.Dequeue();
+                    } else
+                    {
+                        return -1;//no pudo cargar 
                     }
-                    this.colaClientes.Dequeue();
+                    
                     return 2;//logro cargar en una cabina
                 }
                 
@@ -330,5 +346,7 @@ namespace Negocio
             
             return null;
         }
+
+        
     }
 }

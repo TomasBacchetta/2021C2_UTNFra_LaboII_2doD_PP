@@ -40,13 +40,14 @@ namespace Cyber
             // 
             this.richTextBoxDatosEquipo.Location = new System.Drawing.Point(23, 30);
             this.richTextBoxDatosEquipo.Name = "richTextBoxDatosEquipo";
-            this.richTextBoxDatosEquipo.Size = new System.Drawing.Size(234, 388);
+            this.richTextBoxDatosEquipo.ReadOnly = true;
+            this.richTextBoxDatosEquipo.Size = new System.Drawing.Size(186, 388);
             this.richTextBoxDatosEquipo.TabIndex = 0;
             this.richTextBoxDatosEquipo.Text = "";
             // 
             // buttonTerminarSesion
             // 
-            this.buttonTerminarSesion.Location = new System.Drawing.Point(83, 424);
+            this.buttonTerminarSesion.Location = new System.Drawing.Point(56, 424);
             this.buttonTerminarSesion.Name = "buttonTerminarSesion";
             this.buttonTerminarSesion.Size = new System.Drawing.Size(114, 42);
             this.buttonTerminarSesion.TabIndex = 1;
@@ -56,8 +57,9 @@ namespace Cyber
             // 
             // richTextBoxProximoCliente
             // 
-            this.richTextBoxProximoCliente.Location = new System.Drawing.Point(269, 230);
+            this.richTextBoxProximoCliente.Location = new System.Drawing.Point(248, 230);
             this.richTextBoxProximoCliente.Name = "richTextBoxProximoCliente";
+            this.richTextBoxProximoCliente.ReadOnly = true;
             this.richTextBoxProximoCliente.Size = new System.Drawing.Size(170, 188);
             this.richTextBoxProximoCliente.TabIndex = 2;
             this.richTextBoxProximoCliente.Text = "";
@@ -65,7 +67,7 @@ namespace Cyber
             // labelSubColaClientes
             // 
             this.labelSubColaClientes.AutoSize = true;
-            this.labelSubColaClientes.Location = new System.Drawing.Point(269, 212);
+            this.labelSubColaClientes.Location = new System.Drawing.Point(248, 212);
             this.labelSubColaClientes.Name = "labelSubColaClientes";
             this.labelSubColaClientes.Size = new System.Drawing.Size(170, 15);
             this.labelSubColaClientes.TabIndex = 3;
@@ -73,7 +75,7 @@ namespace Cyber
             // 
             // buttonHistorialSesiones
             // 
-            this.buttonHistorialSesiones.Location = new System.Drawing.Point(336, 424);
+            this.buttonHistorialSesiones.Location = new System.Drawing.Point(315, 424);
             this.buttonHistorialSesiones.Name = "buttonHistorialSesiones";
             this.buttonHistorialSesiones.Size = new System.Drawing.Size(103, 42);
             this.buttonHistorialSesiones.TabIndex = 4;

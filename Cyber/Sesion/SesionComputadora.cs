@@ -60,9 +60,29 @@ namespace Sesiones
             }
             return $"{base.MostrarSesion()} {buffer}";
         }
+        /// <summary>
+        /// Calcula la cantidad de bloques unitarios de 30 minutos redondeando para arriba y recibiendo los minutos (segundos en la vida real) transcurridos 
+        /// </summary>
+        /// <param name="tiempoMinRetorno"></param>
+        /// <returns></returns>
+        public static int CalcularBloqueDeTiempo(long tiempoMinRetorno)
+        {
+            float bloques = tiempoMinRetorno / 30F;
+            int bloqueEntero = 0;
+
+            if (tiempoMinRetorno > 0)
+            {
+                if (Math.Round(bloques) - bloques != 0 || bloques < 1)
+                {
+                    bloques++;
+                    bloqueEntero = (int)bloques;
+                }
+            }
+            return bloqueEntero;
+        }
         public double CalcularCosto()
         {
-            return base.CalcularMinutosPasados() * 0.5F;
+            return CalcularBloqueDeTiempo(base.CalcularMinutosPasados()) * 0.5F;
         }
 
         public List<string> DeterminarProgramasUtilizados()
@@ -109,6 +129,8 @@ namespace Sesiones
 
             return perifericosUtilizados;
         }
+
+        
 
 
     }

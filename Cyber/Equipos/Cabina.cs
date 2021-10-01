@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Personas;
+
 
 namespace Equipos
 {
@@ -51,7 +53,46 @@ namespace Equipos
 
         }
 
+        public static bool operator ==(Cabina cabina, Cliente cliente)
+        {
+            ClienteDeTelefono auxUsuario = (ClienteDeTelefono)cliente;
+            if (auxUsuario.TipoDeLlamada == ClienteDeTelefono.TipoLlamada.Local)
+            {
+                return true;
+            }
+            if ((auxUsuario.TipoDeLlamada == ClienteDeTelefono.TipoLlamada.LargaDistancia || auxUsuario.TipoDeLlamada == ClienteDeTelefono.TipoLlamada.Internacional)&& cabina.tipoLlamadaCabina == TipoLlamadaCabina.Todas)
+            {
+                return true;
+            }
 
+            return false;
+            
 
+        }
+
+        public static bool operator !=(Cabina cabina, Cliente cliente)
+        {
+            return !(cabina == cliente);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
