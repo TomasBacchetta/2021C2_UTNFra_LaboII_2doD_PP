@@ -12,7 +12,7 @@ Bacchetta, Tomás
 
 El programa trata de simular una situación de negocio de un cyber, con clientes y equipos generados al azar. Para asignar un cliente a un equipo, este debe cumplir con los requerimientos del cliente en cuando a software, juegos, periféricos y tipo de llamada (segun el número de teléfono que el cliente va a discar). Por esta misma naturaleza azarosa, todavia hay que afinar un poco la forma en que se asignan estos valores en los equipos porque puede darse el caso de que se den combinaciones dificiles para los clientes (para eso se agregó el botón "Echar" que en realidad debería ser utilizado como última instancia). 
 
-El richtextbox de la derecha muestra al próximo cliente a atender, de la cola de clientes
+El richtextbox de la derecha muestra al próximo cliente a atender, de la cola de clientes:
 
 *Para seleccionar un equipo hay que hacer click en el botón radial correspondiente
 *Para ver el equipo hay que hacer click en el botón Ver Equipo
