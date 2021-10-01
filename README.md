@@ -13,17 +13,17 @@ Bacchetta, Tomás
 El programa trata de simular una situación de negocio de un cyber, con clientes y equipos generados al azar. Para asignar un cliente a un equipo, este debe cumplir con los requerimientos del cliente en cuando a software, juegos, periféricos y tipo de llamada (segun el número de teléfono que el cliente va a discar). Por esta misma naturaleza azarosa, todavia hay que afinar un poco la forma en que se asignan estos valores en los equipos porque puede darse el caso de que se den combinaciones dificiles para los clientes (para eso se agregó el botón "Echar" que en realidad debería ser utilizado como última instancia). 
 
 El richtextbox de la derecha muestra al próximo cliente a atender, de la cola de clientes
--Para seleccionar un equipo hay que hacer click en el botón radial correspondiente
--Para ver el equipo hay que hacer click en el botón Ver Equipo
--Para asignar un cliente en el equipo seleccionado, presionar el botón "Asignar"
--El cliente asignado pasa a una subcola vinculada a un equipo particular (pero esta tambien es un atributo instanciado de la clase cyber). 
--El hecho de usar subcolas por equipos permite descongestionar la cola principal ya que esta tiene una mezcla de clientes de computadora y de cabinas 
--Las subcolas pueden parecer un concepto extraño, pero es era real en muchos cyber que haya máquinas, por diversos motivos, más preciadas que otras, y clientes dispuestos a esperar a que se desocupen dichas maquinas en particular.
--Las subcolas en las cabinas telefónicas se explican porque no todas admiten llamadas de larga distancia e internacionales
--Si el equipo no esta en uso actualmente, y no hay nadie en la subcola, se genera una sesion que enlaza ese cliente asignado con su equipo. Caso contrario este debe esperar en la subcola del equipo correspondiente.
--Si se finaliza sesión y hay un cliente en la subcola, éste se asigna automáticamente
--Con las sesiones se formaran historiales y a partir de estos, los informes (a los que todavia no se pueden acceder). Las sesiones se guardan en un atributo del objeto cybercafe
--En el formulario de equipo, se puede ver los datos de la maquina, el cliente de la sesion actual (si es que esta en uso), el proximo cliente de la subcola en el richtextbox de la derecha, y además se puede consultar el historial de sesiones del equipo en particular.
+*Para seleccionar un equipo hay que hacer click en el botón radial correspondiente
+*Para ver el equipo hay que hacer click en el botón Ver Equipo
+*Para asignar un cliente en el equipo seleccionado, presionar el botón "Asignar"
+*El cliente asignado pasa a una subcola vinculada a un equipo particular (pero esta tambien es un atributo instanciado de la clase cyber). 
+*El hecho de usar subcolas por equipos permite descongestionar la cola principal ya que esta tiene una mezcla de clientes de computadora y de cabinas 
+*Las subcolas pueden parecer un concepto extraño, pero es era real en muchos cyber que haya máquinas, por diversos motivos, más preciadas que otras, y clientes dispuestos a esperar a que se desocupen dichas maquinas en particular.
+*Las subcolas en las cabinas telefónicas se explican porque no todas admiten llamadas de larga distancia e internacionales
+*Si el equipo no esta en uso actualmente, y no hay nadie en la subcola, se genera una sesion que enlaza ese cliente asignado con su equipo. Caso contrario este debe esperar en la subcola del equipo correspondiente.
+*Si se finaliza sesión y hay un cliente en la subcola, éste se asigna automáticamente
+*Con las sesiones se formaran historiales y a partir de estos, los informes (a los que todavia no se pueden acceder). Las sesiones se guardan en un atributo del objeto cybercafe
+*En el formulario de equipo, se puede ver los datos de la maquina, el cliente de la sesion actual (si es que esta en uso), el proximo cliente de la subcola en el richtextbox de la derecha, y además se puede consultar el historial de sesiones del equipo en particular.
 
 Cosas que faltan de la funcionalidad:
 
