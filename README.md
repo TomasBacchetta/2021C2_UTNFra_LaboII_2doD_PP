@@ -10,31 +10,35 @@
 
 Bacchetta, Tomás
 
-El programa trata de simular una situación de negocio de un cyber, con clientes y equipos generados al azar. En el caso de las computadoras, a estas se las asignará si cumplen los requerimientos del cliente en cuando a software, juegos y periféricos. Por esta misma naturaleza azarosa, todavia hay que afinar un poco la forma en que se asignan estos valores en los equipos porque puede darse el caso de que se den combinaciones dificiles para los clientes (para eso se agregó el botón "Echar" que en realidad debería ser utilizado como última instancia). A los clientes de cabina se les asignará un telefono, tambien generado al azar, que se encargara el programa de determinar a que tipo de llamada corresponde.
+El programa trata de simular una situación de negocio de un cyber, con clientes y equipos generados al azar. Para asignar un cliente a un equipo, este debe cumplir con los requerimientos del cliente en cuando a software, juegos, periféricos y tipo de llamada (segun el número de teléfono que el cliente va a discar). Por esta misma naturaleza azarosa, todavia hay que afinar un poco la forma en que se asignan estos valores en los equipos porque puede darse el caso de que se den combinaciones dificiles para los clientes (para eso se agregó el botón "Echar" que en realidad debería ser utilizado como última instancia). 
 
--El richtextbox de la derecha muestra al próximo cliente a atender, de la cola de clientes
--Para ver cada equipo, basta sólo hacer click en el botón radial correspondiente y hacer click en el botón Mostrar Equipo.
+El richtextbox de la derecha muestra al próximo cliente a atender, de la cola de clientes
+-Para seleccionar un equipo hay que hacer click en el botón radial correspondiente
+-Para ver el equipo hay que hacer click en el botón Ver Equipo
 -Para asignar un cliente en el equipo seleccionado, presionar el botón "Asignar"
 -El cliente asignado pasa a una subcola vinculada a un equipo particular (pero esta tambien es un atributo instanciado de la clase cyber). 
 -El hecho de usar subcolas por equipos permite descongestionar la cola principal ya que esta tiene una mezcla de clientes de computadora y de cabinas 
 -Las subcolas pueden parecer un concepto extraño, pero es era real en muchos cyber que haya máquinas, por diversos motivos, más preciadas que otras, y clientes dispuestos a esperar a que se desocupen dichas maquinas en particular.
--En el caso de las cabinas, puede que no tenga mucho sentido hablar de subcolas, pero se podria agregar cabinas con ciertos atributos (por ejemplo, que no admitan llamadas internacionales).
--Si el equipo no esta en uso actualmente, y no hay nadie en la subcola, se genera una sesion que enlaza ese cliente asignado con su equipo.
--Con las sesiones se formaran historiales y a partir de estos, los informes (a los que todavia no se pueden acceder). Las sesiones se guardan en una coleccion dentro de cada equipo.
+-Las subcolas en las cabinas telefónicas se explican porque no todas admiten llamadas de larga distancia e internacionales
+-Si el equipo no esta en uso actualmente, y no hay nadie en la subcola, se genera una sesion que enlaza ese cliente asignado con su equipo. Caso contrario este debe esperar en la subcola del equipo correspondiente.
+-Si se finaliza sesión y hay un cliente en la subcola, éste se asigna automáticamente
+-Con las sesiones se formaran historiales y a partir de estos, los informes (a los que todavia no se pueden acceder). Las sesiones se guardan en un atributo del objeto cybercafe
 -En el formulario de equipo, se puede ver los datos de la maquina, el cliente de la sesion actual (si es que esta en uso), el proximo cliente de la subcola en el richtextbox de la derecha, y además se puede consultar el historial de sesiones del equipo en particular.
 
 Cosas que faltan de la funcionalidad:
--Todo lo referido a la estetica
--Entre las cosas principales todavía falta mostrar un historial general y hacer los informes.
--Una facturacion mas detallada
--Ese historial general podría utilizar MDIs ya que estamos hablando de varios equipos
--Afinar el motor que genera datos al azar
--Todavía no se me ocurrió una funcionalidad inédita no pedida
 
+-Entre las cosas principales todavía falta generar informes (a los que se accederá desde el historial)
+-Como funcionalidad inédita, los clientes tendrán un atributo nivelDeFelicidad, que reflejará el nivel de satisfacción a la hora de utilizar un equipo
+-Al ser asignado a un equipo, el cliente verá su nivel de felicidad aumentado dependiendo de cuántos requisitos en juegos, software, perifericos y llamadas fueron satisfechos
+-Los puntos de felicidad permitirán al usuario del programa vender al cliente diversos productos como gaseosas y golosinas, los que tendrán un costo en felicidad y por supuesto monetario (pero el determinante sera la felicidad).
+-Algunos de estos productos tendrán habilidades únicas que alterarán la dinámica del programa, de forma positiva o negativa.
+
+-Una facturacion mas detallada
+-Afinar el motor que genera datos al azar
+-Aun no encontre un nuget que me pueda servir
 Cosas que faltan del codigo:
--Aprovechar más la sobrecarga
 -Comprobar y afianzar los niveles de protección
--Comentar lo que sea necesario, que para esta correccion casi no fue hecho
+-Comentar lo que sea necesario
 
 
 Cosas que van mas alla de lo pedido pero que no se haran en el parcial:
