@@ -69,7 +69,7 @@ namespace Cyber
                 
                 
                 cyber1.BuscarEquipoPorId(idEquipo).enUso = false;
-
+                
                
 
                 if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
@@ -87,10 +87,7 @@ namespace Cyber
                     }
                     
 
-                } /*else
-                {
-                    richTextBoxProximoCliente.Text = "";
-                }*/
+                } 
 
                 
                 richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).Mostrar();
@@ -104,28 +101,11 @@ namespace Cyber
 
                 }
                 formPrincipal.ImprimirEtiquetaEquipo(idEquipo);
+                formPrincipal.CambiarIconoEquipo(idEquipo);
             }
 
         }
-        /*
-        private void reproducirSonidoFacturacion()
-        {
-            SoundPlayer sonidoFacturacion = new SoundPlayer(Cyber.Properties.Resources.cash2);
-            sonidoFacturacion.Play();
-        }
-
-        private void reproducirSonidoVerComputadora()
-        {
-            SoundPlayer sonidoVerComputadora = new SoundPlayer(Cyber.Properties.Resources.keyboard);
-            sonidoVerComputadora.Play();
-        }
-
-        private void reproducirSonidoVerTelefono()
-        {
-            SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.TPBUSY);
-            sonidoAsignarCliente.Play();
-        }
-        */
+        
         private void buttonHistorialSesiones_Click(object sender, EventArgs e)
         {
             

@@ -30,23 +30,28 @@ namespace Cyber
         private void InitializeComponent()
         {
             this.groupBoxEquipos = new System.Windows.Forms.GroupBox();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.radioButton15 = new System.Windows.Forms.RadioButton();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton14 = new System.Windows.Forms.RadioButton();
             this.radioButton13 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton11 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -64,6 +69,12 @@ namespace Cyber
             this.buttonAsignar = new System.Windows.Forms.Button();
             this.buttonHist = new System.Windows.Forms.Button();
             this.groupBoxEquipos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -73,30 +84,34 @@ namespace Cyber
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxEquipos
             // 
             this.groupBoxEquipos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBoxEquipos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBoxEquipos.Controls.Add(this.pictureBox15);
+            this.groupBoxEquipos.Controls.Add(this.pictureBox14);
+            this.groupBoxEquipos.Controls.Add(this.pictureBox13);
+            this.groupBoxEquipos.Controls.Add(this.pictureBox12);
+            this.groupBoxEquipos.Controls.Add(this.pictureBox11);
+            this.groupBoxEquipos.Controls.Add(this.pictureBox10);
             this.groupBoxEquipos.Controls.Add(this.pictureBox9);
             this.groupBoxEquipos.Controls.Add(this.pictureBox8);
             this.groupBoxEquipos.Controls.Add(this.pictureBox7);
+            this.groupBoxEquipos.Controls.Add(this.radioButton8);
             this.groupBoxEquipos.Controls.Add(this.pictureBox6);
             this.groupBoxEquipos.Controls.Add(this.pictureBox5);
             this.groupBoxEquipos.Controls.Add(this.pictureBox4);
             this.groupBoxEquipos.Controls.Add(this.pictureBox3);
             this.groupBoxEquipos.Controls.Add(this.pictureBox2);
             this.groupBoxEquipos.Controls.Add(this.pictureBox1);
-            this.groupBoxEquipos.Controls.Add(this.pictureBox11);
             this.groupBoxEquipos.Controls.Add(this.radioButton15);
             this.groupBoxEquipos.Controls.Add(this.radioButton10);
             this.groupBoxEquipos.Controls.Add(this.radioButton14);
             this.groupBoxEquipos.Controls.Add(this.radioButton13);
             this.groupBoxEquipos.Controls.Add(this.radioButton9);
             this.groupBoxEquipos.Controls.Add(this.radioButton12);
-            this.groupBoxEquipos.Controls.Add(this.radioButton8);
             this.groupBoxEquipos.Controls.Add(this.radioButton11);
             this.groupBoxEquipos.Controls.Add(this.radioButton7);
             this.groupBoxEquipos.Controls.Add(this.radioButton6);
@@ -112,90 +127,141 @@ namespace Cyber
             this.groupBoxEquipos.TabStop = false;
             this.groupBoxEquipos.Text = "Equipos";
             // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Location = new System.Drawing.Point(520, 300);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox15.TabIndex = 24;
+            this.pictureBox15.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Location = new System.Drawing.Point(393, 300);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox14.TabIndex = 23;
+            this.pictureBox14.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Location = new System.Drawing.Point(275, 300);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox13.TabIndex = 22;
+            this.pictureBox13.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Location = new System.Drawing.Point(155, 300);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox12.TabIndex = 21;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Location = new System.Drawing.Point(40, 300);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox11.TabIndex = 20;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Location = new System.Drawing.Point(520, 183);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox10.TabIndex = 19;
+            this.pictureBox10.TabStop = false;
+            // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(514, 191);
+            this.pictureBox9.Location = new System.Drawing.Point(393, 183);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox9.TabIndex = 30;
+            this.pictureBox9.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox9.TabIndex = 18;
             this.pictureBox9.TabStop = false;
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Location = new System.Drawing.Point(387, 191);
+            this.pictureBox8.Location = new System.Drawing.Point(275, 183);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox8.TabIndex = 29;
+            this.pictureBox8.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox8.TabIndex = 17;
             this.pictureBox8.TabStop = false;
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(269, 191);
+            this.pictureBox7.Location = new System.Drawing.Point(155, 183);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox7.TabIndex = 28;
+            this.pictureBox7.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox7.TabIndex = 16;
             this.pictureBox7.TabStop = false;
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(509, 372);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(94, 19);
+            this.radioButton8.TabIndex = 7;
+            this.radioButton8.TabStop = true;
+            this.radioButton8.Text = "radioButton8";
+            this.radioButton8.UseVisualStyleBackColor = true;
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(156, 191);
+            this.pictureBox6.Location = new System.Drawing.Point(40, 183);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox6.TabIndex = 27;
+            this.pictureBox6.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox6.TabIndex = 15;
             this.pictureBox6.TabStop = false;
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(40, 191);
+            this.pictureBox5.Location = new System.Drawing.Point(520, 39);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox5.TabIndex = 26;
+            this.pictureBox5.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox5.TabIndex = 14;
             this.pictureBox5.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(514, 308);
+            this.pictureBox4.Location = new System.Drawing.Point(393, 39);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox4.TabIndex = 25;
+            this.pictureBox4.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox4.TabIndex = 13;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(387, 308);
+            this.pictureBox3.Location = new System.Drawing.Point(275, 39);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox3.TabIndex = 24;
+            this.pictureBox3.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(269, 308);
+            this.pictureBox2.Location = new System.Drawing.Point(155, 39);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(156, 308);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.Size = new System.Drawing.Size(73, 66);
+            this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Location = new System.Drawing.Point(40, 308);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(67, 58);
-            this.pictureBox11.TabIndex = 21;
-            this.pictureBox11.TabStop = false;
             // 
             // radioButton15
             // 
             this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(499, 372);
+            this.radioButton15.Location = new System.Drawing.Point(381, 372);
             this.radioButton15.Name = "radioButton15";
             this.radioButton15.Size = new System.Drawing.Size(100, 19);
             this.radioButton15.TabIndex = 6;
@@ -206,7 +272,7 @@ namespace Cyber
             // radioButton10
             // 
             this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(499, 255);
+            this.radioButton10.Location = new System.Drawing.Point(261, 372);
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.Size = new System.Drawing.Size(100, 19);
             this.radioButton10.TabIndex = 9;
@@ -217,7 +283,7 @@ namespace Cyber
             // radioButton14
             // 
             this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(372, 372);
+            this.radioButton14.Location = new System.Drawing.Point(143, 372);
             this.radioButton14.Name = "radioButton14";
             this.radioButton14.Size = new System.Drawing.Size(100, 19);
             this.radioButton14.TabIndex = 5;
@@ -228,7 +294,7 @@ namespace Cyber
             // radioButton13
             // 
             this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(254, 372);
+            this.radioButton13.Location = new System.Drawing.Point(30, 372);
             this.radioButton13.Name = "radioButton13";
             this.radioButton13.Size = new System.Drawing.Size(100, 19);
             this.radioButton13.TabIndex = 4;
@@ -239,7 +305,7 @@ namespace Cyber
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(372, 255);
+            this.radioButton9.Location = new System.Drawing.Point(509, 255);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(94, 19);
             this.radioButton9.TabIndex = 8;
@@ -250,7 +316,7 @@ namespace Cyber
             // radioButton12
             // 
             this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(137, 372);
+            this.radioButton12.Location = new System.Drawing.Point(381, 255);
             this.radioButton12.Name = "radioButton12";
             this.radioButton12.Size = new System.Drawing.Size(100, 19);
             this.radioButton12.TabIndex = 3;
@@ -258,21 +324,10 @@ namespace Cyber
             this.radioButton12.Text = "radioButton12";
             this.radioButton12.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(254, 255);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(94, 19);
-            this.radioButton8.TabIndex = 7;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "radioButton8";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
             // radioButton11
             // 
             this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(24, 372);
+            this.radioButton11.Location = new System.Drawing.Point(261, 255);
             this.radioButton11.Name = "radioButton11";
             this.radioButton11.Size = new System.Drawing.Size(100, 19);
             this.radioButton11.TabIndex = 1;
@@ -305,7 +360,7 @@ namespace Cyber
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(487, 43);
+            this.radioButton5.Location = new System.Drawing.Point(499, 111);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(94, 19);
             this.radioButton5.TabIndex = 4;
@@ -316,7 +371,7 @@ namespace Cyber
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(372, 42);
+            this.radioButton4.Location = new System.Drawing.Point(372, 111);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(94, 19);
             this.radioButton4.TabIndex = 3;
@@ -327,7 +382,7 @@ namespace Cyber
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(254, 43);
+            this.radioButton3.Location = new System.Drawing.Point(254, 111);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(94, 19);
             this.radioButton3.TabIndex = 2;
@@ -338,7 +393,7 @@ namespace Cyber
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(143, 42);
+            this.radioButton2.Location = new System.Drawing.Point(143, 111);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(94, 19);
             this.radioButton2.TabIndex = 1;
@@ -349,7 +404,7 @@ namespace Cyber
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(30, 42);
+            this.radioButton1.Location = new System.Drawing.Point(30, 111);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(94, 19);
             this.radioButton1.TabIndex = 0;
@@ -361,7 +416,7 @@ namespace Cyber
             // 
             this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(814, 97);
+            this.lblCliente.Location = new System.Drawing.Point(838, 132);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(96, 15);
             this.lblCliente.TabIndex = 12;
@@ -403,7 +458,7 @@ namespace Cyber
             // richTextBoxDatosCliente
             // 
             this.richTextBoxDatosCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.richTextBoxDatosCliente.Location = new System.Drawing.Point(814, 115);
+            this.richTextBoxDatosCliente.Location = new System.Drawing.Point(838, 150);
             this.richTextBoxDatosCliente.Name = "richTextBoxDatosCliente";
             this.richTextBoxDatosCliente.ReadOnly = true;
             this.richTextBoxDatosCliente.Size = new System.Drawing.Size(169, 256);
@@ -413,9 +468,9 @@ namespace Cyber
             // buttonEcharCliente
             // 
             this.buttonEcharCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonEcharCliente.Location = new System.Drawing.Point(919, 388);
+            this.buttonEcharCliente.Location = new System.Drawing.Point(932, 419);
             this.buttonEcharCliente.Name = "buttonEcharCliente";
-            this.buttonEcharCliente.Size = new System.Drawing.Size(64, 23);
+            this.buttonEcharCliente.Size = new System.Drawing.Size(75, 38);
             this.buttonEcharCliente.TabIndex = 5;
             this.buttonEcharCliente.Text = "Echar";
             this.buttonEcharCliente.UseVisualStyleBackColor = true;
@@ -424,9 +479,9 @@ namespace Cyber
             // buttonAsignar
             // 
             this.buttonAsignar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAsignar.Location = new System.Drawing.Point(814, 388);
+            this.buttonAsignar.Location = new System.Drawing.Point(835, 419);
             this.buttonAsignar.Name = "buttonAsignar";
-            this.buttonAsignar.Size = new System.Drawing.Size(64, 23);
+            this.buttonAsignar.Size = new System.Drawing.Size(74, 38);
             this.buttonAsignar.TabIndex = 6;
             this.buttonAsignar.Text = "Asignar";
             this.buttonAsignar.UseVisualStyleBackColor = true;
@@ -434,9 +489,9 @@ namespace Cyber
             // 
             // buttonHist
             // 
-            this.buttonHist.Location = new System.Drawing.Point(798, 430);
+            this.buttonHist.Location = new System.Drawing.Point(838, 559);
             this.buttonHist.Name = "buttonHist";
-            this.buttonHist.Size = new System.Drawing.Size(160, 51);
+            this.buttonHist.Size = new System.Drawing.Size(169, 51);
             this.buttonHist.TabIndex = 13;
             this.buttonHist.Text = "Historial e Infomes";
             this.buttonHist.UseVisualStyleBackColor = true;
@@ -465,6 +520,12 @@ namespace Cyber
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.groupBoxEquipos.ResumeLayout(false);
             this.groupBoxEquipos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -474,7 +535,6 @@ namespace Cyber
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,7 +566,13 @@ namespace Cyber
         private System.Windows.Forms.Label labelCabinas;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.Button buttonHist;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox7;
@@ -515,6 +581,5 @@ namespace Cyber
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

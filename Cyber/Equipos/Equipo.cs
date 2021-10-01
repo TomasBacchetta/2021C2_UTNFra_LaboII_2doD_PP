@@ -56,10 +56,13 @@ namespace Equipos
         public virtual string Mostrar()
         {
             StringBuilder buffer = new StringBuilder();
-
+            
+            if (this.enUso == true)
+            {
+                buffer.AppendLine($"***EN USO***");
+            }
             buffer.AppendLine($"Id: #{this.id}");
             
-           
             return $"{buffer}";
 
         }

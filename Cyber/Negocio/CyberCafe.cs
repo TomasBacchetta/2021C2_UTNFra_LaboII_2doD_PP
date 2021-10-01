@@ -237,7 +237,7 @@ namespace Negocio
                 SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteSubcola(equipo.Id), equipo);
                 this.sesiones.Add(sesionNueva);
             }
-            
+            equipo.enUso = true;
             
         }
 

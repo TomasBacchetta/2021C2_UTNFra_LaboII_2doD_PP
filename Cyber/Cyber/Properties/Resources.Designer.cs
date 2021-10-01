@@ -80,6 +80,26 @@ namespace Cyber.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cabinaLIBRE {
+            get {
+                object obj = ResourceManager.GetObject("cabinaLIBRE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cabinaOCUPADA {
+            get {
+                object obj = ResourceManager.GetObject("cabinaOCUPADA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream cash2 {

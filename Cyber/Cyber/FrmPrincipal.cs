@@ -34,15 +34,77 @@ namespace Cyber
                 {
                     item.Tag = cyber1.Equipos[indiceRadio].Id;
                     this.ImprimirEtiquetaEquipo(item.Tag.ToString());
+                    
                     indiceRadio++;
                 }
                 if (item is PictureBox)
                 {
                     item.Tag = $"I{cyber1.Equipos[indiceImagen].Id}";
                     PictureBox pict = (PictureBox)item;
-                    pict.BackgroundImage = Resources.pcLIBRE;
+                    
+                    if (indiceImagen < cyber1.CantidadComputadoras)
+                    {
+                        pict.BackgroundImage = Resources.pcLIBRE;
+                        
+                        
+                    } else
+                    {
+                        pict.BackgroundImage = Resources.cabinaLIBRE;
+                    }
+                    
+                    /*
+                    switch (item.Tag.ToString())
+                    {
+                        case "IC01":
+                            pict.BackgroundImage = Resources.C01;
+                            break;
+                        case "IC02":
+                            pict.BackgroundImage = Resources.C02;
+                            break;
+                        case "IC03":
+                            pict.BackgroundImage = Resources.C03;
+                            break;
+                        case "IC04":
+                            pict.BackgroundImage = Resources.C04;
+                            break;
+                        case "IC05":
+                            pict.BackgroundImage = Resources.C05;
+                            break;
+                        case "IC06":
+                            pict.BackgroundImage = Resources.C06;
+                            break;
+                        case "IC07":
+                            pict.BackgroundImage = Resources.C07;
+                            break;
+                        case "IC08":
+                            pict.BackgroundImage = Resources.C08;
+                            break;
+                        case "IC09":
+                            pict.BackgroundImage = Resources.C09;
+                            break;
+                        case "IC10":
+                            pict.BackgroundImage = Resources.C10;
+                            break;
+                        case "IT01":
+                            pict.BackgroundImage = Resources.T01;
+                            break;
+                        case "IT02":
+                            pict.BackgroundImage = Resources.T02;
+                            break;
+                        case "IT03":
+                            pict.BackgroundImage = Resources.T03;
+                            break;
+                        case "IT04":
+                            pict.BackgroundImage = Resources.T04;
+                            break;
+                        case "IT05":
+                            pict.BackgroundImage = Resources.T05;
+                            break;
+                    }
+                    */
                     pict.BackgroundImageLayout = ImageLayout.Stretch;
                     indiceImagen++;
+
                 }
                 
 
@@ -51,6 +113,41 @@ namespace Cyber
             richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
 
             
+        }
+
+       
+        public void CambiarIconoEquipo(string idEquipo)
+        {
+            foreach (Control item in groupBoxEquipos.Controls)
+            {
+                
+                if (item is PictureBox && item.Tag.ToString() == $"I{idEquipo}")
+                {
+                    PictureBox pict = (PictureBox)item;
+                    Equipo auxEquipo = cyber1.BuscarEquipoPorId(idEquipo);
+                    if (auxEquipo.enUso == true)
+                    {
+                        if (auxEquipo.GetType() == typeof(Computadora))
+                        {
+                            pict.BackgroundImage = Resources.pcOCUPADA;
+                        } else
+                        {
+                            pict.BackgroundImage = Resources.cabinaOCUPADA;
+                        }
+                        
+                    } else
+                    {
+                        if (auxEquipo.GetType() == typeof(Computadora))
+                        {
+                            pict.BackgroundImage = Resources.pcLIBRE;
+                        }else
+                        {
+                            pict.BackgroundImage = Resources.cabinaLIBRE;
+                        }
+                        
+                    }
+                }
+            }
         }
 
         private void buttonMostrarEquipo_Click(object sender, EventArgs e)
@@ -107,7 +204,7 @@ namespace Cyber
                         {
                             idEquipo = item.Tag.ToString();
                             respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
-
+                            
 
                             break;
                         }
@@ -120,6 +217,7 @@ namespace Cyber
                     richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
                     cyber1.BuscarEquipoPorId(idEquipo).enUso = true;
                     this.ImprimirEtiquetaEquipo(idEquipo);
+                    this.CambiarIconoEquipo(idEquipo);
                     ArchivosMedia.ReproducirSonidoAsignarCliente();
                     MessageBox.Show("Cliente cargado a la cola del equipo.\nSi este está ocupado deberá esperar");
 
