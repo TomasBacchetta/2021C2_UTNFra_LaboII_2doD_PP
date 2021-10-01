@@ -32,6 +32,7 @@ Cosas que faltan de la funcionalidad:
 -Como funcionalidad inédita, los clientes tendrán un atributo nivelDeFelicidad, que reflejará el nivel de satisfacción a la hora de utilizar un equipo
 -Al ser asignado a un equipo, el cliente verá su nivel de felicidad aumentado dependiendo de cuántos requisitos en juegos, software, perifericos y llamadas fueron satisfechos
 -Los puntos de felicidad permitirán al usuario del programa vender al cliente diversos productos como gaseosas y golosinas, los que tendrán un costo en felicidad y por supuesto monetario (pero el determinante sera la felicidad).
+-El fin ultimo de poder vender esos productos naturalmente es poder aumentar de forma más dinámica la facturacion
 -Algunos de estos productos tendrán habilidades únicas que alterarán la dinámica del programa, de forma positiva o negativa.
 
 -Una facturacion mas detallada
@@ -39,6 +40,7 @@ Cosas que faltan de la funcionalidad:
 -Aun no encontre un nuget que me pueda servir
 Cosas que faltan del codigo:
 -Comprobar y afianzar los niveles de protección
+-Encapsular lo más posible con métodos
 -Comentar lo que sea necesario
 
 
