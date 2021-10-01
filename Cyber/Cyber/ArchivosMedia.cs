@@ -29,7 +29,7 @@ namespace Cyber
 
         public static void ReproducirSonidoAsignarCliente()
         {
-            SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.YEAH1);
+            SoundPlayer sonidoAsignarCliente = new SoundPlayer(Cyber.Properties.Resources.asignar);
             sonidoAsignarCliente.Play();
         }
         public static void ReproducirSonidoEcharCliente()

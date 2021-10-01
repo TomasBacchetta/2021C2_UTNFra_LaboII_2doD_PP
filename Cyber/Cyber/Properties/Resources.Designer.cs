@@ -61,6 +61,15 @@ namespace Cyber.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream asignar {
+            get {
+                return ResourceManager.GetStream("asignar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap big_poster_filme_matrix_reloaded_lo01_tamanho_90x60_cm_matrix_2 {
@@ -164,6 +173,15 @@ namespace Cyber.Properties {
             get {
                 object obj = ResourceManager.GetObject("pcOCUPADA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream thanks {
+            get {
+                return ResourceManager.GetStream("thanks", resourceCulture);
             }
         }
         
