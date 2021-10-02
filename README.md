@@ -28,7 +28,6 @@ El richtextbox de la derecha muestra al próximo cliente a atender, de la cola d
 
 Cosas que faltan de la funcionalidad:
 
--Entre las cosas principales todavía falta generar informes (a los que se accederá desde el historial)
 -Una facturacion mas detallada
 -Afinar el motor que genera datos al azar
 -Aun no encontre un nuget que me pueda servir
