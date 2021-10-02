@@ -18,13 +18,18 @@ namespace Cyber
     {
         private CyberCafe cyber;
         private Dictionary<string, List<Sesion>> sesionesArchivadas;
+        
+
+
         private const string histGeneral = "General";
+        
         public FrmHistorialGeneral(CyberCafe cyber)
         {
             
             InitializeComponent();
             this.cyber = cyber;
             this.sesionesArchivadas = new Dictionary<string, List<Sesion>>();
+            
             this.GenerarPestania(histGeneral);
             this.GenerarPestaniasEquipo();
             
@@ -77,6 +82,7 @@ namespace Cyber
         private void FrmHistorialGeneral_Load(object sender, EventArgs e)
         {
             ArchivosMedia.ReproducirSonidoHistorialEInformes();
+            
             //cargar las sesiones archivadas de este formulario
             if (cyber.Sesiones.Count > 0)
             {
@@ -84,25 +90,28 @@ namespace Cyber
                 {
                     foreach (Sesion sesion in cyber.Sesiones)
                     {
-                        if (item.Key == sesion.IdEquipo && sesion.EnCurso == false)
+                        if (item.Key == sesion.IdEquipo || item.Key == histGeneral && sesion.EnCurso == false)
                         {
                             this.sesionesArchivadas[item.Key].Add(sesion);
-                        }
+                            
 
-                        if (item.Key == histGeneral && sesion.EnCurso == false)
-                        {
-                            this.sesionesArchivadas[item.Key].Add(sesion);//agrega indiscriminadamente al tab de historial general
                         }
+                        
+
+
                     }
+
                 }
+                
             }
 
             foreach (TabPage tab in tabHistorial.TabPages)
             {
                 //ordenar sesiones
-                //Lista de computadoras ordenadas por minutos de uso de forma descendente.
-                //Lista de cabinas ordenadas por minutos de uso de forma descendente.
-                this.sesionesArchivadas[tab.Text].Sort(OrdenarPorMinutosDescedente);
+                //Lista de sesiones ordenadas por minutos de uso de forma descendente.
+                //Lista de sesiones ordenadas por minutos de uso de forma descendente.
+                StringBuilder buffer = new StringBuilder();
+                this.sesionesArchivadas[tab.Text].Sort(OrdenarPorSesionesPorMinutosDescedente);
 
                 foreach (Control control in tab.Controls)
                 {
@@ -132,9 +141,11 @@ namespace Cyber
                                 
                                 RichTextBox richTextInformes = (RichTextBox)control;
                                 richTextInformes.Visible = true;
-                                richTextInformes.Text = $"{ImprimirLabelInformes(sesionesArchivadas[tab.Text])}";
-
-
+                                buffer.AppendLine(ImprimirRichTextInformes(tab));
+                                
+                                
+                                
+                                richTextInformes.Text = $"{buffer}";
                             }
                         }
                         
@@ -149,9 +160,14 @@ namespace Cyber
         }
         
         
-        public static int OrdenarPorMinutosDescedente(Sesion sesion1, Sesion sesion2)
+        public static int OrdenarPorSesionesPorMinutosDescedente(Sesion sesion1, Sesion sesion2)
         {
             return (int)(sesion2.TiempoPasado - sesion1.TiempoPasado);
+        }
+
+        public static int OrdenarEquiposPorMinutosDescedente(KeyValuePair<string, long> elemento1, KeyValuePair<string, long> elemento2)
+        {
+            return (int)(elemento2.Value - elemento1.Value);
         }
 
         /*
@@ -162,8 +178,8 @@ namespace Cyber
         El periférico más pedido por los clientes.+
         El juego más pedido por los clientes.+
          */
-        
-        public static StringBuilder ImprimirLabelInformes(List <Sesion> sesiones)
+
+        public string ImprimirRichTextInformes(TabPage tab)
         {
             StringBuilder buffer = new StringBuilder();
             double gananciasTotales = 0;
@@ -173,75 +189,105 @@ namespace Cyber
             Dictionary<string, int> softwareMasPedido = new Dictionary<string, int>();
             Dictionary<string, int> juegoMasPedido = new Dictionary<string, int>();
             Dictionary<string, int> perifericoMasPedido = new Dictionary<string, int>();
+            Dictionary<string, long> computadorasPorTiempo = new Dictionary<string, long>();
+            Dictionary<string, long> cabinasPorTiempo = new Dictionary<string, long>();
+            
+
             bool esCabina = false;
             bool esComputadora = false;
             
-            foreach (Sesion sesion in sesiones)
+            foreach (Sesion sesion in sesionesArchivadas[tab.Text])
             {
-                gananciasTotales += sesion.CostoTotal;
-                
-
-                if (sesion.GetType() == typeof(SesionCabina))//si la sesion es de tipo de cabina
+                if (!sesion.EnCurso)
                 {
-                    if (esCabina == false)
-                    {
-                        esCabina = true;//por lo menos una sesion es de cabina
-                    }
+                    gananciasTotales += sesion.CostoTotal;
 
-                    tiempoTotalCabina += sesion.TiempoPasado;
-                    if (recaudacionPorTipoLlamada.ContainsKey(sesion.TipoLlamada))
-                    {
-                        recaudacionPorTipoLlamada[sesion.TipoLlamada]+= sesion.CostoTotal;
-                    } else
-                    {
-                        recaudacionPorTipoLlamada.Add(sesion.TipoLlamada, sesion.CostoTotal);
-                    }
-                   
-                } else //la sesion es de tipo de computadora
-                {
-                    if (esComputadora == false)
-                    {
-                        esComputadora = true;//por lo menos una sesion es de cabina
-                    }
-                    tiempoTotalComputadora += sesion.TiempoPasado;
 
-                    foreach (string software in sesion.SoftwareUtilizado)
+                    if (sesion.GetType() == typeof(SesionCabina))//si la sesion es de tipo de cabina
                     {
-                        if (softwareMasPedido.ContainsKey(software))
+                        if (esCabina == false)
                         {
-                            softwareMasPedido[software]++;
+                            esCabina = true;//por lo menos una sesion es de cabina
+                        }
+
+                        tiempoTotalCabina += sesion.TiempoPasado;
+                        if (recaudacionPorTipoLlamada.ContainsKey(sesion.TipoLlamada))
+                        {
+                            recaudacionPorTipoLlamada[sesion.TipoLlamada] += sesion.CostoTotal;
                         }
                         else
                         {
-                            softwareMasPedido.Add(software, 1);
+                            recaudacionPorTipoLlamada.Add(sesion.TipoLlamada, sesion.CostoTotal);
                         }
-                    }
 
-                    foreach (string juego in sesion.JuegosUtilizados)
-                    {
-                        if (juegoMasPedido.ContainsKey(juego))
+                        if (cabinasPorTiempo.ContainsKey(sesion.IdEquipo))
                         {
-                            juegoMasPedido[juego]++;
+                            cabinasPorTiempo[sesion.IdEquipo] += sesion.TiempoPasado;
                         }
                         else
                         {
-                            juegoMasPedido.Add(juego, 1);
+                            cabinasPorTiempo.Add(sesion.IdEquipo, sesion.TiempoPasado);
                         }
-                    }
 
-                    foreach (string periferico in sesion.PerifericosUtilizados)
+                    }
+                    else //la sesion es de tipo de computadora
                     {
-                        if (perifericoMasPedido.ContainsKey(periferico))
+                        if (esComputadora == false)
                         {
-                            perifericoMasPedido[periferico]++;
+                            esComputadora = true;//por lo menos una sesion es de cabina
+                        }
+                        tiempoTotalComputadora += sesion.TiempoPasado;
+
+                        foreach (string software in sesion.SoftwareUtilizado)
+                        {
+                            if (softwareMasPedido.ContainsKey(software))
+                            {
+                                softwareMasPedido[software]++;
+                            }
+                            else
+                            {
+                                softwareMasPedido.Add(software, 1);
+                            }
+                        }
+
+                        foreach (string juego in sesion.JuegosUtilizados)
+                        {
+                            if (juegoMasPedido.ContainsKey(juego))
+                            {
+                                juegoMasPedido[juego]++;
+                            }
+                            else
+                            {
+                                juegoMasPedido.Add(juego, 1);
+                            }
+                        }
+
+                        foreach (string periferico in sesion.PerifericosUtilizados)
+                        {
+                            if (perifericoMasPedido.ContainsKey(periferico))
+                            {
+                                perifericoMasPedido[periferico]++;
+                            }
+                            else
+                            {
+                                perifericoMasPedido.Add(periferico, 1);
+                            }
+                        }
+
+                        if (computadorasPorTiempo.ContainsKey(sesion.IdEquipo))
+                        {
+                            computadorasPorTiempo[sesion.IdEquipo] += sesion.TiempoPasado;
                         }
                         else
                         {
-                            perifericoMasPedido.Add(periferico, 1);
+                            computadorasPorTiempo.Add(sesion.IdEquipo, sesion.TiempoPasado);
                         }
-                    }
+                        
 
+                    }
                 }
+                
+                
 
             }
             
@@ -264,6 +310,7 @@ namespace Cyber
                 {
                     buffer.AppendLine($"-Internacional: ${recaudacionPorTipoLlamada[TipoLlamada.Internacional]}");
                 }
+                
                 buffer.AppendLine($"\n-----------------\n");
 
             }
@@ -289,14 +336,69 @@ namespace Cyber
                     buffer.AppendJoin("\n", DeterminarElementoCompuFavorito(perifericoMasPedido));
                     buffer.Append("\n");
                 }
+                
+                
                 buffer.AppendLine($"\n-----------------\n");
 
+                
             }
 
-
+            if (tab.Text == histGeneral)
+            {
+                buffer.AppendLine(ImprimirListadoCabinas(cabinasPorTiempo));
+                buffer.AppendLine(ImprimirListadoComputadoras(computadorasPorTiempo));
+            }
             
-            return buffer;
+            
+            return $"{buffer}";
         }
+
+        private static string ImprimirListadoCabinas(Dictionary<string, long> cabinasPorTiempo)
+        {
+            StringBuilder buffer = new StringBuilder();
+            List<KeyValuePair<string, long>> listaCabinas = new List<KeyValuePair<string, long>>();
+            
+            foreach (KeyValuePair<string, long> item in cabinasPorTiempo)
+            {
+                listaCabinas.Add(item);
+            }
+            
+            listaCabinas.Sort(OrdenarEquiposPorMinutosDescedente);
+
+            buffer.AppendLine($"\n\nUso horario por cada cabina:\n");
+            foreach (KeyValuePair<string, long> item in listaCabinas)
+            {
+                buffer.AppendLine($"{item.Key}: {item.Value} minutos");
+            }
+            
+
+            return $"{buffer}";
+        }
+
+        private static string ImprimirListadoComputadoras(Dictionary<string, long> computadorasPorTiempo)
+        {
+            StringBuilder buffer = new StringBuilder();
+            List<KeyValuePair<string, long>> listaComputadoras = new List<KeyValuePair<string, long>>();
+            
+            foreach (KeyValuePair<string, long> item in computadorasPorTiempo)
+            {
+                listaComputadoras.Add(item);
+            }
+            
+            listaComputadoras.Sort(OrdenarEquiposPorMinutosDescedente);
+            
+
+            buffer.AppendLine($"\n\nUso horario por cada computadora:\n");
+            
+            foreach (KeyValuePair<string, long> item in listaComputadoras)
+            {
+                buffer.AppendLine($"{item.Key}: {item.Value} minutos");
+            }
+
+            return $"{buffer}";
+        }
+
+
 
         public static string[] DeterminarElementoCompuFavorito(Dictionary<string, int> coleccion)
         {

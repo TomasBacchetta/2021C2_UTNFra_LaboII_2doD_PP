@@ -28,7 +28,6 @@ namespace Sesiones
                     this.tiempoPasado = this.CalcularMinutosPasados();
                     this.costoTotal = this.CalcularCosto();
                     
-                    
                 }
 
             }
