@@ -26,6 +26,7 @@ namespace Cyber
             this.sesionesArchivadas = new Dictionary<string, List<Sesion>>();
             this.GenerarPestania(histGeneral);
             this.GenerarPestaniasEquipo();
+            
 
 
 
@@ -33,15 +34,32 @@ namespace Cyber
 
         public void GenerarPestania(string titulo)
         {
+            //generar pestaña
             TabPage tab = new TabPage();
+            
+            //generar imagen de fondo
+
+            tab.BackgroundImage = Properties.Resources.fondoHistorial;
+            tab.BackgroundImageLayout = ImageLayout.Stretch;
+
+            //generar cuadro de texto de historial
             RichTextBox cuadroTextHistorial = new RichTextBox();
             tab.Controls.Add(cuadroTextHistorial);
             cuadroTextHistorial.Size = new Size(317, 428);
             cuadroTextHistorial.Location = new Point(28, 15);
             tab.Text = $"{titulo}";
-            tabHistorial.TabPages.Add(tab);
+            
             cuadroTextHistorial.Text = "Sin sesiones que mostrar";
             this.sesionesArchivadas.Add(titulo, new List<Sesion>());
+
+            //generar label de informes
+            Label labelHistorial = new Label();
+            tab.Controls.Add(labelHistorial);
+            labelHistorial.Location = new Point(400, 15);
+
+            //agrega la pestaña al control de pestañas del formulario
+            tabHistorial.TabPages.Add(tab);
+            
         }
 
         public void GenerarPestaniasEquipo()
