@@ -68,6 +68,7 @@ namespace Cyber
             this.buttonEcharCliente = new System.Windows.Forms.Button();
             this.buttonAsignar = new System.Windows.Forms.Button();
             this.buttonHist = new System.Windows.Forms.Button();
+            this.labelCantidadClientes = new System.Windows.Forms.Label();
             this.groupBoxEquipos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -416,9 +417,10 @@ namespace Cyber
             // 
             this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(838, 132);
+            this.lblCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCliente.Location = new System.Drawing.Point(838, 126);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(96, 15);
+            this.lblCliente.Size = new System.Drawing.Size(127, 21);
             this.lblCliente.TabIndex = 12;
             this.lblCliente.Text = "Cliente a atender";
             // 
@@ -468,7 +470,7 @@ namespace Cyber
             // buttonEcharCliente
             // 
             this.buttonEcharCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonEcharCliente.Location = new System.Drawing.Point(932, 419);
+            this.buttonEcharCliente.Location = new System.Drawing.Point(932, 432);
             this.buttonEcharCliente.Name = "buttonEcharCliente";
             this.buttonEcharCliente.Size = new System.Drawing.Size(75, 38);
             this.buttonEcharCliente.TabIndex = 5;
@@ -479,7 +481,7 @@ namespace Cyber
             // buttonAsignar
             // 
             this.buttonAsignar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAsignar.Location = new System.Drawing.Point(835, 419);
+            this.buttonAsignar.Location = new System.Drawing.Point(838, 432);
             this.buttonAsignar.Name = "buttonAsignar";
             this.buttonAsignar.Size = new System.Drawing.Size(74, 38);
             this.buttonAsignar.TabIndex = 6;
@@ -497,6 +499,15 @@ namespace Cyber
             this.buttonHist.UseVisualStyleBackColor = true;
             this.buttonHist.Click += new System.EventHandler(this.buttonHist_Click);
             // 
+            // labelCantidadClientes
+            // 
+            this.labelCantidadClientes.AutoSize = true;
+            this.labelCantidadClientes.Location = new System.Drawing.Point(838, 410);
+            this.labelCantidadClientes.Name = "labelCantidadClientes";
+            this.labelCantidadClientes.Size = new System.Drawing.Size(38, 15);
+            this.labelCantidadClientes.TabIndex = 14;
+            this.labelCantidadClientes.Text = "label1";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -504,6 +515,7 @@ namespace Cyber
             this.BackgroundImage = global::Cyber.Properties.Resources.big_poster_filme_matrix_reloaded_lo01_tamanho_90x60_cm_matrix_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1030, 631);
+            this.Controls.Add(this.labelCantidadClientes);
             this.Controls.Add(this.buttonHist);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.labelComputadoras);
@@ -581,5 +593,6 @@ namespace Cyber
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label labelCantidadClientes;
     }
 }

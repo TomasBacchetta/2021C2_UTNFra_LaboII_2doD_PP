@@ -59,6 +59,7 @@ namespace Cyber
                 
 
             }
+            labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
             
             richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
 
@@ -129,10 +130,12 @@ namespace Cyber
                 if (cyber1.ColaClientes.Count == 0)
                 {
                     richTextBoxDatosCliente.Text = "No hay más clientes";
+
                 } else
                 {
                     richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
                 }
+                labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
             }
 
         }
@@ -150,11 +153,11 @@ namespace Cyber
                     if (item is RadioButton)
                     {
                         RadioButton auxRadioButton = (RadioButton)item;
-                        if (auxRadioButton.Checked == true)
+                        if (auxRadioButton.Checked)
                         {
                             idEquipo = item.Tag.ToString();
                             respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
-                            
+                            labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
 
                             break;
                         }

@@ -66,7 +66,7 @@ namespace Cyber
             this.Controls.Add(this.tabHistorial);
             this.Name = "FrmHistorialGeneral";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmHistorialGeneral";
+            this.Text = "Historial e Informes";
             this.Load += new System.EventHandler(this.FrmHistorialGeneral_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
