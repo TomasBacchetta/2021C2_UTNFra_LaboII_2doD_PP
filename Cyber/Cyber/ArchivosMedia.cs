@@ -39,6 +39,13 @@ namespace Cyber
 
         }
 
+        public static void ReproducirSonidoHistorialEInformes()
+        {
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.historialEInformes);
+            sonidoHistorial.Play();
+
+        }
+
         public static void AsignarFondoPantallaComputadora(FrmVerEquipo form)
         {
             form.BackgroundImage = Properties.Resources.fondoComputadora;
@@ -49,6 +56,8 @@ namespace Cyber
             form.BackgroundImage = Properties.Resources.fondoCabina;
             form.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
+
+
 
 
     }

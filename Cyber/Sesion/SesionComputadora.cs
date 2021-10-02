@@ -26,11 +26,39 @@ namespace Sesiones
                 {
                     this.enCurso = value;
                     this.tiempoFinUso = DateTime.Now;
+                    this.tiempoPasado = this.CalcularMinutosPasados();
                     this.costoTotal = this.CalcularCosto();
+                    
                 }
 
             }
         }
+
+        public override List<string> SoftwareUtilizado
+        {
+            get
+            {
+                return this.softwareUtilizado;
+            }
+        }
+
+        public override List<string> JuegosUtilizados
+        {
+            get
+            {
+                return this.juegosUtilizados;
+            }
+        }
+
+        public override List<string> PerifericosUtilizados
+        {
+            get
+            {
+                return this.perifericosUtilizados;
+            }
+        }
+
+
 
         public SesionComputadora(Cliente usuarioActual, Equipo equipo) : base(usuarioActual, equipo)
         {
@@ -42,22 +70,32 @@ namespace Sesiones
         public override string MostrarSesion()
         {
             StringBuilder buffer = new StringBuilder();
-            buffer.AppendLine($"Programas utilizados:");
-            foreach (string programa in this.softwareUtilizado)
+            buffer.AppendLine("Tipo: COMPUTADORA");
+            if (softwareUtilizado.Count > 0)
             {
-                buffer.AppendLine($"-{programa}");
+                buffer.AppendLine($"Programas utilizados:");
+                foreach (string programa in this.softwareUtilizado)
+                {
+                    buffer.AppendLine($"-{programa}");
+                }
+            }
+            if (juegosUtilizados.Count > 0)
+            {
+                buffer.AppendLine($"Juegos utilizados:");
+                foreach (string juego in this.juegosUtilizados)
+                {
+                    buffer.AppendLine($"-{juego}");
+                }
+            }
+            if (perifericosUtilizados.Count > 0)
+            {
+                buffer.AppendLine($"Periféricos utilizados:");
+                foreach (string periferico in this.perifericosUtilizados)
+                {
+                    buffer.AppendLine($"-{periferico}");
+                }
             }
             
-            buffer.AppendLine($"Juegos utilizados:");
-            foreach (string juego in this.juegosUtilizados)
-            {
-                buffer.AppendLine($"-{juego}");
-            }
-            buffer.AppendLine($"Periféricos utilizados:");
-            foreach (string periferico in this.perifericosUtilizados)
-            {
-                buffer.AppendLine($"-{periferico}");
-            }
             return $"{base.MostrarSesion()} {buffer}";
         }
         /// <summary>
@@ -82,7 +120,7 @@ namespace Sesiones
         }
         public double CalcularCosto()
         {
-            return CalcularBloqueDeTiempo(base.CalcularMinutosPasados()) * 0.5F;
+            return CalcularBloqueDeTiempo(this.tiempoPasado) * 0.5F;
         }
 
         public List<string> DeterminarProgramasUtilizados()

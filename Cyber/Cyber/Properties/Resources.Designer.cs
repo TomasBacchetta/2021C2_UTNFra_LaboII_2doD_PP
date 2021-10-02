@@ -150,6 +150,15 @@ namespace Cyber.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream historialEInformes {
+            get {
+                return ResourceManager.GetStream("historialEInformes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream keyboard {
             get {
                 return ResourceManager.GetStream("keyboard", resourceCulture);

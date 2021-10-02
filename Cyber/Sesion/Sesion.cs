@@ -2,6 +2,8 @@
 using Personas;
 using Equipos;
 using System.Text;
+using System.Collections.Generic;
+using static Personas.ClienteDeTelefono;
 
 namespace Sesiones
 {
@@ -11,6 +13,7 @@ namespace Sesiones
         protected Equipo equipoEnUso;
         protected DateTime tiempoInicio;
         protected DateTime tiempoFinUso;
+        protected long tiempoPasado;
         protected double costoTotal;
         protected bool enCurso;
 
@@ -43,10 +46,7 @@ namespace Sesiones
             {
                 return this.costoTotal;
             }
-            set
-            {
-                
-            }
+            
         }
         public DateTime TiempoInicio
         {
@@ -68,9 +68,30 @@ namespace Sesiones
             set
             {
                 this.TiempoFin = value;
+                
             }
         }
+
+        public long TiempoPasado
+        {
+            get
+            {
+                return this.tiempoPasado;
+            }
+        }
+
+        public virtual TipoLlamada TipoLlamada { get; }
+
+        public virtual List<string> SoftwareUtilizado { get; }
         
+
+        public virtual List<string> JuegosUtilizados { get; }
+
+
+        public virtual List<string> PerifericosUtilizados { get; }
+
+
+
         public abstract bool EnCurso { get; set; }
        
         
@@ -80,6 +101,7 @@ namespace Sesiones
             this.equipoEnUso = equipoEnUso;
             this.tiempoInicio = DateTime.Now;
             this.tiempoFinUso = DateTime.MaxValue;
+            this.tiempoPasado = 0;
             this.enCurso = true;
             costoTotal = 0;
         }
@@ -87,12 +109,12 @@ namespace Sesiones
         public virtual string MostrarSesion()
         {
             StringBuilder buffer = new StringBuilder();
-
+            
             buffer.AppendLine($"Usuario: {this.usuarioActual.Nombre} {this.usuarioActual.Apellido}");
             buffer.AppendLine($"Id Equipo: {this.IdEquipo}");
             if (this.enCurso == false)
             {
-                buffer.AppendLine($"Duración de la sesión: {this.CalcularMinutosPasados()} minutos");
+                buffer.AppendLine($"Duración de la sesión: {this.tiempoPasado} minutos");
                 buffer.AppendLine($"Monto facturado: ${this.costoTotal}");
             }
             

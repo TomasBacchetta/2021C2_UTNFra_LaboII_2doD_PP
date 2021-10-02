@@ -11,8 +11,8 @@ namespace Sesiones
 {
     public class SesionCabina : Sesion
     {
-        
-       
+
+        private TipoLlamada tipoLlamada;
         public override bool EnCurso
         {
             get
@@ -25,16 +25,28 @@ namespace Sesiones
                 {
                     this.enCurso = value;
                     this.tiempoFinUso = DateTime.Now;
+                    this.tiempoPasado = this.CalcularMinutosPasados();
                     this.costoTotal = this.CalcularCosto();
+                    
                     
                 }
 
             }
         }
 
+        public override TipoLlamada TipoLlamada
+        {
+            get
+            {
+                return this.tipoLlamada;
+            }
+        }
+
+       
+
         public SesionCabina(Cliente usuarioActual, Equipo equipo) : base(usuarioActual, equipo)
         {
-
+            this.tipoLlamada = usuarioActual.TipoDeLlamada;
         }
 
         public override string MostrarSesion()
@@ -42,9 +54,9 @@ namespace Sesiones
             StringBuilder buffer = new StringBuilder();
 
             ClienteDeTelefono auxUsuario = (ClienteDeTelefono)this.UsuarioActual;
-
+            buffer.AppendLine("Tipo: CABINA TELEFÓNICA");
             buffer.AppendLine($"Número marcado: {auxUsuario.Telefono}");
-            buffer.AppendLine($"Tipo de llamada: {auxUsuario.TipoDeLlamada}");
+            buffer.AppendLine($"Tipo de llamada: {this.tipoLlamada}");
 
             return $"{base.MostrarSesion()} {buffer}";
         }
@@ -64,7 +76,7 @@ namespace Sesiones
                     multiplicador = 5;
                     break;
             }
-            return base.CalcularMinutosPasados() * multiplicador;
+            return this.tiempoPasado * multiplicador;
         }
        
     }
