@@ -169,4 +169,28 @@
   <data name="historialEInformes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\historialEInformes.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="bebidaAlcoholica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bebidaAlcoholica.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bebidaChina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bebidaChina.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cigarro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cigarro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="confite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\confite.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="coquita" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\coquita.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fondoProductos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fondoProductos.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconoJack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconoJack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Smtjack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Smtjack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

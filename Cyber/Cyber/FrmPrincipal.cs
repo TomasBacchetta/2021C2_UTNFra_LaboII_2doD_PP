@@ -18,7 +18,7 @@ namespace Cyber
 {
     public partial class FrmPrincipal : Form
     {
-        CyberCafe cyber1 = new CyberCafe(10, 5, 20);
+        CyberCafe cyber1 = new CyberCafe(10, 5, 50);
         public FrmPrincipal()
         {
             InitializeComponent();

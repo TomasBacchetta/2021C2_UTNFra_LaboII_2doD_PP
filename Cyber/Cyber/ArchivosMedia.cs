@@ -57,8 +57,11 @@ namespace Cyber
             form.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         }
 
-
-
+        public static void AsignarFondoPantallaProductos(FrmProductos form)
+        {
+            form.BackgroundImage = Properties.Resources.fondoProductos;
+            form.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        }
 
     }
 }

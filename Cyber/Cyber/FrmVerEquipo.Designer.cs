@@ -34,6 +34,11 @@ namespace Cyber
             this.richTextBoxProximoCliente = new System.Windows.Forms.RichTextBox();
             this.labelSubColaClientes = new System.Windows.Forms.Label();
             this.buttonHistorialSesiones = new System.Windows.Forms.Button();
+            this.pictureBoxJack = new System.Windows.Forms.PictureBox();
+            this.labelFelicidad = new System.Windows.Forms.Label();
+            this.labelPuntosFelicidad = new System.Windows.Forms.Label();
+            this.btnComprarProd = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxJack)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBoxDatosEquipo
@@ -41,15 +46,15 @@ namespace Cyber
             this.richTextBoxDatosEquipo.Location = new System.Drawing.Point(23, 30);
             this.richTextBoxDatosEquipo.Name = "richTextBoxDatosEquipo";
             this.richTextBoxDatosEquipo.ReadOnly = true;
-            this.richTextBoxDatosEquipo.Size = new System.Drawing.Size(186, 388);
+            this.richTextBoxDatosEquipo.Size = new System.Drawing.Size(216, 388);
             this.richTextBoxDatosEquipo.TabIndex = 0;
             this.richTextBoxDatosEquipo.Text = "";
             // 
             // buttonTerminarSesion
             // 
-            this.buttonTerminarSesion.Location = new System.Drawing.Point(56, 424);
+            this.buttonTerminarSesion.Location = new System.Drawing.Point(268, 66);
             this.buttonTerminarSesion.Name = "buttonTerminarSesion";
-            this.buttonTerminarSesion.Size = new System.Drawing.Size(114, 42);
+            this.buttonTerminarSesion.Size = new System.Drawing.Size(146, 74);
             this.buttonTerminarSesion.TabIndex = 1;
             this.buttonTerminarSesion.Text = "Terminar Sesión";
             this.buttonTerminarSesion.UseVisualStyleBackColor = true;
@@ -57,7 +62,7 @@ namespace Cyber
             // 
             // richTextBoxProximoCliente
             // 
-            this.richTextBoxProximoCliente.Location = new System.Drawing.Point(248, 230);
+            this.richTextBoxProximoCliente.Location = new System.Drawing.Point(258, 230);
             this.richTextBoxProximoCliente.Name = "richTextBoxProximoCliente";
             this.richTextBoxProximoCliente.ReadOnly = true;
             this.richTextBoxProximoCliente.Size = new System.Drawing.Size(170, 188);
@@ -67,7 +72,7 @@ namespace Cyber
             // labelSubColaClientes
             // 
             this.labelSubColaClientes.AutoSize = true;
-            this.labelSubColaClientes.Location = new System.Drawing.Point(248, 212);
+            this.labelSubColaClientes.Location = new System.Drawing.Point(258, 212);
             this.labelSubColaClientes.Name = "labelSubColaClientes";
             this.labelSubColaClientes.Size = new System.Drawing.Size(170, 15);
             this.labelSubColaClientes.TabIndex = 3;
@@ -75,7 +80,7 @@ namespace Cyber
             // 
             // buttonHistorialSesiones
             // 
-            this.buttonHistorialSesiones.Location = new System.Drawing.Point(315, 424);
+            this.buttonHistorialSesiones.Location = new System.Drawing.Point(336, 490);
             this.buttonHistorialSesiones.Name = "buttonHistorialSesiones";
             this.buttonHistorialSesiones.Size = new System.Drawing.Size(103, 42);
             this.buttonHistorialSesiones.TabIndex = 4;
@@ -83,11 +88,54 @@ namespace Cyber
             this.buttonHistorialSesiones.UseVisualStyleBackColor = true;
             this.buttonHistorialSesiones.Click += new System.EventHandler(this.buttonHistorialSesiones_Click);
             // 
+            // pictureBoxJack
+            // 
+            this.pictureBoxJack.BackgroundImage = global::Cyber.Properties.Resources.iconoJack;
+            this.pictureBoxJack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxJack.Location = new System.Drawing.Point(12, 477);
+            this.pictureBoxJack.Name = "pictureBoxJack";
+            this.pictureBoxJack.Size = new System.Drawing.Size(64, 55);
+            this.pictureBoxJack.TabIndex = 5;
+            this.pictureBoxJack.TabStop = false;
+            // 
+            // labelFelicidad
+            // 
+            this.labelFelicidad.AutoSize = true;
+            this.labelFelicidad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelFelicidad.Location = new System.Drawing.Point(82, 477);
+            this.labelFelicidad.Name = "labelFelicidad";
+            this.labelFelicidad.Size = new System.Drawing.Size(157, 21);
+            this.labelFelicidad.TabIndex = 6;
+            this.labelFelicidad.Text = "Puntos de felicidad";
+            // 
+            // labelPuntosFelicidad
+            // 
+            this.labelPuntosFelicidad.AutoSize = true;
+            this.labelPuntosFelicidad.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPuntosFelicidad.Location = new System.Drawing.Point(94, 498);
+            this.labelPuntosFelicidad.Name = "labelPuntosFelicidad";
+            this.labelPuntosFelicidad.Size = new System.Drawing.Size(0, 20);
+            this.labelPuntosFelicidad.TabIndex = 7;
+            // 
+            // btnComprarProd
+            // 
+            this.btnComprarProd.Location = new System.Drawing.Point(142, 502);
+            this.btnComprarProd.Name = "btnComprarProd";
+            this.btnComprarProd.Size = new System.Drawing.Size(134, 30);
+            this.btnComprarProd.TabIndex = 8;
+            this.btnComprarProd.Text = "Comprar Productos";
+            this.btnComprarProd.UseVisualStyleBackColor = true;
+            this.btnComprarProd.Click += new System.EventHandler(this.btnComprarProd_Click);
+            // 
             // FrmVerEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 478);
+            this.ClientSize = new System.Drawing.Size(451, 544);
+            this.Controls.Add(this.btnComprarProd);
+            this.Controls.Add(this.labelPuntosFelicidad);
+            this.Controls.Add(this.labelFelicidad);
+            this.Controls.Add(this.pictureBoxJack);
             this.Controls.Add(this.buttonHistorialSesiones);
             this.Controls.Add(this.labelSubColaClientes);
             this.Controls.Add(this.richTextBoxProximoCliente);
@@ -97,6 +145,7 @@ namespace Cyber
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerEquipo";
             this.Load += new System.EventHandler(this.FrmVerEquipo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxJack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +158,9 @@ namespace Cyber
         private System.Windows.Forms.RichTextBox richTextBoxProximoCliente;
         private System.Windows.Forms.Label labelSubColaClientes;
         private System.Windows.Forms.Button buttonHistorialSesiones;
+        private System.Windows.Forms.PictureBox pictureBoxJack;
+        private System.Windows.Forms.Label labelFelicidad;
+        private System.Windows.Forms.Label labelPuntosFelicidad;
+        private System.Windows.Forms.Button btnComprarProd;
     }
 }

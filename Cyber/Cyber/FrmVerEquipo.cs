@@ -54,6 +54,7 @@ namespace Cyber
             if (!(sesionActual is null))
             {
                 richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.MostrarSesion()}");
+                labelPuntosFelicidad.Text = $"{sesionActual.UsuarioActual.PuntosDeFelicidad}";
             }
             
         }
@@ -67,11 +68,8 @@ namespace Cyber
                 ArchivosMedia.ReproducirSonidoFacturacion();
                 MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
                 
-                
                 cyber1.BuscarEquipoPorId(idEquipo).enUso = false;
                 
-               
-
                 if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
                 {
                     cyber1.CargarSesionNueva(cyber1.BuscarEquipoPorId(idEquipo));
@@ -85,11 +83,9 @@ namespace Cyber
                     {
                         richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
                     }
-                    
-
+                  
                 } 
 
-                
                 richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).Mostrar();
 
                 if (!(sesionActual is null))
@@ -122,6 +118,12 @@ namespace Cyber
 
             FrmHistorialEquipo form3 = new FrmHistorialEquipo(listaSesionEquipo);
             form3.Show();
+        }
+
+        private void btnComprarProd_Click(object sender, EventArgs e)
+        {
+            FrmProductos frmProd = new FrmProductos(this.cyber1);
+            frmProd.Show();
         }
     }
 }

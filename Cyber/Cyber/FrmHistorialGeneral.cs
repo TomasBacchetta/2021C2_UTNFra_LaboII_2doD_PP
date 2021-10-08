@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
-using Equipos;
 using Sesiones;
+using Equipos;
 using static Personas.ClienteDeTelefono;
 
 namespace Cyber
@@ -18,9 +18,6 @@ namespace Cyber
     {
         private CyberCafe cyber;
         private Dictionary<string, List<Sesion>> sesionesArchivadas;
-        
-
-
         private const string histGeneral = "General";
         
         public FrmHistorialGeneral(CyberCafe cyber)
@@ -47,23 +44,32 @@ namespace Cyber
             tab.BackgroundImageLayout = ImageLayout.Stretch;
 
             //genera cuadro de texto de historial
+            Label labelHistorial = new Label();
+            labelHistorial.Text = "Historial: ";
+            labelHistorial.Location = new Point(28, 15);
+            tab.Controls.Add(labelHistorial);
             RichTextBox cuadroTextHistorial = new RichTextBox();
             cuadroTextHistorial.Name = "rtbHistorial";
             tab.Controls.Add(cuadroTextHistorial);
             cuadroTextHistorial.Size = new Size(317, 317);
-            cuadroTextHistorial.Location = new Point(28, 15);
+            cuadroTextHistorial.Location = new Point(28, 40);
             tab.Text = $"{titulo}";
             
             cuadroTextHistorial.Text = "Sin sesiones que mostrar";
             this.sesionesArchivadas.Add(titulo, new List<Sesion>());
 
-            //genera label de informes
+            //genera richtextbox de informes
+            Label labelInformes = new Label();
+            labelInformes.Text = "Informes: ";
+            labelInformes.Location = new Point(400, 15);
+            tab.Controls.Add(labelInformes);
             RichTextBox richTextInformes = new RichTextBox();
             richTextInformes.Name = "rtbInformes";
             tab.Controls.Add(richTextInformes);
-            richTextInformes.Location = new Point(400, 15);
             richTextInformes.Size = new Size(317, 317);
-            richTextInformes.Visible = false;
+            richTextInformes.Location = new Point(400, 40);
+            richTextInformes.Text = "Sin informes que mostrar";
+
 
             //agrega la pestaña al control de pestañas del formulario
             tabHistorial.TabPages.Add(tab);
@@ -90,14 +96,12 @@ namespace Cyber
                 {
                     foreach (Sesion sesion in cyber.Sesiones)
                     {
-                        if (item.Key == sesion.IdEquipo || item.Key == histGeneral && sesion.EnCurso == false)
+                        if ((item.Key == sesion.IdEquipo || item.Key == histGeneral) && !sesion.EnCurso)
                         {
                             this.sesionesArchivadas[item.Key].Add(sesion);
                             
 
                         }
-                        
-
 
                     }
 
@@ -283,12 +287,10 @@ namespace Cyber
                             computadorasPorTiempo.Add(sesion.IdEquipo, sesion.TiempoPasado);
                         }
                         
-
                     }
                 }
                 
                 
-
             }
             
             buffer.AppendLine($"Ganancias Totales: ${gananciasTotales}");

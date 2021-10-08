@@ -72,6 +72,26 @@ namespace Cyber.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bebidaAlcoholica {
+            get {
+                object obj = ResourceManager.GetObject("bebidaAlcoholica", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bebidaChina {
+            get {
+                object obj = ResourceManager.GetObject("bebidaChina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap big_poster_filme_matrix_reloaded_lo01_tamanho_90x60_cm_matrix_2 {
             get {
                 object obj = ResourceManager.GetObject("big-poster-filme-matrix-reloaded-lo01-tamanho-90x60-cm-matrix-2", resourceCulture);
@@ -120,6 +140,36 @@ namespace Cyber.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cigarro {
+            get {
+                object obj = ResourceManager.GetObject("cigarro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap confite {
+            get {
+                object obj = ResourceManager.GetObject("confite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coquita {
+            get {
+                object obj = ResourceManager.GetObject("coquita", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fondoCabina {
             get {
                 object obj = ResourceManager.GetObject("fondoCabina", resourceCulture);
@@ -148,11 +198,31 @@ namespace Cyber.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoProductos {
+            get {
+                object obj = ResourceManager.GetObject("fondoProductos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream historialEInformes {
             get {
                 return ResourceManager.GetStream("historialEInformes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconoJack {
+            get {
+                object obj = ResourceManager.GetObject("iconoJack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -191,6 +261,16 @@ namespace Cyber.Properties {
         internal static System.Drawing.Bitmap pcOCUPADA {
             get {
                 object obj = ResourceManager.GetObject("pcOCUPADA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Smtjack {
+            get {
+                object obj = ResourceManager.GetObject("Smtjack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
