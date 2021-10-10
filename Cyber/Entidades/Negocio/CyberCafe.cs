@@ -108,7 +108,9 @@ namespace Negocio
 
 
         }
-
+        /// <summary>
+        /// Carga los diversos productos en la cola de productos, que a su vez se categorizan por la key que corresponde al tipo de producto
+        /// </summary>
         private void CargarProductos()
         {
             this.listaProductos = new Dictionary<TipoConsumible, Queue<Consumible>>();
@@ -132,11 +134,18 @@ namespace Negocio
                 
                     
         }
-
+        /// <summary>
+        /// Muestra el stock de un producto
+        /// </summary>
+        /// <param name="tipo">Recibe el stock del producto</param>
+        /// <returns>Devuelve la cantidad entera de stock</returns>
         public int MostrarStockProducto(TipoConsumible tipo)
         {
             return listaProductos[tipo].Count;
         }
+        /// <summary>
+        /// Carga la cola general de clientes de forma pseudo-aleatoria
+        /// </summary>
         private void CargarColaClientes()
         {
             NombresPersonas nombres = new NombresPersonas();
@@ -217,6 +226,9 @@ namespace Negocio
                 this.subColaClientes.Add(item.Id, subCola);
             }
         }
+        /// <summary>
+        /// Carga las especificaciones de todos los equipos de forma pseudo-aleatoria, forzando en algunos casos las tiradas
+        /// </summary>
         private void CargarEquipos()
         {
             Programas software = new Programas();
@@ -225,11 +237,14 @@ namespace Negocio
             Cpus cpus = new Cpus();
             PlacasDeVideo placasDeVideo = new PlacasDeVideo();
             MarcasTelefono marcasTelefono = new MarcasTelefono();
-            bool cabinaUniversal = false; //si existe por lo menos una cabina con tipo de llamada universal
-            bool computadoraCompleta = false;
+            bool cabinaUniversal = false; //determina si existe por lo menos una cabina con tipo de llamada universal
+            bool computadoraCompleta = false;//determina si existe por lo menos una máquina con todas las especificaciones posibles
 
             MemoriasRam ram = new MemoriasRam();
-            do
+            do//toda la asignación se hace de nuevo si por lo menos no hay una máquina que tenga todos las especificaciones posibles.
+              //No es la mejor opcion ni la mas performante por eso puede llegar a tardar en arrancar el programa
+              //Lo ideal sería relacionar la forma en que se generan los clientes con la que se generan las máquinas, para evitar
+              //invariables incompatibilidades, pero eso complejizaría el algoritmo
             {
                 for (int x = 0; x < this.cantidadComputadoras; x++)
                 {
@@ -282,7 +297,11 @@ namespace Negocio
             } while (!cabinaUniversal);
             
         }
-       
+       /// <summary>
+       /// Busca un equipo por su id único
+       /// </summary>
+       /// <param name="id">recibe el id en formato string</param>
+       /// <returns>Devuelve el equipo si lo encuentra, en la práctica siempre lo encontrará</returns>
         public Equipo BuscarEquipoPorId(string id)
         {
             foreach (Equipo item in this.Equipos)
@@ -294,7 +313,11 @@ namespace Negocio
             }
             return null;
         }
-
+        /// <summary>
+        /// Busca una sesion por el id del equipo al que esta enlazada
+        /// </summary>
+        /// <param name="id">recibe el id del equipo</param>
+        /// <returns>Devuelve el equipo si lo encuentra, en la práctica siempre lo encontrará</returns>
         public Sesion BuscarSesionPorEquipo(string id)
         {
             foreach (Sesion item in this.sesiones)
@@ -307,27 +330,26 @@ namespace Negocio
             return null;
         }
 
-
+        /// <summary>
+        /// Carga un cliente de la cola general en la subcola de un equipo. También llama a una función que determina cuantos puntos se restan de su felicidad
+        /// </summary>
+        /// <param name="idEquipo"></param>
         public void CargarClienteEnSubCola(string idEquipo)
         {
-            
+            this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
             this.subColaClientes[idEquipo].Enqueue(this.ObtenerProximoCliente());
             
         }
-
+        /// <summary>
+        /// Carga una sesión nueva
+        /// </summary>
+        /// <param name="equipo"></param>
         public void CargarSesionNueva(Equipo equipo)
         {
             if (equipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
                 SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteSubcola(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
-                if (sesionNueva.EfectoActual == Sesion.Efecto.Tabaco)
-                {
-                    sesionNueva.UsuarioActual.PuntosDeFelicidad -= 3;
-                    if (sesionNueva.UsuarioActual.PuntosDeFelicidad < 0)
-                    {
-                        sesionNueva.UsuarioActual.PuntosDeFelicidad = 0;
-                    }
-                }
+                this.RestarFelicidadPorTabaco(sesionNueva);
                 this.sesiones.Add(sesionNueva);
             } else
             {
@@ -336,6 +358,21 @@ namespace Negocio
             }
             equipo.EnUso = true;
             
+        }
+        /// <summary>
+        /// Ajusta la felicidad por la presencia del efecto del tabaco en la sesion
+        /// </summary>
+        /// <param name="sesion"></param>
+        private void RestarFelicidadPorTabaco(Sesion sesion)
+        {
+            if (sesion.EfectoActual == Sesion.Efecto.Tabaco)
+            {
+                sesion.UsuarioActual.PuntosDeFelicidad -= 3;
+                if (sesion.UsuarioActual.PuntosDeFelicidad < 0)
+                {
+                    sesion.UsuarioActual.PuntosDeFelicidad = 0;
+                }
+            }
         }
 
         /// <summary>
@@ -366,10 +403,7 @@ namespace Negocio
                             this.CargarSesionNueva(auxEquipo);
                             this.subColaClientes[idEquipo].Dequeue();
 
-                        } else
-                        {
-                            this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
-                        }
+                        } 
                         this.colaClientes.Dequeue();
 
                         return 1;//logro cargar en una computadora
@@ -389,10 +423,7 @@ namespace Negocio
                             this.CargarSesionNueva(auxEquipo);
                             this.subColaClientes[idEquipo].Dequeue();
 
-                        } else
-                        {
-                            this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
-                        }
+                        } 
                         this.colaClientes.Dequeue();
                     } else
                     {
@@ -409,7 +440,14 @@ namespace Negocio
 
         private void AjustarPuntosDeFelicidad(string idEquipo, Cliente cliente)
         {
-            cliente.PuntosDeFelicidad -= this.subColaClientes[idEquipo].Count;
+            //esto hace que cuente el usuario que utiliza el equipo pero que no está en la subcola
+            int clienteEnEquipo = 0;
+            if (BuscarEquipoPorId(idEquipo).EnUso)
+            {
+                clienteEnEquipo = 1;
+            }
+            //
+            cliente.PuntosDeFelicidad -= (this.subColaClientes[idEquipo].Count + clienteEnEquipo);
             if (cliente.PuntosDeFelicidad < 0)
             {
                 cliente.PuntosDeFelicidad = 0;

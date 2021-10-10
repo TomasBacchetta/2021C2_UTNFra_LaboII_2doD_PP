@@ -301,7 +301,7 @@ namespace Cyber
             // 
             this.checkBoxBebidaAlcoh.AutoSize = true;
             this.checkBoxBebidaAlcoh.BackColor = System.Drawing.Color.Silver;
-            this.checkBoxBebidaAlcoh.Location = new System.Drawing.Point(424, 385);
+            this.checkBoxBebidaAlcoh.Location = new System.Drawing.Point(424, 390);
             this.checkBoxBebidaAlcoh.Name = "checkBoxBebidaAlcoh";
             this.checkBoxBebidaAlcoh.Size = new System.Drawing.Size(86, 19);
             this.checkBoxBebidaAlcoh.TabIndex = 27;
@@ -312,7 +312,7 @@ namespace Cyber
             // 
             this.checkBoxConfitu.AutoSize = true;
             this.checkBoxConfitu.BackColor = System.Drawing.Color.Silver;
-            this.checkBoxConfitu.Location = new System.Drawing.Point(424, 489);
+            this.checkBoxConfitu.Location = new System.Drawing.Point(424, 503);
             this.checkBoxConfitu.Name = "checkBoxConfitu";
             this.checkBoxConfitu.Size = new System.Drawing.Size(86, 19);
             this.checkBoxConfitu.TabIndex = 28;
@@ -327,7 +327,7 @@ namespace Cyber
             this.btnComprar.TabIndex = 29;
             this.btnComprar.Text = "Comprar";
             this.btnComprar.UseVisualStyleBackColor = true;
-            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
+            this.btnComprar.Click += new System.EventHandler(this.BtnComprar_Click);
             // 
             // label11
             // 
@@ -381,9 +381,10 @@ namespace Cyber
             this.Controls.Add(this.pictBebidaCigarros);
             this.Controls.Add(this.pictBebidaCoquita);
             this.Controls.Add(this.pictBebidaChina);
+            this.MaximizeBox = false;
             this.Name = "FrmProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tienda de Productos";
+            this.Text = "Tienda";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductos_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictBebidaChina)).EndInit();

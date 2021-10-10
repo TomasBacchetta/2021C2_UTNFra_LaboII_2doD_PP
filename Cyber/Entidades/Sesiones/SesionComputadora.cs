@@ -43,7 +43,7 @@ namespace Sesiones
             }
         }
 
-        public override List<string> SoftwareUtilizado
+        public List<string> SoftwareUtilizado
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Sesiones
             }
         }
 
-        public override List<string> JuegosUtilizados
+        public List<string> JuegosUtilizados
         {
             get
             {
@@ -59,7 +59,7 @@ namespace Sesiones
             }
         }
 
-        public override List<string> PerifericosUtilizados
+        public List<string> PerifericosUtilizados
         {
             get
             {
@@ -135,8 +135,8 @@ namespace Sesiones
         public List<string> DeterminarProgramasUtilizados()
         {
             List<string> programasUtilizados= new List<string>();
-
-            foreach (string program in this.usuarioActual.ProgramasFavoritos)
+            ClienteDeComputadora auxClienteComp = (ClienteDeComputadora)usuarioActual;
+            foreach (string program in auxClienteComp.ProgramasFavoritos)
             {
                 if (this.equipoEnUso.Software.Contains(program))
                 {
@@ -150,8 +150,8 @@ namespace Sesiones
         public List<string> DeterminarJuegosUtilizados()
         {
             List<string> juegosUtilizados = new List<string>();
-
-            foreach (string juego in this.usuarioActual.JuegosFavoritos)
+            ClienteDeComputadora auxClienteComp = (ClienteDeComputadora)usuarioActual;
+            foreach (string juego in auxClienteComp.JuegosFavoritos)
             {
                 if (this.equipoEnUso.Juegos.Contains(juego))
                 {
@@ -165,8 +165,8 @@ namespace Sesiones
         public List<string> DeterminarPerifericosUtilizados()
         {
             List<string> perifericosUtilizados = new List<string>();
-
-            foreach (string periferico in this.usuarioActual.PerifericosFavoritos)
+            ClienteDeComputadora auxClienteComp = (ClienteDeComputadora)usuarioActual;
+            foreach (string periferico in auxClienteComp.PerifericosFavoritos)
             {
                 if (this.equipoEnUso.Perifericos.Contains(periferico))
                 {

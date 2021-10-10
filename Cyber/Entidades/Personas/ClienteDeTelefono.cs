@@ -16,7 +16,7 @@ namespace Personas
         private string telefono;
         private TipoLlamada tipoLlamada;
 
-        public override TipoLlamada TipoDeLlamada
+        public TipoLlamada TipoDeLlamada
         {
             get
             {

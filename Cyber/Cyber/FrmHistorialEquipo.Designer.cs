@@ -47,6 +47,7 @@ namespace Cyber
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 450);
             this.Controls.Add(this.richTextBoxHistorial);
+            this.MaximizeBox = false;
             this.Name = "FrmHistorialEquipo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial del Equipo";

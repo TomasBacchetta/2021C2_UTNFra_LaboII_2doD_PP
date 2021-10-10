@@ -27,6 +27,9 @@ namespace Cyber
             this.sesionActual = cyber1.BuscarProximaSesionActivaDeUnEquipo(idEquipo);
             this.formPrincipal = formPrincipal;
             InitializeComponent();
+            toolTipEfectoChino.SetToolTip(pctChino, "Todas las bebidas chinas valen 5 puntos de felicidad menos hasta que se vacíe el equipo y su subcola");
+            toolTipEfectoChino.SetToolTip(pctTabaco, "Todos los clientes que ingresen a la subcola de este equipo ven reducida su felicidad en 4 puntos");
+            
         }
 
         private void FrmVerEquipo_Load(object sender, EventArgs e)
@@ -57,7 +60,7 @@ namespace Cyber
             
         }
 
-        private void buttonTerminarSesion_Click(object sender, EventArgs e)
+        private void ButtonTerminarSesion_Click(object sender, EventArgs e)
         {
             if (!(this.sesionActual is null) && this.sesionActual.EnCurso == true)
             {
@@ -66,7 +69,7 @@ namespace Cyber
                 ArchivosMedia.ReproducirSonidoFacturacion();
                 //MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
                 FrmFactura factura = new FrmFactura(sesionActual, cyber1.RazonSocial);
-                factura.Show();
+                factura.ShowDialog();
                 cyber1.BuscarEquipoPorId(idEquipo).EnUso = false;
                 
                 if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
@@ -108,6 +111,16 @@ namespace Cyber
                 pictureBoxJack.Visible = true;
                 labelFelicidad.Visible = true;
                 richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.MostrarSesion()}");
+                if (cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina == Equipo.Efecto.BebidaChina)
+                {
+                    lblEfectos.Visible = true;
+                    pctChino.Visible = true;
+                }
+                if (cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina == Equipo.Efecto.Tabaco)
+                {
+                    lblEfectos.Visible = true;
+                    pctTabaco.Visible = true;
+                }
                 
 
             } else
@@ -117,22 +130,25 @@ namespace Cyber
                 pictureBoxJack.Visible = false;
                 labelFelicidad.Visible = false;
                 cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina = Equipo.Efecto.Ninguno; //limpia los efectos del equipo cuando ya no queda nadie en la subcola
+                pctChino.Visible = false;
+                pctTabaco.Visible = false;
+                lblEfectos.Visible = false;
             }
         }
         
-        private void buttonHistorialSesiones_Click(object sender, EventArgs e)
+        private void ButtonHistorialSesiones_Click(object sender, EventArgs e)
         {
-
+            ArchivosMedia.ReproducirSonidoHistorialEInformes();
             
             FrmHistorialEquipo form3 = new FrmHistorialEquipo(this.cyber1.ObtenerSesionesDeEquipo(this.idEquipo));
             form3.Show();
         }
 
-        private void btnComprarProd_Click(object sender, EventArgs e)
+        private void BtnComprarProd_Click(object sender, EventArgs e)
         {
 
             FrmProductos frmProd = new FrmProductos(this);
-            frmProd.Show();
+            frmProd.ShowDialog();
         }
 
         

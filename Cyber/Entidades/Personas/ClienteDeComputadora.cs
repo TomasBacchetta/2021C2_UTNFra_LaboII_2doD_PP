@@ -14,7 +14,7 @@ namespace Personas
         private List<string> perifericosFavoritos;
 
 
-        public override List<string> JuegosFavoritos
+        public List<string> JuegosFavoritos
         {
             get
             {
@@ -22,7 +22,7 @@ namespace Personas
             }
         }
 
-        public override List<string> ProgramasFavoritos
+        public List<string> ProgramasFavoritos
         {
             get
             {
@@ -30,7 +30,7 @@ namespace Personas
             }
         }
 
-        public override List<string> PerifericosFavoritos
+        public List<string> PerifericosFavoritos
         {
             get
             {

@@ -47,7 +47,7 @@ namespace Sesiones
             }
         }
 
-        public override TipoLlamada TipoLlamada
+        public TipoLlamada TipoLlamada
         {
             get
             {
@@ -59,7 +59,8 @@ namespace Sesiones
 
         public SesionCabina(Cliente usuarioActual, Equipo equipo, Efecto efectoActual) : base(usuarioActual, equipo, efectoActual)
         {
-            this.tipoLlamada = usuarioActual.TipoDeLlamada;
+            ClienteDeTelefono auxClienteTel = (ClienteDeTelefono)usuarioActual;
+            this.tipoLlamada = auxClienteTel.TipoDeLlamada;
         }
 
         public override string MostrarSesion()
@@ -76,8 +77,8 @@ namespace Sesiones
         public double CalcularCosto()
         {
             double multiplicador = 0;
-
-            switch (this.usuarioActual.TipoDeLlamada)
+            ClienteDeTelefono auxClienteTel = (ClienteDeTelefono)usuarioActual;
+            switch (auxClienteTel.TipoDeLlamada)
             {
                 case TipoLlamada.Local:
                     multiplicador = 1;

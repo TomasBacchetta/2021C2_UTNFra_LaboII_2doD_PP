@@ -119,17 +119,9 @@ namespace Sesiones
             }
         }
 
-        public virtual TipoLlamada TipoLlamada { get; }
+       
 
-        public virtual List<string> SoftwareUtilizado { get; }
         
-
-        public virtual List<string> JuegosUtilizados { get; }
-
-
-        public virtual List<string> PerifericosUtilizados { get; }
-
-
 
         public virtual bool EnCurso { get; set; }
        

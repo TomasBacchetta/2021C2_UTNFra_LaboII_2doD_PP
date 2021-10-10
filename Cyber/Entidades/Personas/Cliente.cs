@@ -17,16 +17,8 @@ namespace Personas
         private TipoCliente tipoDeCliente;
         private int puntosDeFelicidad;
 
-        public virtual List<string> JuegosFavoritos { get; }
-       
-
-        public virtual List<string> ProgramasFavoritos { get; }
-       
-
-        public virtual List<string> PerifericosFavoritos{ get; }
-
-        public virtual TipoLlamada TipoDeLlamada { get; }
-
+        
+        
         public int PuntosDeFelicidad
         {
             get

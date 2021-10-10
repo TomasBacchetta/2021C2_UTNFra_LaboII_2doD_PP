@@ -66,6 +66,7 @@ namespace Cyber
             this.ClientSize = new System.Drawing.Size(787, 489);
             this.Controls.Add(this.tabHistorial);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.MaximizeBox = false;
             this.Name = "FrmHistorialGeneral";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial e Informes";

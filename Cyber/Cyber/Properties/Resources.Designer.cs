@@ -186,11 +186,31 @@ namespace Cyber.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap efectoBebidaChina1 {
+            get {
+                object obj = ResourceManager.GetObject("efectoBebidaChina1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream efectoCigarrillo {
             get {
                 return ResourceManager.GetStream("efectoCigarrillo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap efectoTabaco {
+            get {
+                object obj = ResourceManager.GetObject("efectoTabaco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

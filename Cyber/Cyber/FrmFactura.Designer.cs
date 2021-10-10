@@ -51,7 +51,7 @@ namespace Cyber
             this.btnSobreFacturar.TabIndex = 1;
             this.btnSobreFacturar.Text = "Sobre Facturar";
             this.btnSobreFacturar.UseVisualStyleBackColor = true;
-            this.btnSobreFacturar.Click += new System.EventHandler(this.btnSobreFacturar_Click);
+            this.btnSobreFacturar.Click += new System.EventHandler(this.BtnSobreFacturar_Click);
             // 
             // FrmFactura
             // 
@@ -60,6 +60,7 @@ namespace Cyber
             this.ClientSize = new System.Drawing.Size(390, 524);
             this.Controls.Add(this.btnSobreFacturar);
             this.Controls.Add(this.rtbFactura);
+            this.MaximizeBox = false;
             this.Name = "FrmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";

@@ -457,7 +457,7 @@ namespace Cyber
             this.buttonMostrarEquipo.TabIndex = 2;
             this.buttonMostrarEquipo.Text = "Ver Equipo";
             this.buttonMostrarEquipo.UseVisualStyleBackColor = true;
-            this.buttonMostrarEquipo.Click += new System.EventHandler(this.buttonMostrarEquipo_Click);
+            this.buttonMostrarEquipo.Click += new System.EventHandler(this.ButtonMostrarEquipo_Click);
             // 
             // richTextBoxDatosCliente
             // 
@@ -465,31 +465,31 @@ namespace Cyber
             this.richTextBoxDatosCliente.Location = new System.Drawing.Point(838, 160);
             this.richTextBoxDatosCliente.Name = "richTextBoxDatosCliente";
             this.richTextBoxDatosCliente.ReadOnly = true;
-            this.richTextBoxDatosCliente.Size = new System.Drawing.Size(169, 256);
+            this.richTextBoxDatosCliente.Size = new System.Drawing.Size(169, 343);
             this.richTextBoxDatosCliente.TabIndex = 3;
             this.richTextBoxDatosCliente.Text = "Cyber";
             // 
             // buttonEcharCliente
             // 
             this.buttonEcharCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonEcharCliente.Location = new System.Drawing.Point(932, 442);
+            this.buttonEcharCliente.Location = new System.Drawing.Point(932, 525);
             this.buttonEcharCliente.Name = "buttonEcharCliente";
             this.buttonEcharCliente.Size = new System.Drawing.Size(75, 38);
             this.buttonEcharCliente.TabIndex = 5;
             this.buttonEcharCliente.Text = "Echar";
             this.buttonEcharCliente.UseVisualStyleBackColor = true;
-            this.buttonEcharCliente.Click += new System.EventHandler(this.buttonEcharCliente_Click);
+            this.buttonEcharCliente.Click += new System.EventHandler(this.ButtonEcharCliente_Click);
             // 
             // buttonAsignar
             // 
             this.buttonAsignar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAsignar.Location = new System.Drawing.Point(838, 442);
+            this.buttonAsignar.Location = new System.Drawing.Point(838, 525);
             this.buttonAsignar.Name = "buttonAsignar";
             this.buttonAsignar.Size = new System.Drawing.Size(74, 38);
             this.buttonAsignar.TabIndex = 6;
             this.buttonAsignar.Text = "Asignar";
             this.buttonAsignar.UseVisualStyleBackColor = true;
-            this.buttonAsignar.Click += new System.EventHandler(this.buttonAsignar_Click);
+            this.buttonAsignar.Click += new System.EventHandler(this.ButtonAsignar_Click);
             // 
             // buttonHist
             // 
@@ -500,13 +500,13 @@ namespace Cyber
             this.buttonHist.TabIndex = 13;
             this.buttonHist.Text = "Historial e Infomes";
             this.buttonHist.UseVisualStyleBackColor = true;
-            this.buttonHist.Click += new System.EventHandler(this.buttonHist_Click);
+            this.buttonHist.Click += new System.EventHandler(this.ButtonHist_Click);
             // 
             // labelCantidadClientes
             // 
             this.labelCantidadClientes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCantidadClientes.AutoSize = true;
-            this.labelCantidadClientes.Location = new System.Drawing.Point(838, 420);
+            this.labelCantidadClientes.Location = new System.Drawing.Point(838, 507);
             this.labelCantidadClientes.Name = "labelCantidadClientes";
             this.labelCantidadClientes.Size = new System.Drawing.Size(38, 15);
             this.labelCantidadClientes.TabIndex = 14;
@@ -514,6 +514,7 @@ namespace Cyber
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.BackgroundImage = global::Cyber.Properties.Resources.iconoInfo;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Location = new System.Drawing.Point(12, 574);
@@ -521,7 +522,7 @@ namespace Cyber
             this.button1.Size = new System.Drawing.Size(52, 51);
             this.button1.TabIndex = 15;
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // lblInfo
             // 

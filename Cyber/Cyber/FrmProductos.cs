@@ -108,7 +108,7 @@ namespace Cyber
             lblCostoBebidaChin.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaChina)}";
             if (this.sesionActual.EfectoActual == Sesion.Efecto.BebidaChina)
             {
-                lblCostoBebidaChin.Text = $"Precio: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Precio} Costo de felicidad: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).CostoFelicidad - 5} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaChina)}";
+                lblCostoBebidaChin.Text = $"Precio: ${this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Precio} Costo de felicidad: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).CostoFelicidad - 5} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaChina)}";
             }
             
             lblCostoCoquita.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Coquita).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.Coquita)}";
@@ -117,7 +117,7 @@ namespace Cyber
             lblCostoBebidaAlcoh.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaAlcoholica).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaAlcoholica)}";
         }
 
-        private void btnComprar_Click(object sender, EventArgs e)
+        private void BtnComprar_Click(object sender, EventArgs e)
         {
             int costoEnFelicidad = 0;
             bool algoComprado = false;
@@ -182,6 +182,9 @@ namespace Cyber
                 if (algoComprado)
                 {
                     ArchivosMedia.ReproducirSonidoComprar();
+                } else 
+                {
+                    MessageBox.Show("¡Vuelva cuando decida comprar algo!");
                 }
                 this.Close();
             }

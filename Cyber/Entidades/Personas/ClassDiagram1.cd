@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Personas.Cliente">
+    <Position X="2.5" Y="1.25" Width="3" />
+    <NestedTypes>
+      <Enum Name="Personas.Cliente.TipoCliente" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Personas\Cliente.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAACEEAACgAAAgAJAAoAGAAACAAAACAA=</HashCode>
+      <FileName>Personas\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Personas.ClienteDeComputadora">
+    <Position X="6.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAQAAAAAEAAAAAAAAABAAAAEAAAAAAAgCAA=</HashCode>
+      <FileName>Personas\ClienteDeComputadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Personas.ClienteDeTelefono">
+    <Position X="6.25" Y="4" Width="3" />
+    <NestedTypes>
+      <Enum Name="Personas.ClienteDeTelefono.TipoLlamada" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Personas\ClienteDeTelefono.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAQgAEAAAAAgAAAAI=</HashCode>
+      <FileName>Personas\ClienteDeTelefono.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,7 +1,7 @@
 ﻿
 namespace Cyber
 {
-    partial class frmTutorial
+    partial class FrmTutorial
     {
         /// <summary>
         /// Required designer variable.
@@ -37,16 +37,20 @@ namespace Cyber
             // 
             // rtbTutorial1
             // 
+            this.rtbTutorial1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rtbTutorial1.Location = new System.Drawing.Point(12, 60);
             this.rtbTutorial1.Name = "rtbTutorial1";
+            this.rtbTutorial1.ReadOnly = true;
             this.rtbTutorial1.Size = new System.Drawing.Size(244, 516);
             this.rtbTutorial1.TabIndex = 0;
             this.rtbTutorial1.Text = "";
             // 
             // rtbTutorial2
             // 
+            this.rtbTutorial2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rtbTutorial2.Location = new System.Drawing.Point(722, 60);
             this.rtbTutorial2.Name = "rtbTutorial2";
+            this.rtbTutorial2.ReadOnly = true;
             this.rtbTutorial2.Size = new System.Drawing.Size(241, 516);
             this.rtbTutorial2.TabIndex = 1;
             this.rtbTutorial2.Text = "";
@@ -71,7 +75,7 @@ namespace Cyber
             this.label2.TabIndex = 3;
             this.label2.Text = "Sobre la felicidad:";
             // 
-            // frmTutorial
+            // FrmTutorial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,10 +87,11 @@ namespace Cyber
             this.Controls.Add(this.rtbTutorial2);
             this.Controls.Add(this.rtbTutorial1);
             this.DoubleBuffered = true;
-            this.Name = "frmTutorial";
+            this.MaximizeBox = false;
+            this.Name = "FrmTutorial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tutorial";
-            this.Load += new System.EventHandler(this.frmTutorial_Load);
+            this.Load += new System.EventHandler(this.FrmTutorial_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

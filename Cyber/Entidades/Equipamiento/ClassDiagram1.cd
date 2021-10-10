@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Equipos.Cabina">
+    <Position X="8.25" Y="1.25" Width="3" />
+    <NestedTypes>
+      <Enum Name="Equipos.Cabina.Tipo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Equipamiento\Cabina.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Equipos.Cabina.TipoLlamadaCabina" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Equipamiento\Cabina.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAhAAAAAQQAAAAgAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Equipamiento\Cabina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Equipos.Computadora">
+    <Position X="5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CBAAAAgIAAUAAAABAAAAAAAAAAAAAAgAAIAIAAAAAiA=</HashCode>
+      <FileName>Equipamiento\Computadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Equipos.Equipo">
+    <Position X="1" Y="1" Width="3" />
+    <NestedTypes>
+      <Enum Name="Equipos.Equipo.TipoEquipo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Equipamiento\Equipo.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Equipos.Equipo.Efecto" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Equipamiento\Equipo.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CgADAAAAAAUAAAAAggAAAgAAAQIAAIAAAAAIAAAAAiA=</HashCode>
+      <FileName>Equipamiento\Equipo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

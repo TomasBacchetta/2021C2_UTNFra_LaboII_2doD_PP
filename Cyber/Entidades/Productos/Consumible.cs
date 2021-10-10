@@ -17,7 +17,6 @@ namespace Entidades
         private double precio;
         private int costoDeFelicidad;
         private string descripcion;
-        private int stock;
         private TipoConsumible tipo;
 
         public Consumible(TipoConsumible tipo)
@@ -40,8 +39,8 @@ namespace Entidades
                 case TipoConsumible.Coquita:
                     this.nombre = "Coquita";
                     this.descripcion = "La clásica coquita";
-                    this.precio = 2;
-                    this.costoDeFelicidad = 3;
+                    this.precio = 3;
+                    this.costoDeFelicidad = 2;
                     break;
                 case TipoConsumible.Confitura:
                     this.nombre = "Confitura";
@@ -58,7 +57,7 @@ namespace Entidades
                 case TipoConsumible.Cigarro:
                     this.nombre = "Cigarro";
                     this.descripcion = "Una dosis de nicotina.\n**Producto contaminante:** Reduce la felicidad de todos \nlos clientes actuales de la subcola en 3";
-                    this.precio = 20;
+                    this.precio = 15;
                     this.costoDeFelicidad = 4;
                     break;
             }

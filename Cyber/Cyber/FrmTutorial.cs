@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Cyber
 {
-    public partial class frmTutorial : Form
+    public partial class FrmTutorial : Form
     {
-        public frmTutorial()
+        public FrmTutorial()
         {
             InitializeComponent();
         }
 
-        private void frmTutorial_Load(object sender, EventArgs e)
+        private void FrmTutorial_Load(object sender, EventArgs e)
         {
             ArchivosMedia.ReproducirSonidoFormTutorial();
             StringBuilder buffer1 = new StringBuilder();
@@ -29,7 +29,6 @@ namespace Cyber
             buffer1.AppendLine("-Para poder asignar a un cliente a un equipo, debe ser del tipo que esté buscando, y también cumplir con ciertos requisitos");
             buffer1.AppendLine("-Si es una cabina telefónica, debe concordar el tipo de llamada con la que quiere el cliente");
             buffer1.AppendLine("-Si es una computadora, deben existir en ella por lo menos un software, un juego y un periférico de los que busca el cliente");
-            buffer1.AppendLine("-Si es una computadora, deben existir en ella por lo menos un software, un juego y un periférico de las categorías que busca el cliente");
             buffer1.AppendLine("-Para asignar clientes, presione el botón 'Asignar'. Se asignará el primer cliente de la cola principal al equipo que tenga su botón radial seleccionado");
             buffer1.AppendLine("-Si el equipo está ocupado, el cliente esperará en una subcola propia del equipo");
             buffer1.AppendLine("-Si el equipo está libre, se iniciará una sesión dentro del equipo");
@@ -48,7 +47,7 @@ namespace Cyber
             buffer2.AppendLine("-Todos los clientes de cabina empiezan con un nivel de felicidad en 1, y este no puede ser incrementado");
             buffer2.AppendLine("-Todos los clientes de computadora empiezan con un nivel de felicidad en 0");
             buffer2.AppendLine("-Estos últimos ven incrementado su nivel en 2 por cada programa, juego o periférico que esté buscando y esté presente en la computadora");
-            buffer2.AppendLine("-El nivel de felicidad de un cliente decrece en 1 por cada otro cliente en la subcola del equipo donde fue asignado");
+            buffer2.AppendLine("-El nivel de felicidad de un cliente decrece en 1 por cada otro cliente adelante en la subcola del equipo donde fue asignado, incluyendo al que está usando el equipo");
             
 
             rtbTutorial1.Text = buffer1.ToString();

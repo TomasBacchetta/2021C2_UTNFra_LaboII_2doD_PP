@@ -14,6 +14,9 @@ using static Personas.ClienteDeTelefono;
 
 namespace Cyber
 {
+    /// <summary>
+    /// Este formulario se encarga de mostrar el historial y los informes de todo el cyber
+    /// </summary>
     public partial class FrmHistorialGeneral : Form
     {
         private CyberCafe cyber;
@@ -32,7 +35,7 @@ namespace Cyber
             
 
         }
-
+        //Aquí quise experimentar un poco con la generación dinámica de los controles de un formulario
         public void GenerarPestania(string titulo)
         {
             //genera pestaña
@@ -209,40 +212,42 @@ namespace Cyber
 
                     if (sesion.GetType() == typeof(SesionCabina))//si la sesion es de tipo de cabina
                     {
+                        SesionCabina auxSesionCabina = (SesionCabina)sesion;
                         if (esCabina == false)
                         {
                             esCabina = true;//por lo menos una sesion es de cabina
                         }
 
                         tiempoTotalCabina += sesion.TiempoPasado;
-                        if (recaudacionPorTipoLlamada.ContainsKey(sesion.TipoLlamada))
+                        if (recaudacionPorTipoLlamada.ContainsKey(auxSesionCabina.TipoLlamada))
                         {
-                            recaudacionPorTipoLlamada[sesion.TipoLlamada] += sesion.CostoFinal;
+                            recaudacionPorTipoLlamada[auxSesionCabina.TipoLlamada] += auxSesionCabina.CostoFinal;
                         }
                         else
                         {
-                            recaudacionPorTipoLlamada.Add(sesion.TipoLlamada, sesion.CostoFinal);
+                            recaudacionPorTipoLlamada.Add(auxSesionCabina.TipoLlamada, auxSesionCabina.CostoFinal);
                         }
 
-                        if (cabinasPorTiempo.ContainsKey(sesion.IdEquipo))
+                        if (cabinasPorTiempo.ContainsKey(auxSesionCabina.IdEquipo))
                         {
-                            cabinasPorTiempo[sesion.IdEquipo] += sesion.TiempoPasado;
+                            cabinasPorTiempo[auxSesionCabina.IdEquipo] += auxSesionCabina.TiempoPasado;
                         }
                         else
                         {
-                            cabinasPorTiempo.Add(sesion.IdEquipo, sesion.TiempoPasado);
+                            cabinasPorTiempo.Add(auxSesionCabina.IdEquipo, auxSesionCabina.TiempoPasado);
                         }
 
                     }
                     else //la sesion es de tipo de computadora
                     {
+                        SesionComputadora auxSesionComp = (SesionComputadora)sesion;
                         if (esComputadora == false)
                         {
                             esComputadora = true;//por lo menos una sesion es de cabina
                         }
                         tiempoTotalComputadora += sesion.TiempoPasado;
 
-                        foreach (string software in sesion.SoftwareUtilizado)
+                        foreach (string software in auxSesionComp.SoftwareUtilizado)
                         {
                             if (softwareMasPedido.ContainsKey(software))
                             {
@@ -254,7 +259,7 @@ namespace Cyber
                             }
                         }
 
-                        foreach (string juego in sesion.JuegosUtilizados)
+                        foreach (string juego in (auxSesionComp.JuegosUtilizados))
                         {
                             if (juegoMasPedido.ContainsKey(juego))
                             {
@@ -266,7 +271,7 @@ namespace Cyber
                             }
                         }
 
-                        foreach (string periferico in sesion.PerifericosUtilizados)
+                        foreach (string periferico in auxSesionComp.PerifericosUtilizados)
                         {
                             if (perifericoMasPedido.ContainsKey(periferico))
                             {
@@ -322,21 +327,21 @@ namespace Cyber
                 buffer.AppendLine($"\n-----------------\n");
                 if (softwareMasPedido.Count > 0)
                 {
-                    buffer.AppendLine($"Software más popular:\n");
+                    buffer.AppendLine($"\nSoftware más popular:");
                     buffer.AppendJoin("\n", DeterminarElementoCompuFavorito(softwareMasPedido));
-                    buffer.Append("\n");
+                    buffer.Append('\n');
                 }
                 if (juegoMasPedido.Count > 0)
                 {
-                    buffer.AppendLine($"Juego/s más popular/es:\n");
+                    buffer.AppendLine($"\nJuego/s más popular/es:");
                     buffer.AppendJoin("\n", DeterminarElementoCompuFavorito(juegoMasPedido));
-                    buffer.Append("\n");
+                    buffer.Append('\n');
                 }
                 if (perifericoMasPedido.Count > 0)
                 {
-                    buffer.AppendLine($"Periferico/s más popular/es:\n");
+                    buffer.AppendLine($"\nPeriferico/s más popular/es:");
                     buffer.AppendJoin("\n", DeterminarElementoCompuFavorito(perifericoMasPedido));
-                    buffer.Append("\n");
+                    buffer.Append('\n');
                 }
                 
                 

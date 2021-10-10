@@ -37,7 +37,7 @@ namespace Cyber
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.AppendLine($"***{this.razonSocial}***");
+            buffer.AppendLine($"***{this.razonSocial.ToUpper()}***");
             buffer.AppendLine("-----------------");
             buffer.AppendLine($"ID EQUIPO: {sesionActual.Equipo.Id}");
             buffer.Append("TIPO: ");
@@ -50,6 +50,23 @@ namespace Cyber
             }
             buffer.AppendLine($"\nUSUARIO: {sesionActual.UsuarioActual.Nombre} {sesionActual.UsuarioActual.Apellido}");
             buffer.AppendLine("-----------------");
+            if (sesionActual is SesionCabina)
+            {
+                SesionCabina auxSesionCabina = (SesionCabina)sesionActual;
+                buffer.Append("TIPO DE LLAMADA: ");
+                switch (auxSesionCabina.TipoLlamada)
+                {
+                    case Personas.ClienteDeTelefono.TipoLlamada.Local:
+                        buffer.Append("LOCAL\n");
+                        break;
+                    case Personas.ClienteDeTelefono.TipoLlamada.LargaDistancia:
+                        buffer.Append("LARGA DISTANCIA\n");
+                        break;
+                    case Personas.ClienteDeTelefono.TipoLlamada.Internacional:
+                        buffer.Append("INTERNACIONAL\n");
+                        break;
+                }
+            }
             buffer.AppendLine($"TIEMPO DE USO: {sesionActual.CalcularMinutosPasados()} minutos -------- ${sesionActual.CostoTotal}");
             if (sesionActual.CarritoDeCompras.Count > 0)
             {
@@ -63,7 +80,7 @@ namespace Cyber
             return $"{buffer}";
         }
 
-        private void btnSobreFacturar_Click(object sender, EventArgs e)
+        private void BtnSobreFacturar_Click(object sender, EventArgs e)
         {
             ArchivosMedia.ReproducirSonidoSobreFactura();
             DialogResult resultado = MessageBox.Show("¿Seguro quiere sobrefacturar? Esto es moralmente reprochable y si el cliente se da cuenta se puede enojar", "Sobrefacturar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);

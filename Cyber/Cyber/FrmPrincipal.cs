@@ -106,7 +106,7 @@ namespace Cyber
             }
         }
 
-        private void buttonMostrarEquipo_Click(object sender, EventArgs e)
+        private void ButtonMostrarEquipo_Click(object sender, EventArgs e)
         {
             
             foreach (Control item in groupBoxEquipos.Controls)
@@ -116,8 +116,8 @@ namespace Cyber
                     RadioButton auxRadioButton = (RadioButton)item;
                     if (auxRadioButton.Checked == true)
                     {
-                        FrmVerEquipo form2 = new FrmVerEquipo(cyber1, item.Tag.ToString(), this);
-                        form2.ShowDialog();
+                        FrmVerEquipo formVerEquipo = new FrmVerEquipo(cyber1, item.Tag.ToString(), this);
+                        formVerEquipo.ShowDialog();
                     }
                 }
                 
@@ -125,7 +125,7 @@ namespace Cyber
             
         }
 
-        private void buttonEcharCliente_Click(object sender, EventArgs e)
+        private void ButtonEcharCliente_Click(object sender, EventArgs e)
         {
             
             if (cyber1.ColaClientes.Count > 0)
@@ -145,7 +145,7 @@ namespace Cyber
 
         }
 
-        private void buttonAsignar_Click(object sender, EventArgs e)
+        private void ButtonAsignar_Click(object sender, EventArgs e)
         {
            
             int respuesta = 0;
@@ -172,7 +172,14 @@ namespace Cyber
 
                 if (respuesta == 1 || respuesta == 2)
                 {
-                    richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+                    if (cyber1.ColaClientes.Count > 0)
+                    {
+                        richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+                    } else
+                    {
+                        richTextBoxDatosCliente.Text = "No hay más clientes";
+                    }
+                    
                     cyber1.BuscarEquipoPorId(idEquipo).EnUso = true;
                     this.ImprimirEtiquetaEquipo(idEquipo);
                     this.CambiarIconoEquipo(idEquipo);
@@ -226,10 +233,10 @@ namespace Cyber
 
         }
 
-        private void buttonHist_Click(object sender, EventArgs e)
+        private void ButtonHist_Click(object sender, EventArgs e)
         {
             FrmHistorialGeneral formHistorial = new FrmHistorialGeneral(this.cyber1);
-            formHistorial.Show();
+            formHistorial.ShowDialog();
         }
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -250,7 +257,7 @@ namespace Cyber
                     {
                         e.Cancel = true;
                         sesionesEnCurso = true;
-                        MessageBox.Show("Aún hay sesiones abiertas. Ciérre todas las sesiones antes de salir","Alerta");
+                        MessageBox.Show("Aún hay sesiones abiertas. Los clientes no se pueden quedar a dormir. Cierre todas las sesiones antes de salir","Alerta");
                         break;
 
 
@@ -266,10 +273,10 @@ namespace Cyber
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            frmTutorial tutorial = new frmTutorial();
-            tutorial.Show();
+            FrmTutorial tutorial = new FrmTutorial();
+            tutorial.ShowDialog();
         }
     }
 }

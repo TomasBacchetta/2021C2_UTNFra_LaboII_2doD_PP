@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sesiones.Sesion">
+    <Position X="3.5" Y="0.5" Width="3.25" />
+    <NestedTypes>
+      <Enum Name="Sesiones.Sesion.Efecto" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Sesiones\Sesion.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>RUAAoEAAACAABIABAATAAQIAAIABEAAgCCBIAABAgAA=</HashCode>
+      <FileName>Sesiones\Sesion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sesiones.SesionCabina">
+    <Position X="8.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAQAAAAgAA=</HashCode>
+      <FileName>Sesiones\SesionCabina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sesiones.SesionComputadora">
+    <Position X="8.25" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAgAAAgAACAAQAAAIAAAQAgAgAQAAQAAAA=</HashCode>
+      <FileName>Sesiones\SesionComputadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

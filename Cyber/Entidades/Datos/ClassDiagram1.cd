@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Datos.Carga">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Datos\Carga.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.ApellidosPersonas">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACCAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datos\ApellidosPersonas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.Cpus">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAEA=</HashCode>
+      <FileName>Datos\Cpus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.Juegos">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAACAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datos\Juegos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.MarcasTelefono">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAIAAAA=</HashCode>
+      <FileName>Datos\MarcasTelefono.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.MemoriasRam">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAgAAAAQAAAAAA=</HashCode>
+      <FileName>Datos\MemoriasRam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.NombresPersonas">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAIAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Datos\NombresPersonas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.NumeroTelefono">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datos\NumeroDeTelefono.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.Perifericos">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAIAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Datos\Perifericos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.PlacasDeVideo">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Datos\PlacasDeVideo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Datos.Programas">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAACAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datos\Programas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

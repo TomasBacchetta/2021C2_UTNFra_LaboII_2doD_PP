@@ -29,6 +29,7 @@ namespace Cyber
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.richTextBoxDatosEquipo = new System.Windows.Forms.RichTextBox();
             this.buttonTerminarSesion = new System.Windows.Forms.Button();
             this.richTextBoxProximoCliente = new System.Windows.Forms.RichTextBox();
@@ -37,7 +38,14 @@ namespace Cyber
             this.pictureBoxJack = new System.Windows.Forms.PictureBox();
             this.labelFelicidad = new System.Windows.Forms.Label();
             this.btnComprarProd = new System.Windows.Forms.Button();
+            this.lblEfectos = new System.Windows.Forms.Label();
+            this.pctChino = new System.Windows.Forms.PictureBox();
+            this.pctTabaco = new System.Windows.Forms.PictureBox();
+            this.toolTipEfectoChino = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipEfectoTabaco = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxJack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctChino)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTabaco)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBoxDatosEquipo
@@ -51,13 +59,13 @@ namespace Cyber
             // 
             // buttonTerminarSesion
             // 
-            this.buttonTerminarSesion.Location = new System.Drawing.Point(268, 66);
+            this.buttonTerminarSesion.Location = new System.Drawing.Point(268, 89);
             this.buttonTerminarSesion.Name = "buttonTerminarSesion";
             this.buttonTerminarSesion.Size = new System.Drawing.Size(146, 74);
             this.buttonTerminarSesion.TabIndex = 1;
-            this.buttonTerminarSesion.Text = "Terminar Sesión";
+            this.buttonTerminarSesion.Text = "Cerrar Sesión";
             this.buttonTerminarSesion.UseVisualStyleBackColor = true;
-            this.buttonTerminarSesion.Click += new System.EventHandler(this.buttonTerminarSesion_Click);
+            this.buttonTerminarSesion.Click += new System.EventHandler(this.ButtonTerminarSesion_Click);
             // 
             // richTextBoxProximoCliente
             // 
@@ -85,7 +93,7 @@ namespace Cyber
             this.buttonHistorialSesiones.TabIndex = 4;
             this.buttonHistorialSesiones.Text = "Ver historial";
             this.buttonHistorialSesiones.UseVisualStyleBackColor = true;
-            this.buttonHistorialSesiones.Click += new System.EventHandler(this.buttonHistorialSesiones_Click);
+            this.buttonHistorialSesiones.Click += new System.EventHandler(this.ButtonHistorialSesiones_Click);
             // 
             // pictureBoxJack
             // 
@@ -115,13 +123,49 @@ namespace Cyber
             this.btnComprarProd.TabIndex = 8;
             this.btnComprarProd.Text = "Comprar Productos";
             this.btnComprarProd.UseVisualStyleBackColor = true;
-            this.btnComprarProd.Click += new System.EventHandler(this.btnComprarProd_Click);
+            this.btnComprarProd.Click += new System.EventHandler(this.BtnComprarProd_Click);
+            // 
+            // lblEfectos
+            // 
+            this.lblEfectos.AutoSize = true;
+            this.lblEfectos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblEfectos.Location = new System.Drawing.Point(275, 9);
+            this.lblEfectos.Name = "lblEfectos";
+            this.lblEfectos.Size = new System.Drawing.Size(64, 20);
+            this.lblEfectos.TabIndex = 9;
+            this.lblEfectos.Text = "Efectos:";
+            this.lblEfectos.Visible = false;
+            // 
+            // pctChino
+            // 
+            this.pctChino.BackgroundImage = global::Cyber.Properties.Resources.efectoBebidaChina1;
+            this.pctChino.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctChino.Location = new System.Drawing.Point(275, 32);
+            this.pctChino.Name = "pctChino";
+            this.pctChino.Size = new System.Drawing.Size(47, 43);
+            this.pctChino.TabIndex = 10;
+            this.pctChino.TabStop = false;
+            this.pctChino.Visible = false;
+            // 
+            // pctTabaco
+            // 
+            this.pctTabaco.BackgroundImage = global::Cyber.Properties.Resources.efectoTabaco;
+            this.pctTabaco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctTabaco.Location = new System.Drawing.Point(336, 32);
+            this.pctTabaco.Name = "pctTabaco";
+            this.pctTabaco.Size = new System.Drawing.Size(47, 43);
+            this.pctTabaco.TabIndex = 11;
+            this.pctTabaco.TabStop = false;
+            this.pctTabaco.Visible = false;
             // 
             // FrmVerEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 544);
+            this.Controls.Add(this.pctTabaco);
+            this.Controls.Add(this.pctChino);
+            this.Controls.Add(this.lblEfectos);
             this.Controls.Add(this.btnComprarProd);
             this.Controls.Add(this.labelFelicidad);
             this.Controls.Add(this.pictureBoxJack);
@@ -130,11 +174,14 @@ namespace Cyber
             this.Controls.Add(this.richTextBoxProximoCliente);
             this.Controls.Add(this.buttonTerminarSesion);
             this.Controls.Add(this.richTextBoxDatosEquipo);
+            this.MaximizeBox = false;
             this.Name = "FrmVerEquipo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerEquipo";
             this.Load += new System.EventHandler(this.FrmVerEquipo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxJack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctChino)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctTabaco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,5 +197,10 @@ namespace Cyber
         private System.Windows.Forms.PictureBox pictureBoxJack;
         private System.Windows.Forms.Label labelFelicidad;
         private System.Windows.Forms.Button btnComprarProd;
+        private System.Windows.Forms.Label lblEfectos;
+        private System.Windows.Forms.PictureBox pctChino;
+        private System.Windows.Forms.PictureBox pctTabaco;
+        private System.Windows.Forms.ToolTip toolTipEfectoChino;
+        private System.Windows.Forms.ToolTip toolTipEfectoTabaco;
     }
 }
