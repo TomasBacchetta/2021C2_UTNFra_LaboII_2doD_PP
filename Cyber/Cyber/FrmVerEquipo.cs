@@ -65,7 +65,7 @@ namespace Cyber
                 sesionActual.EnCurso = false;
                 ArchivosMedia.ReproducirSonidoFacturacion();
                 //MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
-                FrmFactura factura = new FrmFactura(sesionActual);
+                FrmFactura factura = new FrmFactura(sesionActual, cyber1.RazonSocial);
                 factura.Show();
                 cyber1.BuscarEquipoPorId(idEquipo).EnUso = false;
                 
@@ -78,15 +78,13 @@ namespace Cyber
                     if (cyber1.ObtenerSubColaClientes(idEquipo).Count == 0)
                     {
                         richTextBoxProximoCliente.Text = "";
+                       
                     } else
                     {
                         richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
                     }
                   
-                } else
-                {
-                    cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina = Equipo.Efecto.Ninguno; //limpia los efectos del equipo cuando ya no queda nadie en la subcola
-                }
+                } 
 
 
 
@@ -118,6 +116,7 @@ namespace Cyber
                 btnComprarProd.Enabled = false;
                 pictureBoxJack.Visible = false;
                 labelFelicidad.Visible = false;
+                cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina = Equipo.Efecto.Ninguno; //limpia los efectos del equipo cuando ya no queda nadie en la subcola
             }
         }
         

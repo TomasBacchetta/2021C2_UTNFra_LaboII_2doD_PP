@@ -19,7 +19,24 @@ namespace Negocio
         private List<Sesion> sesiones;
         private Dictionary<string, Queue<Cliente>> subColaClientes;
         private Dictionary<TipoConsumible, Queue<Consumible>> listaProductos;
+        private string nombre;
+        private string razonSocial;
 
+        public string Nombre
+        {
+            get
+            {
+                return this.nombre;
+            }
+        }
+
+        public string RazonSocial
+        {
+            get
+            {
+                return this.razonSocial;
+            }
+        }
         public Dictionary<TipoConsumible, Queue<Consumible>> ListaProductos
         {
             get
@@ -73,7 +90,7 @@ namespace Negocio
                 return this.cantidadClientes;
             }
         }
-        public CyberCafe(int cantidadComputadoras, int cantidadCabinas, int cantidadClientes)
+        public CyberCafe(int cantidadComputadoras, int cantidadCabinas, int cantidadClientes, string nombre, string razonSocial)
         {
             this.listaEquipos = new List<Equipo>();
             this.colaClientes = new Queue<Cliente>();
@@ -82,7 +99,8 @@ namespace Negocio
             this.cantidadClientes = cantidadClientes;
             this.sesiones = new List<Sesion>();
             this.subColaClientes = new Dictionary<string, Queue<Cliente>>();
-            
+            this.nombre = nombre;
+            this.razonSocial = razonSocial;
             this.CargarEquipos();
             this.CargarColaClientes();
             this.CargarSubColaClientes();
@@ -333,7 +351,7 @@ namespace Negocio
         {
 
             Equipo auxEquipo = BuscarEquipoPorId(idEquipo);
-
+            //comprueba si concuerda el tipo de equipo con lo que el cliente está buscando
             if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Cabina && this.ObtenerProximoCliente().TipoDeCliente == Cliente.TipoCliente.ClienteTelefono ||
                  auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora && this.ObtenerProximoCliente().TipoDeCliente == Cliente.TipoCliente.ClienteComputadora)
             {
@@ -341,12 +359,16 @@ namespace Negocio
                 {
                     if ((Computadora)auxEquipo == this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
                     {
+                        
                         this.CargarClienteEnSubCola(idEquipo);
                         if (auxEquipo.EnUso == false)
                         {
                             this.CargarSesionNueva(auxEquipo);
                             this.subColaClientes[idEquipo].Dequeue();
 
+                        } else
+                        {
+                            this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
                         }
                         this.colaClientes.Dequeue();
 
@@ -360,12 +382,16 @@ namespace Negocio
                 {
                     if ((Cabina)auxEquipo == ObtenerProximoCliente())
                     {
+                        
                         this.CargarClienteEnSubCola(idEquipo);
                         if (auxEquipo.EnUso == false)
                         {
                             this.CargarSesionNueva(auxEquipo);
                             this.subColaClientes[idEquipo].Dequeue();
 
+                        } else
+                        {
+                            this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
                         }
                         this.colaClientes.Dequeue();
                     } else
@@ -379,6 +405,15 @@ namespace Negocio
                 
             }
             return -2;//el equipo no era el indicado para el cliente
+        }
+
+        private void AjustarPuntosDeFelicidad(string idEquipo, Cliente cliente)
+        {
+            cliente.PuntosDeFelicidad -= this.subColaClientes[idEquipo].Count;
+            if (cliente.PuntosDeFelicidad < 0)
+            {
+                cliente.PuntosDeFelicidad = 0;
+            }
         }
 
         public Cliente ObtenerProximoCliente()

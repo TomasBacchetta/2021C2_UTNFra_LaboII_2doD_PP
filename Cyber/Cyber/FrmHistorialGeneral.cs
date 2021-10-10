@@ -204,7 +204,7 @@ namespace Cyber
             {
                 if (!sesion.EnCurso)
                 {
-                    gananciasTotales += sesion.CostoTotal;
+                    gananciasTotales += sesion.CostoFinal;
 
 
                     if (sesion.GetType() == typeof(SesionCabina))//si la sesion es de tipo de cabina
@@ -217,11 +217,11 @@ namespace Cyber
                         tiempoTotalCabina += sesion.TiempoPasado;
                         if (recaudacionPorTipoLlamada.ContainsKey(sesion.TipoLlamada))
                         {
-                            recaudacionPorTipoLlamada[sesion.TipoLlamada] += sesion.CostoTotal;
+                            recaudacionPorTipoLlamada[sesion.TipoLlamada] += sesion.CostoFinal;
                         }
                         else
                         {
-                            recaudacionPorTipoLlamada.Add(sesion.TipoLlamada, sesion.CostoTotal);
+                            recaudacionPorTipoLlamada.Add(sesion.TipoLlamada, sesion.CostoFinal);
                         }
 
                         if (cabinasPorTiempo.ContainsKey(sesion.IdEquipo))
@@ -293,8 +293,8 @@ namespace Cyber
                 
             }
             
-            buffer.AppendLine($"Ganancias Totales: ${gananciasTotales}");
-            buffer.AppendLine($"\n-----------------\n");
+            buffer.AppendFormat("\nGanancias Totales: ${0:0.00}\n", gananciasTotales);
+            buffer.AppendLine($"-----------------\n");
             if (esCabina)
             {
                 buffer.AppendFormat($"Horas totales de uso de las cabinas: {tiempoTotalCabina} minutos\n");
@@ -302,15 +302,15 @@ namespace Cyber
                 buffer.AppendLine($"Recaudacion por tipo de llamada: ");
                 if (recaudacionPorTipoLlamada.ContainsKey(TipoLlamada.Local))
                 {
-                    buffer.AppendLine($"-Local: ${recaudacionPorTipoLlamada[TipoLlamada.Local]}");
+                    buffer.AppendFormat("\n-Local: ${0:0.00}", recaudacionPorTipoLlamada[TipoLlamada.Local]);
                 }
                 if (recaudacionPorTipoLlamada.ContainsKey(TipoLlamada.LargaDistancia))
                 {
-                    buffer.AppendLine($"-Larga distancia: ${recaudacionPorTipoLlamada[TipoLlamada.LargaDistancia]}");
+                    buffer.AppendFormat("\n-Larga distancia: ${0:0.00}", recaudacionPorTipoLlamada[TipoLlamada.LargaDistancia]);
                 }
                 if (recaudacionPorTipoLlamada.ContainsKey(TipoLlamada.Internacional))
                 {
-                    buffer.AppendLine($"-Internacional: ${recaudacionPorTipoLlamada[TipoLlamada.Internacional]}");
+                    buffer.AppendFormat("\n-Internacional: ${0:0.00}", recaudacionPorTipoLlamada[TipoLlamada.Internacional]);
                 }
                 
                 buffer.AppendLine($"\n-----------------\n");
@@ -340,7 +340,7 @@ namespace Cyber
                 }
                 
                 
-                buffer.AppendLine($"\n-----------------\n");
+                buffer.AppendLine($"-----------------\n");
 
                 
             }

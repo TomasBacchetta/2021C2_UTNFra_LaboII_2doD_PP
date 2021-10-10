@@ -18,16 +18,21 @@ namespace Cyber
 {
     public partial class FrmPrincipal : Form
     {
-        CyberCafe cyber1 = new CyberCafe(10, 5, 50);
-        public FrmPrincipal()
+        CyberCafe cyber1;
+        Form formAnterior;
+        public FrmPrincipal(CyberCafe cyber, Form formAnterior)
         {
             InitializeComponent();
+            this.cyber1 = cyber;
+            this.formAnterior = formAnterior;
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             int indiceRadio = 0;
             int indiceImagen = 0;
+            ArchivosMedia.ReproducirSonidoFormPrincipal();
+            lblInfo.Text = $"{cyber1.Nombre} - {DateTime.Now}";
             foreach (Control item in groupBoxEquipos.Controls)
             {
                 if (item is RadioButton)
@@ -225,6 +230,46 @@ namespace Cyber
         {
             FrmHistorialGeneral formHistorial = new FrmHistorialGeneral(this.cyber1);
             formHistorial.Show();
+        }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            bool sesionesEnCurso = false;
+            DialogResult resultado = MessageBox.Show("¿Seguro de querer salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resultado == DialogResult.No)
+            {
+                e.Cancel = true;
+            } else
+            {
+                
+                foreach (Sesion item in cyber1.Sesiones)
+                {
+                    if (item.EnCurso)
+                    {
+                        e.Cancel = true;
+                        sesionesEnCurso = true;
+                        MessageBox.Show("Aún hay sesiones abiertas. Ciérre todas las sesiones antes de salir","Alerta");
+                        break;
+
+
+                    }
+
+                }
+                if (!sesionesEnCurso)
+                {
+                    formAnterior.Close();
+                }
+            }
+            
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmTutorial tutorial = new frmTutorial();
+            tutorial.Show();
         }
     }
 }

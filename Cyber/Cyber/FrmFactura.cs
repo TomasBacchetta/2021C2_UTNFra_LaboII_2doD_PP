@@ -15,10 +15,12 @@ namespace Cyber
     public partial class FrmFactura : Form
     {
         Sesion sesionActual;
-        public FrmFactura(Sesion sesionActual)
+        string razonSocial;
+        public FrmFactura(Sesion sesionActual, string razonSocial)
         {
             InitializeComponent();
             this.sesionActual = sesionActual;
+            this.razonSocial = razonSocial;
         }
 
         private void FrmFactura_Load(object sender, EventArgs e)
@@ -35,10 +37,10 @@ namespace Cyber
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.AppendLine("CYBER SRL");
+            buffer.AppendLine($"***{this.razonSocial}***");
             buffer.AppendLine("-----------------");
             buffer.AppendLine($"ID EQUIPO: {sesionActual.Equipo.Id}");
-            buffer.AppendLine("TIPO: ");
+            buffer.Append("TIPO: ");
             if (sesionActual.Equipo.TipoDeEquipo == Equipos.Equipo.TipoEquipo.Computadora)
             {
                 buffer.Append("COMPUTADORA");
@@ -59,6 +61,31 @@ namespace Cyber
             buffer.AppendFormat("\nCOSTO TOTAL CON I.V.A 21%: ----${0:0.00}", sesionActual.CostoFinal);
 
             return $"{buffer}";
+        }
+
+        private void btnSobreFacturar_Click(object sender, EventArgs e)
+        {
+            ArchivosMedia.ReproducirSonidoSobreFactura();
+            DialogResult resultado = MessageBox.Show("¿Seguro quiere sobrefacturar? Esto es moralmente reprochable y si el cliente se da cuenta se puede enojar", "Sobrefacturar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Random num = new Random();
+                if (num.Next(0,2) > 0)// 1/2 de poder sobrefacturar
+                {
+                    sesionActual.CostoFinal *= 3;
+                    rtbFactura.Text = ImprimirFactura();
+                    ArchivosMedia.ReproducirSonidoSobreFactExitosa();
+                    MessageBox.Show("¡Sobrefactura lograda exito! Se triplicó la facturación. El jefe y Lucifer estarán contentos.", "¡Excelente!");
+                } else
+                {
+                    ArchivosMedia.ReproducirSonidoSobreFactFracasada();
+                    MessageBox.Show("¡El cliente se dio cuenta! Para que no se enoje, no se le cobrará esta sesión", "¡Cáspita!");
+                    sesionActual.CostoFinal = 0;
+                    rtbFactura.Text = ImprimirFactura();
+                }
+            }
+            btnSobreFacturar.Visible = false;
         }
     }
 }

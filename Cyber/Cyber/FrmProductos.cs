@@ -127,7 +127,7 @@ namespace Cyber
             {
                 if (item is CheckBox && ((CheckBox)item).Checked && item.Enabled)
                 {
-                    if ((TipoConsumible)item.Tag == TipoConsumible.BebidaChina)
+                    if ((TipoConsumible)item.Tag == TipoConsumible.BebidaChina && sesionActual.EfectoActual == Sesion.Efecto.BebidaChina)
                     {
                         costoEnFelicidad += cyber.ObtenerProductoPorTipo((TipoConsumible)item.Tag).CostoFelicidad - 5;
                     } else
@@ -167,12 +167,12 @@ namespace Cyber
                             break;
                         case TipoConsumible.BebidaAlcoholica:
                             ArchivosMedia.ReproducirSonidoEfectoBebidaAlcoholica();
-                            MessageBox.Show("Tiene una chance del 60% de poder sobrefacturar esta sesión", "Efecto Alcohol Activado");
+                            MessageBox.Show("Tiene una chance del 50% de poder sobrefacturar esta sesión", "Efecto Alcohol Activado");
                             this.sesionActual.EfectoActual = Sesion.Efecto.Alcoholismo;
                             break;
                         case TipoConsumible.Cigarro:
                             ArchivosMedia.ReproducirSonidoEfectoCigarros();
-                            MessageBox.Show("A nadie le gusta ver cenineros usados en su equipo. Todos los clientes de la subcola verán su felicidad reducida en 4", "Efecto Cigarro Activado");
+                            MessageBox.Show("A nadie le gusta ver ceniceros usados en su equipo. Todos los clientes actuales de la subcola verán su felicidad reducida en 4", "Efecto Cigarro Activado");
                             cyber.BuscarEquipoPorId(this.formAnterior.idEquipo).EfectoDeLaMaquina = Equipos.Equipo.Efecto.Tabaco;
                             break;
 
@@ -181,14 +181,15 @@ namespace Cyber
                 }
                 if (algoComprado)
                 {
-                    ArchivosMedia.ReproducirSonidoFacturacion();
+                    ArchivosMedia.ReproducirSonidoComprar();
                 }
                 this.Close();
             }
             else
             {
-                MessageBox.Show("No alcanzan los puntos de felicidad");
                 ArchivosMedia.ReproducirSonidoProblema();
+                MessageBox.Show("No alcanzan los puntos de felicidad");
+                
             }
             
         }

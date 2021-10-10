@@ -33,6 +33,10 @@ namespace Sesiones
             {
                 return this.costoFinal;
             }
+            set
+            {
+                this.costoFinal = value;
+            }
         }
         public Efecto EfectoActual
         {
@@ -153,7 +157,7 @@ namespace Sesiones
             if (this.enCurso == false)
             {
                 buffer.AppendLine($"Duración de la sesión: {this.tiempoPasado} minutos");
-                buffer.AppendFormat("\nMonto facturado: {0:0.00}", this.CostoFinal);
+                buffer.AppendFormat("\nMonto facturado: ${0:0.00}\n", this.CostoFinal);
             }
             if (carritoDeCompras.Count > 0)
             {

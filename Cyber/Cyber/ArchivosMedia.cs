@@ -11,8 +11,13 @@ namespace Cyber
     {
         public static void ReproducirSonidoFacturacion()
         {
-            SoundPlayer sonidoFacturacion = new SoundPlayer(Cyber.Properties.Resources.cash2);
+            SoundPlayer sonidoFacturacion = new SoundPlayer(Cyber.Properties.Resources.sonidoFact1);
             sonidoFacturacion.Play();
+        }
+        public static void ReproducirSonidoComprar()
+        {
+            SoundPlayer sonidoComprar = new SoundPlayer(Cyber.Properties.Resources.cash2);
+            sonidoComprar.Play();
         }
 
         public static void ReproducirSonidoVerComputadora()
@@ -41,41 +46,73 @@ namespace Cyber
 
         public static void ReproducirSonidoHistorialEInformes()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.formHistorial);
-            sonidoHistorial.Play();
+            SoundPlayer sonidoInformes = new SoundPlayer(Cyber.Properties.Resources.formHistorial);
+            sonidoInformes.Play();
 
         }
         public static void ReproducirSonidoFormProductos()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.formProductos);
-            sonidoHistorial.Play();
+            SoundPlayer sonidoProductos = new SoundPlayer(Cyber.Properties.Resources.formProductos);
+            sonidoProductos.Play();
+
+        }
+
+        public static void ReproducirSonidoFormTutorial()
+        {
+            SoundPlayer sonidoTutorial = new SoundPlayer(Cyber.Properties.Resources.formTutorial);
+            sonidoTutorial.Play();
+
+        }
+        public static void ReproducirSonidoFormPrincipal()
+        {
+            SoundPlayer sonidoPrincipal = new SoundPlayer(Cyber.Properties.Resources.formPrincipal);
+            sonidoPrincipal.Play();
 
         }
 
         public static void ReproducirSonidoProblema()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.problema);
-            sonidoHistorial.Play();
+            SoundPlayer sonidoProblema = new SoundPlayer(Cyber.Properties.Resources.problema);
+            sonidoProblema.Play();
 
         }
 
         public static void ReproducirSonidoEfectoBebidaChina()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.efectoBebidaChina);
-            sonidoHistorial.Play();
+            SoundPlayer sonidoChino = new SoundPlayer(Cyber.Properties.Resources.efectoBebidaChina);
+            sonidoChino.Play();
 
         }
 
         public static void ReproducirSonidoEfectoBebidaAlcoholica()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.efectoAlcohol);
-            sonidoHistorial.Play();
+            SoundPlayer sonidoAlcohol = new SoundPlayer(Cyber.Properties.Resources.efectoAlcohol);
+            sonidoAlcohol.Play();
 
         }
         public static void ReproducirSonidoEfectoCigarros()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.efectoCigarrillo);
-            sonidoHistorial.Play();
+            SoundPlayer sonidoCigarros = new SoundPlayer(Cyber.Properties.Resources.efectoCigarrillo);
+            sonidoCigarros.Play();
+
+        }
+
+        public static void ReproducirSonidoSobreFactura()
+        {
+            SoundPlayer sonidoSobreFact = new SoundPlayer(Cyber.Properties.Resources.sobreFactura);
+            sonidoSobreFact.Play();
+
+        }
+        public static void ReproducirSonidoSobreFactExitosa()
+        {
+            SoundPlayer sonidoSobreFactExito = new SoundPlayer(Cyber.Properties.Resources.sobrefactExito);
+            sonidoSobreFactExito.Play();
+
+        }
+        public static void ReproducirSonidoSobreFactFracasada()
+        {
+            SoundPlayer sonidoSobreFactFracaso = new SoundPlayer(Cyber.Properties.Resources.sobrefactFracaso);
+            sonidoSobreFactFracaso.Play();
 
         }
 

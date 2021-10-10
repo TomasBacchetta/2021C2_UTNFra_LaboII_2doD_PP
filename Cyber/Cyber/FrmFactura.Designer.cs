@@ -51,6 +51,7 @@ namespace Cyber
             this.btnSobreFacturar.TabIndex = 1;
             this.btnSobreFacturar.Text = "Sobre Facturar";
             this.btnSobreFacturar.UseVisualStyleBackColor = true;
+            this.btnSobreFacturar.Click += new System.EventHandler(this.btnSobreFacturar_Click);
             // 
             // FrmFactura
             // 
