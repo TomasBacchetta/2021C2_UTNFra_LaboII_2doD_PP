@@ -134,24 +134,27 @@ namespace Personas
             StringBuilder buffer = new StringBuilder();
             if (this.programasFavoritos.Count > 0)
             {
+                buffer.AppendLine($"\n-----------------");
                 buffer.AppendLine($"\nProgramas favoritos:");
                 foreach (string item in this.programasFavoritos)
                 {
                     buffer.AppendLine($"{item} ");
                 }
-                buffer.Append($"------\n");
+                
             }
             if (this.juegosFavoritos.Count > 0)
             {
+                buffer.AppendLine($"\n-----------------");
                 buffer.AppendLine($"Juegos favoritos:");
                 foreach (string item in this.juegosFavoritos)
                 {
                     buffer.AppendLine($"{item} ");
                 }
-                buffer.Append($"-------\n");
+                
             }
             if (this.perifericosFavoritos.Count > 0)
             {
+                buffer.AppendLine($"\n-----------------");
                 buffer.AppendLine($"Periféricos favoritos:");
                 foreach (string item in this.perifericosFavoritos)
                 {

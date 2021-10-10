@@ -168,6 +168,33 @@ namespace Cyber.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream efectoAlcohol {
+            get {
+                return ResourceManager.GetStream("efectoAlcohol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream efectoBebidaChina {
+            get {
+                return ResourceManager.GetStream("efectoBebidaChina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream efectoCigarrillo {
+            get {
+                return ResourceManager.GetStream("efectoCigarrillo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap fondoCabina {
@@ -204,6 +231,24 @@ namespace Cyber.Properties {
             get {
                 object obj = ResourceManager.GetObject("fondoProductos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream formHistorial {
+            get {
+                return ResourceManager.GetStream("formHistorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream formProductos {
+            get {
+                return ResourceManager.GetStream("formProductos", resourceCulture);
             }
         }
         
@@ -262,6 +307,15 @@ namespace Cyber.Properties {
             get {
                 object obj = ResourceManager.GetObject("pcOCUPADA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream problema {
+            get {
+                return ResourceManager.GetStream("problema", resourceCulture);
             }
         }
         

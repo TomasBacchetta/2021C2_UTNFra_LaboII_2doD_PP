@@ -49,14 +49,14 @@ namespace Cyber
             this.lblCostoCigarro = new System.Windows.Forms.Label();
             this.lblCostoBebidaAlcoh = new System.Windows.Forms.Label();
             this.lblCostoConfitura = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBebChina = new System.Windows.Forms.CheckBox();
+            this.checkBoxCoquita = new System.Windows.Forms.CheckBox();
+            this.checkBoxCigarro = new System.Windows.Forms.CheckBox();
+            this.checkBoxBebidaAlcoh = new System.Windows.Forms.CheckBox();
+            this.checkBoxConfitu = new System.Windows.Forms.CheckBox();
             this.btnComprar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelFelicidad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictBebidaChina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBebidaCoquita)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBebidaCigarros)).BeginInit();
@@ -68,15 +68,15 @@ namespace Cyber
             // 
             this.pictBebidaChina.Location = new System.Drawing.Point(47, 50);
             this.pictBebidaChina.Name = "pictBebidaChina";
-            this.pictBebidaChina.Size = new System.Drawing.Size(82, 67);
+            this.pictBebidaChina.Size = new System.Drawing.Size(82, 94);
             this.pictBebidaChina.TabIndex = 0;
             this.pictBebidaChina.TabStop = false;
             // 
             // pictBebidaCoquita
             // 
-            this.pictBebidaCoquita.Location = new System.Drawing.Point(47, 166);
+            this.pictBebidaCoquita.Location = new System.Drawing.Point(47, 171);
             this.pictBebidaCoquita.Name = "pictBebidaCoquita";
-            this.pictBebidaCoquita.Size = new System.Drawing.Size(82, 67);
+            this.pictBebidaCoquita.Size = new System.Drawing.Size(82, 82);
             this.pictBebidaCoquita.TabIndex = 1;
             this.pictBebidaCoquita.TabStop = false;
             // 
@@ -84,7 +84,7 @@ namespace Cyber
             // 
             this.pictBebidaCigarros.Location = new System.Drawing.Point(47, 280);
             this.pictBebidaCigarros.Name = "pictBebidaCigarros";
-            this.pictBebidaCigarros.Size = new System.Drawing.Size(82, 67);
+            this.pictBebidaCigarros.Size = new System.Drawing.Size(82, 86);
             this.pictBebidaCigarros.TabIndex = 2;
             this.pictBebidaCigarros.TabStop = false;
             // 
@@ -92,15 +92,15 @@ namespace Cyber
             // 
             this.pictBebidaAlcoh.Location = new System.Drawing.Point(47, 386);
             this.pictBebidaAlcoh.Name = "pictBebidaAlcoh";
-            this.pictBebidaAlcoh.Size = new System.Drawing.Size(82, 67);
+            this.pictBebidaAlcoh.Size = new System.Drawing.Size(82, 89);
             this.pictBebidaAlcoh.TabIndex = 3;
             this.pictBebidaAlcoh.TabStop = false;
             // 
             // pictBebidaConfitura
             // 
-            this.pictBebidaConfitura.Location = new System.Drawing.Point(47, 493);
+            this.pictBebidaConfitura.Location = new System.Drawing.Point(47, 503);
             this.pictBebidaConfitura.Name = "pictBebidaConfitura";
-            this.pictBebidaConfitura.Size = new System.Drawing.Size(82, 67);
+            this.pictBebidaConfitura.Size = new System.Drawing.Size(82, 85);
             this.pictBebidaConfitura.TabIndex = 4;
             this.pictBebidaConfitura.TabStop = false;
             // 
@@ -111,18 +111,18 @@ namespace Cyber
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(138, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 21);
+            this.label1.Size = new System.Drawing.Size(170, 21);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Bebida China";
+            this.label1.Text = "Bebida China Mística";
             // 
             // lblDescChina
             // 
             this.lblDescChina.AutoSize = true;
             this.lblDescChina.BackColor = System.Drawing.Color.Silver;
-            this.lblDescChina.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblDescChina.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblDescChina.Location = new System.Drawing.Point(138, 84);
             this.lblDescChina.Name = "lblDescChina";
-            this.lblDescChina.Size = new System.Drawing.Size(31, 12);
+            this.lblDescChina.Size = new System.Drawing.Size(36, 13);
             this.lblDescChina.TabIndex = 6;
             this.lblDescChina.Text = "label2";
             // 
@@ -130,10 +130,10 @@ namespace Cyber
             // 
             this.lblDescCoquita.AutoSize = true;
             this.lblDescCoquita.BackColor = System.Drawing.Color.Silver;
-            this.lblDescCoquita.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lblDescCoquita.Location = new System.Drawing.Point(138, 198);
+            this.lblDescCoquita.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblDescCoquita.Location = new System.Drawing.Point(138, 203);
             this.lblDescCoquita.Name = "lblDescCoquita";
-            this.lblDescCoquita.Size = new System.Drawing.Size(31, 12);
+            this.lblDescCoquita.Size = new System.Drawing.Size(36, 13);
             this.lblDescCoquita.TabIndex = 8;
             this.lblDescCoquita.Text = "label3";
             // 
@@ -142,7 +142,7 @@ namespace Cyber
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Silver;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(138, 166);
+            this.label4.Location = new System.Drawing.Point(138, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 21);
             this.label4.TabIndex = 7;
@@ -152,10 +152,10 @@ namespace Cyber
             // 
             this.lblDescCigarro.AutoSize = true;
             this.lblDescCigarro.BackColor = System.Drawing.Color.Silver;
-            this.lblDescCigarro.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblDescCigarro.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblDescCigarro.Location = new System.Drawing.Point(138, 312);
             this.lblDescCigarro.Name = "lblDescCigarro";
-            this.lblDescCigarro.Size = new System.Drawing.Size(31, 12);
+            this.lblDescCigarro.Size = new System.Drawing.Size(36, 13);
             this.lblDescCigarro.TabIndex = 10;
             this.lblDescCigarro.Text = "label5";
             // 
@@ -174,10 +174,10 @@ namespace Cyber
             // 
             this.lblDescAlcohol.AutoSize = true;
             this.lblDescAlcohol.BackColor = System.Drawing.Color.Silver;
-            this.lblDescAlcohol.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lblDescAlcohol.Location = new System.Drawing.Point(138, 419);
+            this.lblDescAlcohol.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblDescAlcohol.Location = new System.Drawing.Point(138, 411);
             this.lblDescAlcohol.Name = "lblDescAlcohol";
-            this.lblDescAlcohol.Size = new System.Drawing.Size(31, 12);
+            this.lblDescAlcohol.Size = new System.Drawing.Size(36, 13);
             this.lblDescAlcohol.TabIndex = 12;
             this.lblDescAlcohol.Text = "label7";
             // 
@@ -196,10 +196,10 @@ namespace Cyber
             // 
             this.lblDescConfitu.AutoSize = true;
             this.lblDescConfitu.BackColor = System.Drawing.Color.Silver;
-            this.lblDescConfitu.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lblDescConfitu.Location = new System.Drawing.Point(138, 520);
+            this.lblDescConfitu.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblDescConfitu.Location = new System.Drawing.Point(138, 531);
             this.lblDescConfitu.Name = "lblDescConfitu";
-            this.lblDescConfitu.Size = new System.Drawing.Size(31, 12);
+            this.lblDescConfitu.Size = new System.Drawing.Size(36, 13);
             this.lblDescConfitu.TabIndex = 14;
             this.lblDescConfitu.Text = "label9";
             // 
@@ -208,7 +208,7 @@ namespace Cyber
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Silver;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(138, 493);
+            this.label10.Location = new System.Drawing.Point(138, 504);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 21);
             this.label10.TabIndex = 13;
@@ -218,7 +218,7 @@ namespace Cyber
             // 
             this.lblCostoBebidaChin.AutoSize = true;
             this.lblCostoBebidaChin.BackColor = System.Drawing.Color.Silver;
-            this.lblCostoBebidaChin.Location = new System.Drawing.Point(263, 55);
+            this.lblCostoBebidaChin.Location = new System.Drawing.Point(138, 140);
             this.lblCostoBebidaChin.Name = "lblCostoBebidaChin";
             this.lblCostoBebidaChin.Size = new System.Drawing.Size(43, 15);
             this.lblCostoBebidaChin.TabIndex = 15;
@@ -228,7 +228,7 @@ namespace Cyber
             // 
             this.lblCostoCoquita.AutoSize = true;
             this.lblCostoCoquita.BackColor = System.Drawing.Color.Silver;
-            this.lblCostoCoquita.Location = new System.Drawing.Point(214, 166);
+            this.lblCostoCoquita.Location = new System.Drawing.Point(138, 226);
             this.lblCostoCoquita.Name = "lblCostoCoquita";
             this.lblCostoCoquita.Size = new System.Drawing.Size(43, 15);
             this.lblCostoCoquita.TabIndex = 17;
@@ -238,7 +238,7 @@ namespace Cyber
             // 
             this.lblCostoCigarro.AutoSize = true;
             this.lblCostoCigarro.BackColor = System.Drawing.Color.Silver;
-            this.lblCostoCigarro.Location = new System.Drawing.Point(225, 280);
+            this.lblCostoCigarro.Location = new System.Drawing.Point(138, 351);
             this.lblCostoCigarro.Name = "lblCostoCigarro";
             this.lblCostoCigarro.Size = new System.Drawing.Size(43, 15);
             this.lblCostoCigarro.TabIndex = 19;
@@ -248,7 +248,7 @@ namespace Cyber
             // 
             this.lblCostoBebidaAlcoh.AutoSize = true;
             this.lblCostoBebidaAlcoh.BackColor = System.Drawing.Color.Silver;
-            this.lblCostoBebidaAlcoh.Location = new System.Drawing.Point(292, 386);
+            this.lblCostoBebidaAlcoh.Location = new System.Drawing.Point(138, 475);
             this.lblCostoBebidaAlcoh.Name = "lblCostoBebidaAlcoh";
             this.lblCostoBebidaAlcoh.Size = new System.Drawing.Size(43, 15);
             this.lblCostoBebidaAlcoh.TabIndex = 21;
@@ -258,66 +258,66 @@ namespace Cyber
             // 
             this.lblCostoConfitura.AutoSize = true;
             this.lblCostoConfitura.BackColor = System.Drawing.Color.Silver;
-            this.lblCostoConfitura.Location = new System.Drawing.Point(243, 493);
+            this.lblCostoConfitura.Location = new System.Drawing.Point(135, 556);
             this.lblCostoConfitura.Name = "lblCostoConfitura";
             this.lblCostoConfitura.Size = new System.Drawing.Size(43, 15);
             this.lblCostoConfitura.TabIndex = 23;
             this.lblCostoConfitura.Text = "Precio:";
             // 
-            // checkBox1
+            // checkBoxBebChina
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Silver;
-            this.checkBox1.Location = new System.Drawing.Point(424, 55);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(114, 19);
-            this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "Stock Disponible";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBoxBebChina.AutoSize = true;
+            this.checkBoxBebChina.BackColor = System.Drawing.Color.Silver;
+            this.checkBoxBebChina.Location = new System.Drawing.Point(424, 55);
+            this.checkBoxBebChina.Name = "checkBoxBebChina";
+            this.checkBoxBebChina.Size = new System.Drawing.Size(86, 19);
+            this.checkBoxBebChina.TabIndex = 24;
+            this.checkBoxBebChina.Text = "Seleccionar";
+            this.checkBoxBebChina.UseVisualStyleBackColor = false;
             // 
-            // checkBox2
+            // checkBoxCoquita
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.Color.Silver;
-            this.checkBox2.Location = new System.Drawing.Point(424, 170);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 19);
-            this.checkBox2.TabIndex = 25;
-            this.checkBox2.Text = "Stock Disponible";
-            this.checkBox2.UseVisualStyleBackColor = false;
+            this.checkBoxCoquita.AutoSize = true;
+            this.checkBoxCoquita.BackColor = System.Drawing.Color.Silver;
+            this.checkBoxCoquita.Location = new System.Drawing.Point(424, 170);
+            this.checkBoxCoquita.Name = "checkBoxCoquita";
+            this.checkBoxCoquita.Size = new System.Drawing.Size(86, 19);
+            this.checkBoxCoquita.TabIndex = 25;
+            this.checkBoxCoquita.Text = "Seleccionar";
+            this.checkBoxCoquita.UseVisualStyleBackColor = false;
             // 
-            // checkBox3
+            // checkBoxCigarro
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.BackColor = System.Drawing.Color.Silver;
-            this.checkBox3.Location = new System.Drawing.Point(424, 279);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(114, 19);
-            this.checkBox3.TabIndex = 26;
-            this.checkBox3.Text = "Stock Disponible";
-            this.checkBox3.UseVisualStyleBackColor = false;
+            this.checkBoxCigarro.AutoSize = true;
+            this.checkBoxCigarro.BackColor = System.Drawing.Color.Silver;
+            this.checkBoxCigarro.Location = new System.Drawing.Point(424, 279);
+            this.checkBoxCigarro.Name = "checkBoxCigarro";
+            this.checkBoxCigarro.Size = new System.Drawing.Size(86, 19);
+            this.checkBoxCigarro.TabIndex = 26;
+            this.checkBoxCigarro.Text = "Seleccionar";
+            this.checkBoxCigarro.UseVisualStyleBackColor = false;
             // 
-            // checkBox4
+            // checkBoxBebidaAlcoh
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.BackColor = System.Drawing.Color.Silver;
-            this.checkBox4.Location = new System.Drawing.Point(424, 385);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(114, 19);
-            this.checkBox4.TabIndex = 27;
-            this.checkBox4.Text = "Stock Disponible";
-            this.checkBox4.UseVisualStyleBackColor = false;
+            this.checkBoxBebidaAlcoh.AutoSize = true;
+            this.checkBoxBebidaAlcoh.BackColor = System.Drawing.Color.Silver;
+            this.checkBoxBebidaAlcoh.Location = new System.Drawing.Point(424, 385);
+            this.checkBoxBebidaAlcoh.Name = "checkBoxBebidaAlcoh";
+            this.checkBoxBebidaAlcoh.Size = new System.Drawing.Size(86, 19);
+            this.checkBoxBebidaAlcoh.TabIndex = 27;
+            this.checkBoxBebidaAlcoh.Text = "Seleccionar";
+            this.checkBoxBebidaAlcoh.UseVisualStyleBackColor = false;
             // 
-            // checkBox5
+            // checkBoxConfitu
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.BackColor = System.Drawing.Color.Silver;
-            this.checkBox5.Location = new System.Drawing.Point(424, 489);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(114, 19);
-            this.checkBox5.TabIndex = 28;
-            this.checkBox5.Text = "Stock Disponible";
-            this.checkBox5.UseVisualStyleBackColor = false;
+            this.checkBoxConfitu.AutoSize = true;
+            this.checkBoxConfitu.BackColor = System.Drawing.Color.Silver;
+            this.checkBoxConfitu.Location = new System.Drawing.Point(424, 489);
+            this.checkBoxConfitu.Name = "checkBoxConfitu";
+            this.checkBoxConfitu.Size = new System.Drawing.Size(86, 19);
+            this.checkBoxConfitu.TabIndex = 28;
+            this.checkBoxConfitu.Text = "Seleccionar";
+            this.checkBoxConfitu.UseVisualStyleBackColor = false;
             // 
             // btnComprar
             // 
@@ -327,6 +327,7 @@ namespace Cyber
             this.btnComprar.TabIndex = 29;
             this.btnComprar.Text = "Comprar";
             this.btnComprar.UseVisualStyleBackColor = true;
+            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
             // 
             // label11
             // 
@@ -337,29 +338,29 @@ namespace Cyber
             this.label11.TabIndex = 30;
             this.label11.Text = "Seleccione items a comprar:";
             // 
-            // label12
+            // labelFelicidad
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(47, 569);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(161, 21);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "Puntos de felicidad:";
+            this.labelFelicidad.AutoSize = true;
+            this.labelFelicidad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelFelicidad.Location = new System.Drawing.Point(47, 596);
+            this.labelFelicidad.Name = "labelFelicidad";
+            this.labelFelicidad.Size = new System.Drawing.Size(161, 21);
+            this.labelFelicidad.TabIndex = 31;
+            this.labelFelicidad.Text = "Puntos de felicidad:";
             // 
             // FrmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 624);
-            this.Controls.Add(this.label12);
+            this.ClientSize = new System.Drawing.Size(581, 634);
+            this.Controls.Add(this.labelFelicidad);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnComprar);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxConfitu);
+            this.Controls.Add(this.checkBoxBebidaAlcoh);
+            this.Controls.Add(this.checkBoxCigarro);
+            this.Controls.Add(this.checkBoxCoquita);
+            this.Controls.Add(this.checkBoxBebChina);
             this.Controls.Add(this.lblCostoConfitura);
             this.Controls.Add(this.lblCostoBebidaAlcoh);
             this.Controls.Add(this.lblCostoCigarro);
@@ -383,6 +384,7 @@ namespace Cyber
             this.Name = "FrmProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tienda de Productos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductos_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictBebidaChina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBebidaCoquita)).EndInit();
@@ -416,13 +418,13 @@ namespace Cyber
         private System.Windows.Forms.Label lblCostoCigarro;
         private System.Windows.Forms.Label lblCostoBebidaAlcoh;
         private System.Windows.Forms.Label lblCostoConfitura;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBoxBebChina;
+        private System.Windows.Forms.CheckBox checkBoxCoquita;
+        private System.Windows.Forms.CheckBox checkBoxCigarro;
+        private System.Windows.Forms.CheckBox checkBoxBebidaAlcoh;
+        private System.Windows.Forms.CheckBox checkBoxConfitu;
         private System.Windows.Forms.Button btnComprar;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelFelicidad;
     }
 }

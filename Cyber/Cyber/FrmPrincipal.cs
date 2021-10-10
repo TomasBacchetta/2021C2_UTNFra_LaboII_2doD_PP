@@ -76,7 +76,7 @@ namespace Cyber
                 {
                     PictureBox pict = (PictureBox)item;
                     Equipo auxEquipo = cyber1.BuscarEquipoPorId(idEquipo);
-                    if (auxEquipo.enUso == true)
+                    if (auxEquipo.EnUso == true)
                     {
                         if (auxEquipo.GetType() == typeof(Computadora))
                         {
@@ -168,7 +168,7 @@ namespace Cyber
                 if (respuesta == 1 || respuesta == 2)
                 {
                     richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
-                    cyber1.BuscarEquipoPorId(idEquipo).enUso = true;
+                    cyber1.BuscarEquipoPorId(idEquipo).EnUso = true;
                     this.ImprimirEtiquetaEquipo(idEquipo);
                     this.CambiarIconoEquipo(idEquipo);
                     ArchivosMedia.ReproducirSonidoAsignarCliente();
@@ -179,11 +179,15 @@ namespace Cyber
                 {
                     if (respuesta == -1)
                     {
+                        ArchivosMedia.ReproducirSonidoProblema();
                         MessageBox.Show("El equipo no cumple los requerimientos del cliente.");
+                        
                     }
                     else
                     {
+                        ArchivosMedia.ReproducirSonidoProblema();
                         MessageBox.Show("El cliente no vino para utilizar eso");
+                        
                     }
                 }
             }
@@ -195,7 +199,7 @@ namespace Cyber
         {
             string estado;
 
-            if (cyber1.BuscarEquipoPorId(idEquipo).enUso == true)
+            if (cyber1.BuscarEquipoPorId(idEquipo).EnUso == true)
             {
                 estado = "OCUPADO";
             } else

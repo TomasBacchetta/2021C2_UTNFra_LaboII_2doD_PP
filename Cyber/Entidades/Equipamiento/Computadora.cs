@@ -54,7 +54,7 @@ namespace Equipos
         {
             StringBuilder buffer = new StringBuilder();
 
-
+            buffer.AppendLine($"------------");
             buffer.AppendLine($"Lista de Software: ");
             foreach (string item in this.software)
             {

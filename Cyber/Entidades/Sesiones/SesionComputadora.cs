@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Personas;
 using Equipos;
-
+using Entidades;
 
 namespace Sesiones
 {
@@ -24,11 +24,20 @@ namespace Sesiones
             {
                 if (value == false)//la sesion se crea con este atributo en true, por lo que una vez cambiado nunca podra volver a ser true
                 {
+                    double costoGolosinas = 0;
                     this.enCurso = value;
                     this.tiempoFinUso = DateTime.Now;
                     this.tiempoPasado = this.CalcularMinutosPasados();
                     this.costoTotal = this.CalcularCosto();
-                    
+                    if (this.carritoDeCompras.Count > 0)
+                    {
+                        foreach (Consumible item in this.carritoDeCompras)
+                        {
+                            costoGolosinas += item.Precio;
+                        }
+                    }
+                    this.costoFinal = (costoTotal + costoGolosinas)*1.21;
+
                 }
 
             }
@@ -60,7 +69,7 @@ namespace Sesiones
 
 
 
-        public SesionComputadora(Cliente usuarioActual, Equipo equipo) : base(usuarioActual, equipo)
+        public SesionComputadora(Cliente usuarioActual, Equipo equipo, Efecto efectoActual) : base(usuarioActual, equipo, efectoActual)
         {
             this.softwareUtilizado = DeterminarProgramasUtilizados();
             this.juegosUtilizados = DeterminarJuegosUtilizados();

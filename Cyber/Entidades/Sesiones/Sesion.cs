@@ -4,22 +4,55 @@ using Equipos;
 using System.Text;
 using System.Collections.Generic;
 using static Personas.ClienteDeTelefono;
-
+using Entidades;
+using static Entidades.Consumible;
 
 namespace Sesiones
 {
-    public abstract class Sesion
+    public class Sesion
     {
+
+        public enum Efecto
+        {
+            Ninguno, BebidaChina, Tabaco, Alcoholismo
+        }
         protected Cliente usuarioActual;
         protected Equipo equipoEnUso;
         protected DateTime tiempoInicio;
         protected DateTime tiempoFinUso;
         protected long tiempoPasado;
         protected double costoTotal;
+        protected double costoFinal;
         protected bool enCurso;
+        protected List<Consumible> carritoDeCompras;
+        protected Efecto efectoActual;
         
-
-
+        public double CostoFinal
+        {
+            get
+            {
+                return this.costoFinal;
+            }
+        }
+        public Efecto EfectoActual
+        {
+            get
+            {
+                return this.efectoActual;
+            }
+            set
+            {
+                this.efectoActual = value;
+            }
+        }
+        public List<Consumible> CarritoDeCompras
+        {
+            get
+            {
+                return this.carritoDeCompras;
+            }
+            
+        }
         public Equipo Equipo
         {
             get
@@ -65,11 +98,11 @@ namespace Sesiones
         {
             get
             {
-                return this.TiempoFin;
+                return this.tiempoFinUso;
             }
             set
             {
-                this.TiempoFin = value;
+                this.tiempoFinUso = value;
                 
             }
         }
@@ -94,10 +127,10 @@ namespace Sesiones
 
 
 
-        public abstract bool EnCurso { get; set; }
+        public virtual bool EnCurso { get; set; }
        
         
-        public Sesion(Cliente usuarioActual, Equipo equipoEnUso)
+        public Sesion(Cliente usuarioActual, Equipo equipoEnUso, Efecto efectoActual)
         {
             this.usuarioActual = usuarioActual;
             this.equipoEnUso = equipoEnUso;
@@ -105,7 +138,10 @@ namespace Sesiones
             this.tiempoFinUso = DateTime.MaxValue;
             this.tiempoPasado = 0;
             this.enCurso = true;
-            costoTotal = 0;
+            this.carritoDeCompras = new List<Consumible>();
+            this.costoTotal = 0;
+            this.costoFinal = 0;
+            this.efectoActual = efectoActual;
         }
 
         public virtual string MostrarSesion()
@@ -117,11 +153,34 @@ namespace Sesiones
             if (this.enCurso == false)
             {
                 buffer.AppendLine($"Duración de la sesión: {this.tiempoPasado} minutos");
-                buffer.AppendLine($"Monto facturado: ${this.costoTotal}");
+                buffer.AppendFormat("\nMonto facturado: {0:0.00}", this.CostoFinal);
+            }
+            if (carritoDeCompras.Count > 0)
+            {
+                buffer.AppendLine("Productos comprados");
+                foreach (Consumible item in this.carritoDeCompras)
+                {
+                    buffer.AppendLine($"-{item.Nombre}");
+                }
+                
+            }
+            if (this.efectoActual != Efecto.Ninguno && this.enCurso)
+            {
+                buffer.AppendLine("**EFECTOS ACTIVOS**:");
+                switch (this.efectoActual)
+                {
+                    case Efecto.BebidaChina:
+                        buffer.AppendLine("-BEBIDA CHINA MAS BARATA");
+                        break;
+                    case Efecto.Alcoholismo:
+                        buffer.AppendLine("-POSIBILIDAD DE SOBREFACTURAR POR ESTAR EMBRIAGADO");
+                        break;
+                    case Efecto.Tabaco:
+                        buffer.AppendLine("-REDUCCION DE FELICIDAD POR TABACO");
+                        break;
+                }
             }
             
-            
-
             return $"{buffer}";
         }
 
@@ -149,8 +208,19 @@ namespace Sesiones
             return tiempoMinRetorno;
         }
 
+        public bool DeterminarSiCarritoYaTieneUnProducto(TipoConsumible tipo)
+        {
+            foreach (Consumible item in this.carritoDeCompras)
+            {
+                if (item.Tipo == tipo)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         
-       
         
 
     }

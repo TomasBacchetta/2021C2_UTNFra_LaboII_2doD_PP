@@ -41,7 +41,40 @@ namespace Cyber
 
         public static void ReproducirSonidoHistorialEInformes()
         {
-            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.historialEInformes);
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.formHistorial);
+            sonidoHistorial.Play();
+
+        }
+        public static void ReproducirSonidoFormProductos()
+        {
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.formProductos);
+            sonidoHistorial.Play();
+
+        }
+
+        public static void ReproducirSonidoProblema()
+        {
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.problema);
+            sonidoHistorial.Play();
+
+        }
+
+        public static void ReproducirSonidoEfectoBebidaChina()
+        {
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.efectoBebidaChina);
+            sonidoHistorial.Play();
+
+        }
+
+        public static void ReproducirSonidoEfectoBebidaAlcoholica()
+        {
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.efectoAlcohol);
+            sonidoHistorial.Play();
+
+        }
+        public static void ReproducirSonidoEfectoCigarros()
+        {
+            SoundPlayer sonidoHistorial = new SoundPlayer(Cyber.Properties.Resources.efectoCigarrillo);
             sonidoHistorial.Play();
 
         }

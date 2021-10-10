@@ -20,11 +20,11 @@ namespace Entidades
         private int stock;
         private TipoConsumible tipo;
 
-        public Consumible(TipoConsumible tipo, int stock)
+        public Consumible(TipoConsumible tipo)
         {
             this.tipo = tipo;
             EstablecerConsumible(tipo);
-            this.stock = stock;
+            
         }
 
         private void EstablecerConsumible(TipoConsumible tipo)
@@ -35,7 +35,7 @@ namespace Entidades
                     this.nombre = "Bebida energética china";
                     this.descripcion = "Una bebida energética del lejano oriente.\n**Exótico**: Este producto llama la atención. \nAl comprarlo, baja el costo en felicidad en 5 \nde este mismo producto para todos los clientes de la subcola";
                     this.precio = 5;
-                    this.costoDeFelicidad = 9;
+                    this.costoDeFelicidad = 8;
                     break;
                 case TipoConsumible.Coquita:
                     this.nombre = "Coquita";
@@ -92,13 +92,7 @@ namespace Entidades
                 return this.descripcion;
             }
         }
-        public int Stock
-        {
-            get
-            {
-                return this.stock;
-            }
-        }
+        
         public TipoConsumible Tipo
         {
             get
@@ -107,6 +101,16 @@ namespace Entidades
             }
         }
 
+        public string MostrarCostos()
+        {
+            StringBuilder buffer = new StringBuilder();
+
+            buffer.Append($"Precio: ${this.precio} - Costo en Felicidad: {this.costoDeFelicidad}");
+
+            return $"{buffer}";
+        }
+
+        
 
 
     }

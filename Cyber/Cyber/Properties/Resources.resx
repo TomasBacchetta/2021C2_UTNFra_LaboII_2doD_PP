@@ -193,4 +193,22 @@
   <data name="Smtjack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Smtjack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="efectoAlcohol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\efectoAlcohol.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="efectoBebidaChina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\efectoBebidaChina.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="efectoCigarrillo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\efectoCigarrillo.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="formHistorial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\formHistorial.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="formProductos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\formProductos.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="problema" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\problema.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

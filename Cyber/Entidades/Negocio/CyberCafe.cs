@@ -18,7 +18,15 @@ namespace Negocio
         private int cantidadClientes;
         private List<Sesion> sesiones;
         private Dictionary<string, Queue<Cliente>> subColaClientes;
-        private List<Consumible> listaProductos;
+        private Dictionary<TipoConsumible, Queue<Consumible>> listaProductos;
+
+        public Dictionary<TipoConsumible, Queue<Consumible>> ListaProductos
+        {
+            get
+            {
+                return this.listaProductos;
+            }
+        }
         public List<Sesion> Sesiones
         {
             get
@@ -85,12 +93,31 @@ namespace Negocio
 
         private void CargarProductos()
         {
-            this.listaProductos = new List<Consumible>();
-            listaProductos.Add(new Consumible(Consumible.TipoConsumible.BebidaChina, 5));
-            listaProductos.Add(new Consumible(Consumible.TipoConsumible.BebidaAlcoholica, 5));
-            listaProductos.Add(new Consumible(Consumible.TipoConsumible.Cigarro, 5));
-            listaProductos.Add(new Consumible(Consumible.TipoConsumible.Confitura, 10));
-            listaProductos.Add(new Consumible(Consumible.TipoConsumible.Coquita, 10));
+            this.listaProductos = new Dictionary<TipoConsumible, Queue<Consumible>>();
+
+            listaProductos.Add(TipoConsumible.BebidaChina, new Queue<Consumible>());
+            listaProductos.Add(TipoConsumible.BebidaAlcoholica, new Queue<Consumible>());
+            listaProductos.Add(TipoConsumible.Coquita, new Queue<Consumible>());
+            listaProductos.Add(TipoConsumible.Cigarro, new Queue<Consumible>());
+            listaProductos.Add(TipoConsumible.Confitura, new Queue<Consumible>());
+
+            for (int x = 0; x < 10; x++)
+            {
+                listaProductos[TipoConsumible.BebidaChina].Enqueue(new Consumible(TipoConsumible.BebidaChina));
+                listaProductos[TipoConsumible.BebidaAlcoholica].Enqueue(new Consumible(TipoConsumible.BebidaAlcoholica));
+                listaProductos[TipoConsumible.Coquita].Enqueue(new Consumible(TipoConsumible.Coquita));
+                listaProductos[TipoConsumible.Cigarro].Enqueue(new Consumible(TipoConsumible.Cigarro));
+                listaProductos[TipoConsumible.Confitura].Enqueue(new Consumible(TipoConsumible.Confitura));
+            }
+            
+            
+                
+                    
+        }
+
+        public int MostrarStockProducto(TipoConsumible tipo)
+        {
+            return listaProductos[tipo].Count;
         }
         private void CargarColaClientes()
         {
@@ -180,29 +207,62 @@ namespace Negocio
             Cpus cpus = new Cpus();
             PlacasDeVideo placasDeVideo = new PlacasDeVideo();
             MarcasTelefono marcasTelefono = new MarcasTelefono();
+            bool cabinaUniversal = false; //si existe por lo menos una cabina con tipo de llamada universal
+            bool computadoraCompleta = false;
 
             MemoriasRam ram = new MemoriasRam();
-            for (int x = 0; x < this.cantidadComputadoras; x++)
+            do
             {
-
-                this.listaEquipos.Add(new Computadora($"C0{x + 1}", software.CargarDatos(), juegos.CargarDatos(), perifericos.CargarDatos(), cpus.CargarDato(), placasDeVideo.CargarDato(), ram.CargarDato()));
-
-            }
-            for (int x = 0; x < this.cantidadCabinas; x++)
-            {
-                Random num = new Random();
-                Cabina.TipoLlamadaCabina tipoLlamadaCabina;
-                if (num.Next(0,5) > 2)//chance de 2/5 de que la cabina tenga llamadas larga distancia e internacionales
+                for (int x = 0; x < this.cantidadComputadoras; x++)
                 {
-                    tipoLlamadaCabina = Cabina.TipoLlamadaCabina.Todas;
-                } else
-                {
-                    tipoLlamadaCabina = Cabina.TipoLlamadaCabina.Local;
+
+                    this.listaEquipos.Add(new Computadora($"C0{x + 1}", software.CargarDatos(), juegos.CargarDatos(), perifericos.CargarDatos(), cpus.CargarDato(), placasDeVideo.CargarDato(), ram.CargarDato()));
+
                 }
+                foreach(Computadora item in this.listaEquipos)
+                {
+                    if (item.Juegos.Count == 6 && item.Software.Count == 4 && item.Perifericos.Count == 4)
+                    {
+                        computadoraCompleta = true;
+                    }
+                }
+                if (!computadoraCompleta)
+                {
+                    listaEquipos.Clear();
+                }
+            } while (!computadoraCompleta);
+            
+            do// toda la asignación de cabinas se hará de nuevo si no apareció ninguna cabina de tipo de llamada "todas"
+            {
+                for (int x = 0; x < this.cantidadCabinas; x++)
+                {
+                    Random num = new Random();
+                    Cabina.TipoLlamadaCabina tipoLlamadaCabina;
+                    if (num.Next(0, 5) > 1)//chance de 1/5 de que la cabina tenga llamadas larga distancia e internacionales
+                    {
+                        tipoLlamadaCabina = Cabina.TipoLlamadaCabina.Todas;
+                        cabinaUniversal = true;
+                    }
+                    else
+                    {
+                        tipoLlamadaCabina = Cabina.TipoLlamadaCabina.Local;
+                    }
 
-                this.listaEquipos.Add(new Cabina($"T0{x + 1}", (Cabina.Tipo)num.Next(0, 2), marcasTelefono.CargarDato(), tipoLlamadaCabina));
+                    this.listaEquipos.Add(new Cabina($"T0{x + 1}", (Cabina.Tipo)num.Next(0, 2), marcasTelefono.CargarDato(), tipoLlamadaCabina));
 
-            }
+                }
+                if (!cabinaUniversal)
+                {
+                    for (int x = this.listaEquipos.Count; x >= 0 ; x--)
+                    {
+                        if (this.listaEquipos[x] is Cabina)
+                        {
+                            this.listaEquipos.RemoveAt(x);
+                        }
+                    }
+                }
+            } while (!cabinaUniversal);
+            
         }
        
         public Equipo BuscarEquipoPorId(string id)
@@ -241,14 +301,22 @@ namespace Negocio
         {
             if (equipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
-                SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteSubcola(equipo.Id), equipo);
+                SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteSubcola(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
+                if (sesionNueva.EfectoActual == Sesion.Efecto.Tabaco)
+                {
+                    sesionNueva.UsuarioActual.PuntosDeFelicidad -= 3;
+                    if (sesionNueva.UsuarioActual.PuntosDeFelicidad < 0)
+                    {
+                        sesionNueva.UsuarioActual.PuntosDeFelicidad = 0;
+                    }
+                }
                 this.sesiones.Add(sesionNueva);
             } else
             {
-                SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteSubcola(equipo.Id), equipo);
+                SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteSubcola(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
                 this.sesiones.Add(sesionNueva);
             }
-            equipo.enUso = true;
+            equipo.EnUso = true;
             
         }
 
@@ -274,7 +342,7 @@ namespace Negocio
                     if ((Computadora)auxEquipo == this.ObtenerProximoCliente())//comprueba si la computadora es del gusto del cliente
                     {
                         this.CargarClienteEnSubCola(idEquipo);
-                        if (auxEquipo.enUso == false)
+                        if (auxEquipo.EnUso == false)
                         {
                             this.CargarSesionNueva(auxEquipo);
                             this.subColaClientes[idEquipo].Dequeue();
@@ -293,7 +361,7 @@ namespace Negocio
                     if ((Cabina)auxEquipo == ObtenerProximoCliente())
                     {
                         this.CargarClienteEnSubCola(idEquipo);
-                        if (auxEquipo.enUso == false)
+                        if (auxEquipo.EnUso == false)
                         {
                             this.CargarSesionNueva(auxEquipo);
                             this.subColaClientes[idEquipo].Dequeue();
@@ -360,16 +428,37 @@ namespace Negocio
 
         public Consumible ObtenerProductoPorTipo(TipoConsumible tipo)
         {
-            foreach(Consumible item in this.listaProductos)
+            Consumible auxProducto;
+            if (this.listaProductos[tipo].Count > 0)
             {
-                if (item.Tipo == tipo)
+                auxProducto = this.listaProductos[tipo].Peek();
+            } else
+            {
+                auxProducto = new Consumible(tipo);
+            }
+            return auxProducto;
+            
+        }
+        public Consumible ObtenerProductoPorTipoYRemoverDeInventario(TipoConsumible tipo)
+        {
+            return this.listaProductos[tipo].Dequeue();
+
+        }
+        public List<Sesion> ObtenerSesionesDeEquipo(string idEquipo)
+        {
+
+            List<Sesion> listaSesionEquipo = new List<Sesion>();
+
+            foreach (Sesion item in Sesiones)
+            {
+                if (item.IdEquipo == idEquipo)
                 {
-                    return item;
+                    listaSesionEquipo.Add(item);
                 }
             }
-            return null;
+
+            return listaSesionEquipo;
         }
-        
-        
+
     }
 }

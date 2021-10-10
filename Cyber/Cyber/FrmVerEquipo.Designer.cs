@@ -36,7 +36,6 @@ namespace Cyber
             this.buttonHistorialSesiones = new System.Windows.Forms.Button();
             this.pictureBoxJack = new System.Windows.Forms.PictureBox();
             this.labelFelicidad = new System.Windows.Forms.Label();
-            this.labelPuntosFelicidad = new System.Windows.Forms.Label();
             this.btnComprarProd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxJack)).BeginInit();
             this.SuspendLayout();
@@ -92,9 +91,9 @@ namespace Cyber
             // 
             this.pictureBoxJack.BackgroundImage = global::Cyber.Properties.Resources.iconoJack;
             this.pictureBoxJack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxJack.Location = new System.Drawing.Point(12, 477);
+            this.pictureBoxJack.Location = new System.Drawing.Point(12, 465);
             this.pictureBoxJack.Name = "pictureBoxJack";
-            this.pictureBoxJack.Size = new System.Drawing.Size(64, 55);
+            this.pictureBoxJack.Size = new System.Drawing.Size(72, 67);
             this.pictureBoxJack.TabIndex = 5;
             this.pictureBoxJack.TabStop = false;
             // 
@@ -102,26 +101,17 @@ namespace Cyber
             // 
             this.labelFelicidad.AutoSize = true;
             this.labelFelicidad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelFelicidad.Location = new System.Drawing.Point(82, 477);
+            this.labelFelicidad.Location = new System.Drawing.Point(99, 465);
             this.labelFelicidad.Name = "labelFelicidad";
-            this.labelFelicidad.Size = new System.Drawing.Size(157, 21);
+            this.labelFelicidad.Size = new System.Drawing.Size(161, 21);
             this.labelFelicidad.TabIndex = 6;
-            this.labelFelicidad.Text = "Puntos de felicidad";
-            // 
-            // labelPuntosFelicidad
-            // 
-            this.labelPuntosFelicidad.AutoSize = true;
-            this.labelPuntosFelicidad.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelPuntosFelicidad.Location = new System.Drawing.Point(94, 498);
-            this.labelPuntosFelicidad.Name = "labelPuntosFelicidad";
-            this.labelPuntosFelicidad.Size = new System.Drawing.Size(0, 20);
-            this.labelPuntosFelicidad.TabIndex = 7;
+            this.labelFelicidad.Text = "Puntos de felicidad:";
             // 
             // btnComprarProd
             // 
-            this.btnComprarProd.Location = new System.Drawing.Point(142, 502);
+            this.btnComprarProd.Location = new System.Drawing.Point(99, 489);
             this.btnComprarProd.Name = "btnComprarProd";
-            this.btnComprarProd.Size = new System.Drawing.Size(134, 30);
+            this.btnComprarProd.Size = new System.Drawing.Size(159, 43);
             this.btnComprarProd.TabIndex = 8;
             this.btnComprarProd.Text = "Comprar Productos";
             this.btnComprarProd.UseVisualStyleBackColor = true;
@@ -133,7 +123,6 @@ namespace Cyber
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 544);
             this.Controls.Add(this.btnComprarProd);
-            this.Controls.Add(this.labelPuntosFelicidad);
             this.Controls.Add(this.labelFelicidad);
             this.Controls.Add(this.pictureBoxJack);
             this.Controls.Add(this.buttonHistorialSesiones);
@@ -160,7 +149,6 @@ namespace Cyber
         private System.Windows.Forms.Button buttonHistorialSesiones;
         private System.Windows.Forms.PictureBox pictureBoxJack;
         private System.Windows.Forms.Label labelFelicidad;
-        private System.Windows.Forms.Label labelPuntosFelicidad;
         private System.Windows.Forms.Button btnComprarProd;
     }
 }

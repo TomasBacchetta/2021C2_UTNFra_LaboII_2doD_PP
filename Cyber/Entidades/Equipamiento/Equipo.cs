@@ -12,15 +12,41 @@ namespace Equipos
         {
             Computadora, Cabina
         }
+        public enum Efecto
+        {
+            Ninguno, BebidaChina, Tabaco
+        }
 
         private string id;
         private TipoEquipo tipoDeEquipo;
-        public bool enUso;
-        
+        private bool enUso;
+        private Efecto efectoDeLaMaquina;
 
         
 
-       
+        public Efecto EfectoDeLaMaquina
+        {
+            get
+            {
+                return this.efectoDeLaMaquina;
+            }
+            set
+            {
+                this.efectoDeLaMaquina = value;
+            }
+        }
+        public bool EnUso
+        {
+            get
+            {
+                return this.enUso;
+            }
+            set
+            {
+                this.enUso = value;
+            }
+        }
+
         public TipoEquipo TipoDeEquipo
         {
             get
@@ -51,6 +77,7 @@ namespace Equipos
             this.id = id;
             this.tipoDeEquipo = tipoDeEquipo;
             this.enUso = false;
+            this.efectoDeLaMaquina = Efecto.Ninguno;
             
         }
         public virtual string Mostrar()
@@ -86,9 +113,26 @@ namespace Equipos
         {
             return !(e == id);
         }
-        
-        
 
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -16,10 +16,10 @@ namespace Cyber
 {
     public partial class FrmVerEquipo : Form
     {
-        CyberCafe cyber1;
-        string idEquipo;
-        Sesion sesionActual;
-        FrmPrincipal formPrincipal;
+        public CyberCafe cyber1;
+        public string idEquipo;
+        public Sesion sesionActual;
+        public FrmPrincipal formPrincipal;
         public FrmVerEquipo(CyberCafe cyber, string idEquipo, FrmPrincipal formPrincipal)
         {
             this.cyber1 = cyber;
@@ -34,7 +34,7 @@ namespace Cyber
 
             Equipo auxEquipo = cyber1.BuscarEquipoPorId(idEquipo);
             richTextBoxDatosEquipo.Text = auxEquipo.Mostrar();
-
+            this.RefrescarForm();
             if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
                 this.Text = $"Computadora {auxEquipo.Id}";
@@ -51,11 +51,9 @@ namespace Cyber
                 richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
             }
             
-            if (!(sesionActual is null))
-            {
-                richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.MostrarSesion()}");
-                labelPuntosFelicidad.Text = $"{sesionActual.UsuarioActual.PuntosDeFelicidad}";
-            }
+            
+
+            
             
         }
 
@@ -66,9 +64,10 @@ namespace Cyber
                 this.sesionActual.EnCurso = false;
                 sesionActual.EnCurso = false;
                 ArchivosMedia.ReproducirSonidoFacturacion();
-                MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
-                
-                cyber1.BuscarEquipoPorId(idEquipo).enUso = false;
+                //MessageBox.Show($"Monto facturado: ${sesionActual.CostoTotal} por {sesionActual.CalcularMinutosPasados()} minutos de uso ");
+                FrmFactura factura = new FrmFactura(sesionActual);
+                factura.Show();
+                cyber1.BuscarEquipoPorId(idEquipo).EnUso = false;
                 
                 if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
                 {
@@ -84,46 +83,59 @@ namespace Cyber
                         richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
                     }
                   
-                } 
-
-                richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).Mostrar();
-
-                if (!(sesionActual is null))
+                } else
                 {
-                    if (sesionActual.EnCurso == true)
-                    {
-                        richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.UsuarioActual.Nombre} {sesionActual.UsuarioActual.Apellido}");
-                    }
-
+                    cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina = Equipo.Efecto.Ninguno; //limpia los efectos del equipo cuando ya no queda nadie en la subcola
                 }
+
+
+
+                this.RefrescarForm();
                 formPrincipal.ImprimirEtiquetaEquipo(idEquipo);
                 formPrincipal.CambiarIconoEquipo(idEquipo);
             }
 
         }
+
+        public void RefrescarForm()
+        {
+            
+            richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).Mostrar();
+
+            if (!(sesionActual is null) && sesionActual.EnCurso)
+            {
+                labelFelicidad.Text = $"Puntos de felicidad: {sesionActual.UsuarioActual.PuntosDeFelicidad}";
+                buttonTerminarSesion.Enabled = true;
+                btnComprarProd.Enabled = true;
+                pictureBoxJack.Visible = true;
+                labelFelicidad.Visible = true;
+                richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.MostrarSesion()}");
+                
+
+            } else
+            {
+                buttonTerminarSesion.Enabled = false;
+                btnComprarProd.Enabled = false;
+                pictureBoxJack.Visible = false;
+                labelFelicidad.Visible = false;
+            }
+        }
         
         private void buttonHistorialSesiones_Click(object sender, EventArgs e)
         {
+
             
-            List<Sesion> listaSesionEquipo = new List<Sesion>();
-
-            foreach (Sesion item in cyber1.Sesiones)
-            {
-                if (item.IdEquipo == this.idEquipo)
-                {
-                    listaSesionEquipo.Add(item);
-                }
-            }
-
-
-            FrmHistorialEquipo form3 = new FrmHistorialEquipo(listaSesionEquipo);
+            FrmHistorialEquipo form3 = new FrmHistorialEquipo(this.cyber1.ObtenerSesionesDeEquipo(this.idEquipo));
             form3.Show();
         }
 
         private void btnComprarProd_Click(object sender, EventArgs e)
         {
-            FrmProductos frmProd = new FrmProductos(this.cyber1);
+
+            FrmProductos frmProd = new FrmProductos(this);
             frmProd.Show();
         }
+
+        
     }
 }
