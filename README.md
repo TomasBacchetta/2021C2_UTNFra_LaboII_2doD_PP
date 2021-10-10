@@ -12,6 +12,7 @@ Bacchetta, Tomás.
 
 
 -El programa trata de simular una situación de negocio de un cyber, con clientes y equipos generados al azar. Para asignar un cliente a un equipo, este debe cumplir con los requerimientos del cliente en cuando a software, juegos, periféricos y tipo de llamada (segun el número de teléfono que el cliente va a discar). 
+***NOTA***: Puede tardar unos segundos en iniciar por cómo funciona el motor de randomización.
 
 
 
