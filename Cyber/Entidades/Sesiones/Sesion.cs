@@ -24,7 +24,7 @@ namespace Sesiones
         protected double costoTotal;
         protected double costoFinal;
         protected bool enCurso;
-        protected List<Consumible> carritoDeCompras;
+        protected List<Consumible> carritoDeCompras;//aquí se almacenan los productos comprados
         protected Efecto efectoActual;
         
         public double CostoFinal
@@ -120,9 +120,6 @@ namespace Sesiones
         }
 
        
-
-        
-
         public virtual bool EnCurso { get; set; }
        
         
@@ -180,7 +177,10 @@ namespace Sesiones
             return $"{buffer}";
         }
 
-
+        /// <summary>
+        /// calcula los minutos pasados en base a la diferencia de dos datetime
+        /// </summary>
+        /// <returns>devuelve el tiempo en minutos (segundos reales)</returns>
         public long CalcularMinutosPasados()
         {
             long tiempoMinReal;
@@ -203,7 +203,11 @@ namespace Sesiones
 
             return tiempoMinRetorno;
         }
-
+        /// <summary>
+        /// determina si un carrito ya tiene un producto en base a su tipo
+        /// </summary>
+        /// <param name="tipo">recibe el tipo de producto</param>
+        /// <returns>devuelve true si esta, false si no</returns>
         public bool DeterminarSiCarritoYaTieneUnProducto(TipoConsumible tipo)
         {
             foreach (Consumible item in this.carritoDeCompras)

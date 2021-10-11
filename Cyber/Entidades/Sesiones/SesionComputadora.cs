@@ -14,6 +14,12 @@ namespace Sesiones
         private List<string> softwareUtilizado;
         private List<string> juegosUtilizados;
         private List<string> perifericosUtilizados;
+
+        /// <summary>
+        /// el apartado set de la propiedad EnCurso se encarga de capturar el tiempo en que se cerro la sesion
+        /// calcula el tiempo pasado
+        /// y calcula los costos
+        /// </summary>
         public override bool EnCurso
         {
             get
@@ -29,6 +35,7 @@ namespace Sesiones
                     this.tiempoFinUso = DateTime.Now;
                     this.tiempoPasado = this.CalcularMinutosPasados();
                     this.costoTotal = this.CalcularCosto();
+                    //agrega los costos de los productos del carrito de compras si es que hay
                     if (this.carritoDeCompras.Count > 0)
                     {
                         foreach (Consumible item in this.carritoDeCompras)
@@ -36,7 +43,7 @@ namespace Sesiones
                             costoGolosinas += item.Precio;
                         }
                     }
-                    this.costoFinal = (costoTotal + costoGolosinas)*1.21;
+                    this.costoFinal = (costoTotal + costoGolosinas)*1.21;///el costo final contempla el iva
 
                 }
 
@@ -127,11 +134,18 @@ namespace Sesiones
             }
             return bloqueEntero;
         }
-        public double CalcularCosto()
+        /// <summary>
+        /// calcula el costo de la sesion en base a los bloques que pasaron
+        /// </summary>
+        /// <returns>devuelve el costo resultante</returns>
+        public double CalcularCosto()///este método tiene el mismo nombre que el de su hermana, pero son diferentes, por eso sus propiedades EnUso deben verse duplicadas
         {
             return CalcularBloqueDeTiempo(this.tiempoPasado) * 0.5F;
         }
-
+        /// <summary>
+        /// Determina que programas son utilizados en una sesion en base a los matches del equipo y el usuario actuales
+        /// </summary>
+        /// <returns>devuelve una lista de programas utilizados</returns>
         public List<string> DeterminarProgramasUtilizados()
         {
             List<string> programasUtilizados= new List<string>();
@@ -147,6 +161,10 @@ namespace Sesiones
             return programasUtilizados;
         }
 
+        /// <summary>
+        /// Determina que juegos son utilizados en una sesion en base a los matches del equipo y el usuario actuales
+        /// </summary>
+        /// <returns>devuelve una lista de juegos utilizados</returns>
         public List<string> DeterminarJuegosUtilizados()
         {
             List<string> juegosUtilizados = new List<string>();
@@ -162,6 +180,10 @@ namespace Sesiones
             return juegosUtilizados;
         }
 
+        /// <summary>
+        /// Determina que perifericos son utilizados en una sesion en base a los matches del equipo y el usuario actuales
+        /// </summary>
+        /// <returns>devuelve una lista de perifericos utilizados</returns>
         public List<string> DeterminarPerifericosUtilizados()
         {
             List<string> perifericosUtilizados = new List<string>();

@@ -25,7 +25,10 @@ namespace Entidades
             EstablecerConsumible(tipo);
             
         }
-
+        /// <summary>
+        /// establece los campos de un producto consumible en base a su tipo
+        /// </summary>
+        /// <param name="tipo">recibe el tipo de producto</param>
         private void EstablecerConsumible(TipoConsumible tipo)
         {
             switch (tipo)

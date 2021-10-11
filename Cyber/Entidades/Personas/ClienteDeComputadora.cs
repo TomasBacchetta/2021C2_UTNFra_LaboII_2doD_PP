@@ -39,28 +39,21 @@ namespace Personas
         }
 
         
-        //constructores de cliente de computadora con sobrecarga 
+        //constructores de cliente de computadora con sobrecarga, se van llamando en cascada
         public ClienteDeComputadora(string nombre, string apellido, long documento, Carga datos1) : base(nombre, apellido, documento, TipoCliente.ClienteComputadora)
         {
-            
-
             if (datos1 is Juegos)
             {
                 this.juegosFavoritos = ((Juegos)datos1).CargarDatos();
-               
             }
             else
             {
                 if (datos1 is Programas)
                 {
-                    
                     this.programasFavoritos = ((Programas)datos1).CargarDatos();
-
                 } else
                 {
-                    
                     this.perifericosFavoritos = ((Perifericos)datos1).CargarDatos();
-                    
                 }
             }
             //inicializan los atributos que no fueron inicializados
@@ -76,33 +69,24 @@ namespace Personas
             {
                 this.perifericosFavoritos = new List<string>();
             }
-
-
         }
         public ClienteDeComputadora(string nombre, string apellido, long documento, Carga datos1, Carga datos2) : this(nombre, apellido, documento, datos1)
         {
-            
             if (datos2 is Juegos)
             {
                 this.juegosFavoritos = ((Juegos)datos2).CargarDatos();
-                
             }
             else
             {
                 if (datos2 is Programas)
                 {
-
-                    this.programasFavoritos = ((Programas)datos2).CargarDatos();
-                    
+                    this.programasFavoritos = ((Programas)datos2).CargarDatos();  
                 }
                 else
                 {
-
                     this.perifericosFavoritos = ((Perifericos)datos2).CargarDatos();
-                    
                 }
             }
-
         }
         public ClienteDeComputadora(string nombre, string apellido, long documento, Carga datos1, Carga datos2, Carga datos3) : this(nombre, apellido, documento, datos1, datos2)
         {
@@ -110,7 +94,6 @@ namespace Personas
             if (datos3 is Juegos)
             {
                 this.juegosFavoritos = ((Juegos)datos3).CargarDatos();
-
             }
             else
             {
@@ -118,15 +101,12 @@ namespace Personas
                 {
 
                     this.programasFavoritos = ((Programas)datos3).CargarDatos();
-
                 }
                 else
                 {
-
                     this.perifericosFavoritos = ((Perifericos)datos3).CargarDatos();
                 }
             }
-
         }
         
         public override string MostrarCliente()
@@ -139,8 +119,7 @@ namespace Personas
                 foreach (string item in this.programasFavoritos)
                 {
                     buffer.AppendLine($"{item} ");
-                }
-                
+                }   
             }
             if (this.juegosFavoritos.Count > 0)
             {
@@ -149,8 +128,7 @@ namespace Personas
                 foreach (string item in this.juegosFavoritos)
                 {
                     buffer.AppendLine($"{item} ");
-                }
-                
+                }             
             }
             if (this.perifericosFavoritos.Count > 0)
             {
@@ -164,7 +142,6 @@ namespace Personas
             
             return $"{base.MostrarCliente()}\n{buffer}";
         }
-
 
     }
 }

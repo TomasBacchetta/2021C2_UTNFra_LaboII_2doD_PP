@@ -14,6 +14,11 @@ namespace Sesiones
     {
 
         private TipoLlamada tipoLlamada;
+        /// <summary>
+        /// el apartado set de la propiedad EnCurso se encarga de capturar el tiempo en que se cerro la sesion
+        /// calcula el tiempo pasado
+        /// y calcula los costos
+        /// </summary>
         public override bool EnCurso
         {
             get
@@ -30,6 +35,8 @@ namespace Sesiones
                     this.tiempoFinUso = DateTime.Now;
                     this.tiempoPasado = this.CalcularMinutosPasados();
                     this.costoTotal = this.CalcularCosto();
+                    
+                    //agrega los costos de los productos del carrito de compras si es que hay
                     if (this.carritoDeCompras.Count > 0)
                     {
                         foreach(Consumible item in this.carritoDeCompras)
@@ -37,7 +44,7 @@ namespace Sesiones
                             costoGolosinas += item.Precio;
                         }
                     }
-                    this.costoFinal = (costoTotal + costoGolosinas)*1.21;
+                    this.costoFinal = (costoTotal + costoGolosinas)*1.21;///el costo final contempla el iva
                      
 
 
@@ -56,7 +63,6 @@ namespace Sesiones
         }
 
        
-
         public SesionCabina(Cliente usuarioActual, Equipo equipo, Efecto efectoActual) : base(usuarioActual, equipo, efectoActual)
         {
             ClienteDeTelefono auxClienteTel = (ClienteDeTelefono)usuarioActual;
@@ -74,6 +80,10 @@ namespace Sesiones
 
             return $"{base.MostrarSesion()} {buffer}";
         }
+        /// <summary>
+        /// calcula el costo de la llamada en base a su tipo
+        /// </summary>
+        /// <returns>devuelve el costo resultante</returns>
         public double CalcularCosto()
         {
             double multiplicador = 0;

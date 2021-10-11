@@ -22,14 +22,20 @@ namespace Cyber
         public FrmPrincipal formPrincipal;
         public FrmVerEquipo(CyberCafe cyber, string idEquipo, FrmPrincipal formPrincipal)
         {
+            InitializeComponent();
             this.cyber1 = cyber;
             this.idEquipo = idEquipo;
             this.sesionActual = cyber1.BuscarProximaSesionActivaDeUnEquipo(idEquipo);
             this.formPrincipal = formPrincipal;
-            InitializeComponent();
+            this.CargarToolTipsEfectos();
+
+
+        }
+
+        private void CargarToolTipsEfectos()
+        {
             toolTipEfectoChino.SetToolTip(pctChino, "Todas las bebidas chinas valen 5 puntos de felicidad menos hasta que se vacíe el equipo y su subcola");
-            toolTipEfectoChino.SetToolTip(pctTabaco, "Todos los clientes que ingresen a la subcola de este equipo ven reducida su felicidad en 4 puntos");
-            
+            toolTipEfectoChino.SetToolTip(pctTabaco, "Todos los clientes que ingresen a la subcola de este equipo ven reducida su felicidad en 4 puntos hasta que se vacíe el equipo y su subcola");
         }
 
         private void FrmVerEquipo_Load(object sender, EventArgs e)
@@ -97,7 +103,9 @@ namespace Cyber
             }
 
         }
-
+        /// <summary>
+        /// actualiza todos los valores dinámicos del formulario
+        /// </summary>
         public void RefrescarForm()
         {
             

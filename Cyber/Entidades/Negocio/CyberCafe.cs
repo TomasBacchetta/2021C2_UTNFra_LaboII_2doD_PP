@@ -11,13 +11,30 @@ namespace Negocio
 {
     public class CyberCafe
     {
+        /// <summary>
+        /// los equipos del cyber se agrupan en una lista de Equipos sin importar el tipo
+        /// </summary>
         private List<Equipo> listaEquipos;
+        /// <summary>
+        /// la cola de clientes es, lógicamente, una Queue de Clientes, sin importar el tipo
+        /// </summary>
         private Queue<Cliente> colaClientes;
         private int cantidadComputadoras;
         private int cantidadCabinas;
         private int cantidadClientes;
+        /// <summary>
+        /// las sesiones de todo el cyber van agrupadas en una lista
+        /// </summary>
         private List<Sesion> sesiones;
+        /// <summary>
+        /// las subcolas, que son las colas especificas de cada equipo (puede imaginarse una fila de chicos esperando detrás de la máquina favorita)
+        /// son colecciones diccionario cuya key es un string que corresponde al id único de un equipo, sin importar el tipo, cuyo valor es una cola (independiente
+        /// de la general) de clientes
+        /// </summary>
         private Dictionary<string, Queue<Cliente>> subColaClientes;
+        /// <summary>
+        /// la lista de productos es un diccionario que tiene como key el tipo de producto, y su valor será una cola de objetos de tipo consumible (los productos)
+        /// </summary>
         private Dictionary<TipoConsumible, Queue<Consumible>> listaProductos;
         private string nombre;
         private string razonSocial;
@@ -164,6 +181,8 @@ namespace Negocio
                 if (rnd.Next(0,5) < 3)//chance de 3/5 de que sea cliente de computadora
                 {
                     chanceCategorias = rnd.Next(0, 5);
+                    ///a continuación se van a cargar tres tipos de sobrecargas de constructor de cliente de computadora. Esto se hace así para tratar de respetar
+                    ///la consigna de utilizar por lo menos alguna sobrecarga de constructores. 
                     if (chanceCategorias < 2)//chance de 2/5 de que tenga una sola categoria favorita
                     {
                         chanceTipoCategoria = rnd.Next(1, 4);
@@ -218,6 +237,9 @@ namespace Negocio
                 
             }
         }
+        /// <summary>
+        /// instancia las subcolas de clientes en base a las keys de los id de equipos
+        /// </summary>
         private void CargarSubColaClientes()
         {
             foreach (Equipo item in this.Equipos)
@@ -333,7 +355,7 @@ namespace Negocio
         /// <summary>
         /// Carga un cliente de la cola general en la subcola de un equipo. También llama a una función que determina cuantos puntos se restan de su felicidad
         /// </summary>
-        /// <param name="idEquipo"></param>
+        /// <param name="idEquipo">recibe el id del equipo</param>
         public void CargarClienteEnSubCola(string idEquipo)
         {
             this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
@@ -341,9 +363,9 @@ namespace Negocio
             
         }
         /// <summary>
-        /// Carga una sesión nueva
+        /// Carga una sesión nueva a la lista general de sesiones
         /// </summary>
-        /// <param name="equipo"></param>
+        /// <param name="equipo">recibe un equipo como parametro</param>
         public void CargarSesionNueva(Equipo equipo)
         {
             if (equipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
@@ -362,7 +384,7 @@ namespace Negocio
         /// <summary>
         /// Ajusta la felicidad por la presencia del efecto del tabaco en la sesion
         /// </summary>
-        /// <param name="sesion"></param>
+        /// <param name="sesion">recibe una sesión por parámetro</param>
         private void RestarFelicidadPorTabaco(Sesion sesion)
         {
             if (sesion.EfectoActual == Sesion.Efecto.Tabaco)
@@ -437,7 +459,12 @@ namespace Negocio
             }
             return -2;//el equipo no era el indicado para el cliente
         }
-
+        /// <summary>
+        /// Ajusta los puntos de felicidad iniciales, restando 1 por cada cliente que ya este en la subcola del equipo
+        /// del cliente donde va a ser asignado, contando tambien el que use la computadora
+        /// </summary>
+        /// <param name="idEquipo"></param>
+        /// <param name="cliente"></param>
         private void AjustarPuntosDeFelicidad(string idEquipo, Cliente cliente)
         {
             //esto hace que cuente el usuario que utiliza el equipo pero que no está en la subcola
@@ -448,41 +475,65 @@ namespace Negocio
             }
             //
             cliente.PuntosDeFelicidad -= (this.subColaClientes[idEquipo].Count + clienteEnEquipo);
-            if (cliente.PuntosDeFelicidad < 0)
+            if (cliente.PuntosDeFelicidad < 0)//si la felicidad llega a 0, se queda ahi
             {
                 cliente.PuntosDeFelicidad = 0;
             }
         }
-
+        /// <summary>
+        /// obtiene el próximo cliente de la cola general del cyber
+        /// </summary>
+        /// <returns>devuelve el cliente</returns>
         public Cliente ObtenerProximoCliente()
         {
             return this.ColaClientes.Peek();
         }
 
+        /// <summary>
+        /// obtiene el próximo cliente de la cola general del cyber, y lo saca de la cola
+        /// </summary>
+        /// <returns>devuelve el cliente</returns>
         public Cliente ObtenerAtenderProximoCliente()
         {
             return this.ColaClientes.Dequeue();
         }
-
+        /// <summary>
+        /// obtiene el proximo cliente de la subcola de un equipo
+        /// </summary>
+        /// <param name="idEquipo">recibe el id del equipo</param>
+        /// <returns>devuelve el cliente</returns>
         public Cliente ObtenerProximoClienteSubcola(string idEquipo)
         {
             return this.ObtenerSubColaClientes(idEquipo).Peek();
         }
 
+        /// <summary>
+        /// obtiene el próximo cliente de la subcola de un equipo y lo saca de la subcola
+        /// </summary>
+        /// <param name="idEquipo">recibe el id del equipo</param>
+        /// <returns>devuelve el cliente</returns>
         public Cliente ObtenerAtenderProximoClienteSubcola(string idEquipo)
         {
            return this.ObtenerSubColaClientes(idEquipo).Dequeue();
                         
         }
 
-        
+        /// <summary>
+        /// obtiene la subcola de clientes en base a su id de equipo (su key)
+        /// </summary>
+        /// <param name="idEquipo">recibe el id del equipo</param>
+        /// <returns>devuelve la subcola</returns>
         public Queue<Cliente> ObtenerSubColaClientes(string idEquipo)
         {
             return this.subColaClientes[idEquipo];
         }
 
         
-
+        /// <summary>
+        /// devuelve la sesion activa de una subcola
+        /// </summary>
+        /// <param name="idEquipo">recibe el id del equipo</param>
+        /// <returns>devuelve la sesion si la encuentra, null si no</returns>
         public Sesion BuscarProximaSesionActivaDeUnEquipo(string idEquipo)
         {
             if (this.sesiones.Count > 0)
@@ -498,7 +549,11 @@ namespace Negocio
             
             return null;
         }
-
+        /// <summary>
+        /// obtiene el primer producto de una cola de productos en base a su tipo
+        /// </summary>
+        /// <param name="tipo">recibe el tipo de producto</param>
+        /// <returns>devuelve el producto</returns>
         public Consumible ObtenerProductoPorTipo(TipoConsumible tipo)
         {
             Consumible auxProducto;
@@ -512,11 +567,21 @@ namespace Negocio
             return auxProducto;
             
         }
+        /// <summary>
+        /// obtiene el primer producto de una cola de productos en base a su tipo y lo saca de su cola
+        /// </summary>
+        /// <param name="tipo">recibe el tipo de producto</param>
+        /// <returns>devuelve el producto</returns>
         public Consumible ObtenerProductoPorTipoYRemoverDeInventario(TipoConsumible tipo)
         {
             return this.listaProductos[tipo].Dequeue();
 
         }
+        /// <summary>
+        /// obtiene la lista de sesiones de un equipo
+        /// </summary>
+        /// <param name="idEquipo">recibe el id del equipo</param>
+        /// <returns>devuelve la lista de sesiones</returns>
         public List<Sesion> ObtenerSesionesDeEquipo(string idEquipo)
         {
 

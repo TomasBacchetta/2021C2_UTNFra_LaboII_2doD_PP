@@ -5,6 +5,9 @@ using static Personas.ClienteDeTelefono;
 
 namespace Personas
 {
+    /// <summary>
+    /// Aquí se pone en práctica el concepto de herencia
+    /// </summary>
     public class Cliente
     {
         public enum TipoCliente

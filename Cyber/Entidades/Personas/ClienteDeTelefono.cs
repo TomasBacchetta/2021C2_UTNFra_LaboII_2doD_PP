@@ -48,7 +48,11 @@ namespace Personas
 
             return $"{base.MostrarCliente()}{buffer}";
         }
-
+        /// <summary>
+        /// Determina el tipo de llamad en base al numero de telefono generado aleatoriamente
+        /// es la forma ideal de hacerlo si eventualmente se pudiese cargar a mano el número
+        /// </summary>
+        /// <returns></returns>
         private TipoLlamada DeterminarTipoDeLlamada()
         {
             string telefono = this.telefono;

@@ -32,7 +32,10 @@ namespace Cyber
             }
             rtbFactura.Text = ImprimirFactura();
         }
-
+        /// <summary>
+        /// imprime la factura
+        /// </summary>
+        /// <returns>retorna el string con toda la información de facturación</returns>
         private string ImprimirFactura()
         {
             StringBuilder buffer = new StringBuilder();
@@ -79,7 +82,11 @@ namespace Cyber
 
             return $"{buffer}";
         }
-
+        /// <summary>
+        /// Al presionar este botón se activa la chance de sobrefacturar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSobreFacturar_Click(object sender, EventArgs e)
         {
             ArchivosMedia.ReproducirSonidoSobreFactura();

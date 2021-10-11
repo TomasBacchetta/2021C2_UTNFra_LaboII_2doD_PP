@@ -12,6 +12,11 @@ namespace Equipos
         {
             Computadora, Cabina
         }
+        /// <summary>
+        /// este es un enumerado de efectos que pueden alterar el funcionamiento de un equipo
+        /// Funciona en tándem junto con los efectos de sesiones, pero no posee el del alcohol porque en ese
+        /// caso solo la sesion del cliente que compró el producto se ve afectada
+        /// </summary>
         public enum Efecto
         {
             Ninguno, BebidaChina, Tabaco

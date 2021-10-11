@@ -41,11 +41,10 @@ namespace Cyber
             this.ActualizarEstadoDeCheckBoxes();
             this.ActualizarPuntosDeFelicidad();
 
-
-
-
         }
-
+        /// <summary>
+        /// refresca el estado de los checkboxes. Teneniendo en cuenta que un cliente solo puede comprar un solo producto por tipo
+        /// </summary>
         private void ActualizarEstadoDeCheckBoxes()
         {
             foreach (Control item in Controls)
@@ -74,7 +73,9 @@ namespace Cyber
                 }
             }
         }
-
+        /// <summary>
+        /// carga las imagenes de los productos
+        /// </summary>
         private void CargarImagenes()
         {
             pictBebidaChina.BackgroundImage = Properties.Resources.bebidaChina;
@@ -93,6 +94,9 @@ namespace Cyber
             pictBebidaConfitura.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
+        /// <summary>
+        /// carga las descripciones de los productos
+        /// </summary>
         private void CargarDescripciones()
         {
             lblDescChina.Text = this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Descripcion;
@@ -102,6 +106,9 @@ namespace Cyber
             lblDescConfitu.Text = this.cyber.ObtenerProductoPorTipo(TipoConsumible.Confitura).Descripcion;
         }
 
+        /// <summary>
+        /// actualiza precios y stock de los productos
+        /// </summary>
         private void CargarPreciosYStock()
         {
             
@@ -196,11 +203,17 @@ namespace Cyber
             }
             
         }
-
+        /// <summary>
+        /// Actualiza el label que muestra los de puntos de felicidad del cliente de la sesión actual
+        /// </summary>
         private void ActualizarPuntosDeFelicidad()
         {
             labelFelicidad.Text = $"Puntos de felicidad: {sesionActual.UsuarioActual.PuntosDeFelicidad}";
         }
+        /// <summary>
+        /// asigna a los tags de los checkboxes de productos un tipo individual
+        /// para poder enlazarlos facilmente con un producto
+        /// </summary>
         private void ConfigurarTagsCheckboxes()
         {
             this.checkBoxBebChina.Tag = TipoConsumible.BebidaChina;
@@ -209,7 +222,10 @@ namespace Cyber
             this.checkBoxConfitu.Tag = TipoConsumible.Confitura;
             this.checkBoxCoquita.Tag = TipoConsumible.Coquita;
         }
-
+        /// <summary>
+        /// obtiene la sesion en curso de la lista, en el contexto en que se llama este metodo siempre la encontrará
+        /// </summary>
+        /// <returns>devuelve la sesion o null si no la encuentra</returns>
         private Sesion ObtenerSesionActualDeLaLista()
         {
        

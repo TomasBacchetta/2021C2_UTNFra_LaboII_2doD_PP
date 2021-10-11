@@ -29,49 +29,61 @@ namespace Cyber
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            int indiceRadio = 0;
-            int indiceImagen = 0;
+            this.ConfigurarGroupBoxPrincipal();
             ArchivosMedia.ReproducirSonidoFormPrincipal();
             lblInfo.Text = $"{cyber1.Nombre} - {DateTime.Now}";
-            foreach (Control item in groupBoxEquipos.Controls)
-            {
-                if (item is RadioButton)
-                {
-                    item.Tag = cyber1.Equipos[indiceRadio].Id;
-                    this.ImprimirEtiquetaEquipo(item.Tag.ToString());
-                    
-                    indiceRadio++;
-                }
-                if (item is PictureBox)
-                {
-                    item.Tag = $"I{cyber1.Equipos[indiceImagen].Id}";
-                    PictureBox pict = (PictureBox)item;
-                    
-                    if (indiceImagen < cyber1.CantidadComputadoras)
-                    {
-                        pict.BackgroundImage = Resources.pcLIBRE;
-                        
-                        
-                    } else
-                    {
-                        pict.BackgroundImage = Resources.cabinaLIBRE;
-                    }
-                    
-                    pict.BackgroundImageLayout = ImageLayout.Stretch;
-                    indiceImagen++;
-
-                }
-                
-
-            }
+            
             labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
             
             richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
 
             
         }
+        /// <summary>
+        /// Enlaza los radiobutton y los picturebox con un equipo en particular, en base a su id.
+        /// Me valgo de los tags, que pueden contener cualquier tipo de valor, para indentificarlos 
+        /// </summary>
+        private void ConfigurarGroupBoxPrincipal()
+        {
+            int indiceRadio = 0;
+            int indiceImagen = 0;
+            foreach (Control item in groupBoxEquipos.Controls)
+            {
+                if (item is RadioButton)
+                {
+                    item.Tag = cyber1.Equipos[indiceRadio].Id;
+                    this.ImprimirEtiquetaEquipo(item.Tag.ToString());
 
-       
+                    indiceRadio++;
+                }
+                if (item is PictureBox)
+                {
+                    item.Tag = $"I{cyber1.Equipos[indiceImagen].Id}";
+                    PictureBox pict = (PictureBox)item;
+
+                    if (indiceImagen < cyber1.CantidadComputadoras)
+                    {
+                        pict.BackgroundImage = Resources.pcLIBRE;
+
+
+                    }
+                    else
+                    {
+                        pict.BackgroundImage = Resources.cabinaLIBRE;
+                    }
+
+                    pict.BackgroundImageLayout = ImageLayout.Stretch;
+                    indiceImagen++;
+
+                }
+
+
+            }
+        }
+        /// <summary>
+        /// Actualiza el estado del icono de equipo
+        /// </summary>
+        /// <param name="idEquipo">recibe el id del equipo</param>
         public void CambiarIconoEquipo(string idEquipo)
         {
             foreach (Control item in groupBoxEquipos.Controls)
@@ -206,7 +218,10 @@ namespace Cyber
             
             
         }
-
+        /// <summary>
+        /// Imprime texto en el campo de texto de un radiobutton de equipo
+        /// </summary>
+        /// <param name="idEquipo">recibe el id de equipo</param>
         public void ImprimirEtiquetaEquipo(string idEquipo)
         {
             string estado;
@@ -225,7 +240,7 @@ namespace Cyber
                 {
                     if (!(item.Tag is null) && item.Tag.ToString() == idEquipo)
                     {
-                        item.Text = $"{item.Tag} -{estado}\n{cyber1.ObtenerSubColaClientes(idEquipo).Count} clientes en cola";
+                        item.Text = $"{item.Tag} - {estado}\n{cyber1.ObtenerSubColaClientes(idEquipo).Count} clientes en cola";
                     }
                 }
                 
@@ -250,7 +265,7 @@ namespace Cyber
                 e.Cancel = true;
             } else
             {
-                
+                //comprueba si hay sesiones en curso
                 foreach (Sesion item in cyber1.Sesiones)
                 {
                     if (item.EnCurso)

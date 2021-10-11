@@ -10,11 +10,14 @@ namespace Equipos
 {
     public class Cabina : Equipo
     {
+        //esto esta sólo como "flavor". No es una característica crucial de un teléfono
         public enum Tipo
         {
             A_Disco, Con_Teclado
         }
-
+        /// <summary>
+        /// si bien son 3 tipos de llamadas, se considera que un teléfono o es local, o los 3 al mismo tiempo
+        /// </summary>
         public enum TipoLlamadaCabina
         {
             Local, Todas
@@ -23,7 +26,7 @@ namespace Equipos
 
         private Tipo tipo;
         private TipoLlamadaCabina tipoLlamadaCabina;
-        private string marca;
+        private string marca;//la marca del teléfono también es "flavor"
 
 
 
@@ -52,7 +55,12 @@ namespace Equipos
             return $"{base.Mostrar()}{buffer}";
 
         }
-
+        /// <summary>
+        /// Una cabina es igual a un cliente cuando concuerda su tipo de llamada, en cuanto a todos, o a local
+        /// </summary>
+        /// <param name="cabina">recibe el objeto cabina</param>
+        /// <param name="cliente">recibe un objeto cliente</param>
+        /// <returns>devuelve verdadero o falso si se cumple la condición</returns>
         public static bool operator ==(Cabina cabina, Cliente cliente)
         {
             ClienteDeTelefono auxUsuario = (ClienteDeTelefono)cliente;

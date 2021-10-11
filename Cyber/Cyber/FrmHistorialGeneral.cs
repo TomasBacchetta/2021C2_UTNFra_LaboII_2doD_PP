@@ -20,6 +20,9 @@ namespace Cyber
     public partial class FrmHistorialGeneral : Form
     {
         private CyberCafe cyber;
+        /// <summary>
+        /// este diccionario tiene las sesiones terminadas catalogadas por el id de equipo (la key)
+        /// </summary>
         private Dictionary<string, List<Sesion>> sesionesArchivadas;
         private const string histGeneral = "General";
         
@@ -29,13 +32,16 @@ namespace Cyber
             InitializeComponent();
             this.cyber = cyber;
             this.sesionesArchivadas = new Dictionary<string, List<Sesion>>();
-            
             this.GenerarPestania(histGeneral);
             this.GenerarPestaniasEquipo();
             
 
         }
-        //Aquí quise experimentar un poco con la generación dinámica de los controles de un formulario
+        /// <summary>
+        /// Aquí quise experimentar un poco con la generación dinámica de los controles de un formulario.
+        /// Genera todos los controles del formulario
+        /// </summary>
+        /// <param name="titulo"></param>
         public void GenerarPestania(string titulo)
         {
             //genera pestaña
@@ -78,7 +84,9 @@ namespace Cyber
             tabHistorial.TabPages.Add(tab);
             
         }
-
+        /// <summary>
+        /// Crea una pestaña tab para cada equipo del cyber
+        /// </summary>
         public void GenerarPestaniasEquipo()
         {
             foreach (Equipo item in this.cyber.Equipos)
@@ -177,15 +185,12 @@ namespace Cyber
             return (int)(elemento2.Value - elemento1.Value);
         }
 
-        /*
         
-        Ganancias totales y clasificadas por servicio (teléfono/computadora).+
-        Horas totales y la recaudación por tipo de llamada.++
-        El software más pedido por los clientes.+
-        El periférico más pedido por los clientes.+
-        El juego más pedido por los clientes.+
-         */
-
+        /// <summary>
+        /// Imprime el apartado de informes en el richtextbox correspondiente
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <returns></returns>
         public string ImprimirRichTextInformes(TabPage tab)
         {
             StringBuilder buffer = new StringBuilder();
@@ -193,9 +198,11 @@ namespace Cyber
             Dictionary<TipoLlamada, double> recaudacionPorTipoLlamada = new Dictionary<TipoLlamada, double>();
             double tiempoTotalCabina = 0;
             double tiempoTotalComputadora = 0;
+            ///Los siguientes diccionarios son contadores indexados por un elemento particular de una computadora, para cada categoría
             Dictionary<string, int> softwareMasPedido = new Dictionary<string, int>();
             Dictionary<string, int> juegoMasPedido = new Dictionary<string, int>();
             Dictionary<string, int> perifericoMasPedido = new Dictionary<string, int>();
+            //Los siguientes diccionarios acumulan el tiempo de uso para cada tipo de equipo, indexados por el id único del equipo 
             Dictionary<string, long> computadorasPorTiempo = new Dictionary<string, long>();
             Dictionary<string, long> cabinasPorTiempo = new Dictionary<string, long>();
             
@@ -294,13 +301,11 @@ namespace Cyber
                         
                     }
                 }
-                
-                
             }
             
             buffer.AppendFormat("\nGanancias Totales: ${0:0.00}\n", gananciasTotales);
             buffer.AppendLine($"-----------------\n");
-            if (esCabina)
+            if (esCabina)//si es cabina significa que debe imprimir los siguientes datos específicos de la cabina
             {
                 buffer.AppendFormat($"Horas totales de uso de las cabinas: {tiempoTotalCabina} minutos\n");
                 buffer.AppendLine($"-----------------");
@@ -321,7 +326,7 @@ namespace Cyber
                 buffer.AppendLine($"\n-----------------\n");
 
             }
-            if (esComputadora)
+            if (esComputadora)//si es computadora significa que debe imprimir los siguientes datos específicos de la cabina
             {
                 buffer.AppendFormat($"Horas totales de uso de las computadoras: {tiempoTotalComputadora} minutos\n");
                 buffer.AppendLine($"\n-----------------\n");
@@ -350,7 +355,8 @@ namespace Cyber
                 
             }
 
-            if (tab.Text == histGeneral)
+            if (tab.Text == histGeneral)//si el tab donde se está operando corresponde al del historial e informes General, se imprimen los listados de uso de tiempo
+             //de cada tipo de equipo, tal como pide la consigna
             {
                 buffer.AppendLine(ImprimirListadoCabinas(cabinasPorTiempo));
                 buffer.AppendLine(ImprimirListadoComputadoras(computadorasPorTiempo));
@@ -359,7 +365,11 @@ namespace Cyber
             
             return $"{buffer}";
         }
-
+        /// <summary>
+        /// imprime el listado de cabinas, que se agrega al richtextbox de informes. Este aparecerá solamente en el tab General
+        /// </summary>
+        /// <param name="cabinasPorTiempo">recibe el tiempo de uso de cada cabina clasificado por id</param>
+        /// <returns></returns>
         private static string ImprimirListadoCabinas(Dictionary<string, long> cabinasPorTiempo)
         {
             StringBuilder buffer = new StringBuilder();
@@ -381,7 +391,11 @@ namespace Cyber
 
             return $"{buffer}";
         }
-
+        /// <summary>
+        /// imprime el listado de computadoras, que se agrega al richtextbox de informes. Este aparecerá solamente en el tab General
+        /// </summary>
+        /// <param name="computadorasPorTiempo"></param>
+        /// <returns></returns>
         private static string ImprimirListadoComputadoras(Dictionary<string, long> computadorasPorTiempo)
         {
             StringBuilder buffer = new StringBuilder();

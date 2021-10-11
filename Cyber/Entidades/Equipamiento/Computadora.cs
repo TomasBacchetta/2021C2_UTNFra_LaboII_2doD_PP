@@ -9,6 +9,10 @@ namespace Equipos
 {
     public class Computadora : Equipo
     {
+        /// <summary>
+        /// Software, juego y periféricos se guardan en Listas de strings ya que puede haber más de uno. En cambio los componentes al ser únicos, son strings. 
+        /// Estos últimos también son "flavor", no son cruciales para el funcionamiento del programa
+        /// </summary>
         private List<string> software;
         private List<string> juegos;
         private List<string> perifericos;
@@ -83,12 +87,13 @@ namespace Equipos
 
         
         /// <summary>
-        /// Determina si una computadora cumple con los requisitos de un usuario tanto en software como en juegos y perifercos 
+        /// Determina si una computadora cumple con los requisitos de un usuario tanto en software como en juegos y perifercos.
+        /// También se encarga de asignar los puntos de felicidad al cliente.
         /// </summary>
-        /// <param name="comp"></param>
-        /// <param name="usuario"></param>
-        /// <returns></returns>
-
+        /// <param name="comp">recibe un objeto equipo de tipo computadora</param>
+        /// <param name="usuario">recibe un objeto cliente</param>
+        /// <returns>verdadero o falso dependiendo el caso</returns>
+        
         public static bool operator ==(Computadora comp, Cliente usuario)
         {
             bool matchJuegos = false;

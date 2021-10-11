@@ -38,31 +38,31 @@ namespace Cyber
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(83, 69);
+            this.txtNombre.Location = new System.Drawing.Point(64, 69);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(123, 23);
+            this.txtNombre.Size = new System.Drawing.Size(169, 23);
             this.txtNombre.TabIndex = 0;
             // 
             // txtRazonSocial
             // 
-            this.txtRazonSocial.Location = new System.Drawing.Point(83, 129);
+            this.txtRazonSocial.Location = new System.Drawing.Point(64, 134);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(123, 23);
+            this.txtRazonSocial.Size = new System.Drawing.Size(169, 23);
             this.txtRazonSocial.TabIndex = 1;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(83, 42);
+            this.lblNombre.Location = new System.Drawing.Point(64, 42);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(113, 15);
+            this.lblNombre.Size = new System.Drawing.Size(169, 15);
             this.lblNombre.TabIndex = 2;
-            this.lblNombre.Text = "Nombre de Usuario:";
+            this.lblNombre.Text = "Nombre y apellido del usuario:";
             // 
             // lblRazonSocial
             // 
             this.lblRazonSocial.AutoSize = true;
-            this.lblRazonSocial.Location = new System.Drawing.Point(83, 111);
+            this.lblRazonSocial.Location = new System.Drawing.Point(64, 111);
             this.lblRazonSocial.Name = "lblRazonSocial";
             this.lblRazonSocial.Size = new System.Drawing.Size(76, 15);
             this.lblRazonSocial.TabIndex = 3;
