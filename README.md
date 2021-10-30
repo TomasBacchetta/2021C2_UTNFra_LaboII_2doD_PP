@@ -36,7 +36,7 @@ Fue la base de este parcial y el paradigma utilizado, se trató de respetar lo m
  Justificación: Era lo pedido pero también se aprovechó para experimentar un poco.
 -Sobre Windows Forms: se utilizan extensamente los conceptos vistos en clase, se explotan tambien cosas no vistas como el aprovechamiento la propiedad tag, muy útil para indentificar y enlazar lógicamente controles. Se experimenta también la generación dinámica de controles en el formulario de historial. Se utilizan también archivos media embebidos en Recursos. -Las colecciones se aprovechan lo más posible, siendo las estrellas las genéricas Queue (para, por supuesto, las colas), Dictionary (para catalogar colecciones), y también List como respuesta a la necesidad de arrays dinámicos. -El encapsulamiento se aprovecha lo más posible, pero siendo algo complejo, siempre está sujeto a mejoras. Los modificadores de acceso fueron aprovechados lo más posible no sólo como una forma de hacer más seguro el código, sino también hacer más legible la herramienta Intellisense ya que ésta sólo mostrar lo que me sirva en el contexto apropiado. -La herencia es muy explotada varias de las clases, ahorrando código y casteos innecesarios. -El polimorfismo es muy utilizado en los métodos que devuelven un string en clases derivadas, sobreescribiendo los de la base.
 
-**5. Colecciones**
+**4. Colecciones**
 Dónde se usa (ejemplo): Atributos de CyberCafe.cs
 Justificación:
 
@@ -45,15 +45,15 @@ Justificación:
  - Dictionary<string, Queue<Cliente>> colaDeClientesEnUnEquipo: la cola de un equipo en particular. Esta requiere una cola nueva (value), catalogada por un el id del equipo, que es un string (key), por lo que usar un dictionary es una buena opción.
 
 
-**6. Encapsulamiento**
+**5. Encapsulamiento**
 Dónde se usa (ejemplo) y justificación: En todo el proyecto sobre todo en la lógica de negocio, las clases derivadas están selladas, para que no se las pueda heredar. En muchas clases hay enumerados. Datos, que almacena muchas variables que se asignarán aleatoriamente, utiliza varios indexadores, que facilitan el acceso a esos datos.
 
 
-**7. Herencia**
+**6. Herencia**
 Dónde se usa (ejemplo): En la carpeta Equipamiento (Equipo deriva en Computadora o Cabina), Personas(Cliente deriva en Cliente de Computadora, o de Cabina y Sesiones (Sesion deriva en Sesion de computadora o de cabina)
 Justificación: Organiza el código y facilita utilizar las clases enumeradas arriba.
 
-**8. Polimorfismo**
+**7. Polimorfismo**
 Dónde se usa (ejemplo) y justificación: 
  - Se sobreescribe el método virtual Mostrar() de Cliente, en ClienteDeComputadora y ClienteDeCabina. Esto permite no tener que castear, por ejemplo, al extraer estos objetos de una lista y querer mostrarlos.
  - Sesion es una clase abstracta, que define dos campos abstractos, la propiedad EnCurso, y el método CalcularCosto(). Como las clases derivadas SesionComputadora y SesionCabina van a utilizar estos dos de formas diferentes, pero necesito que estén presentes, se justifica que sean abstractas.
