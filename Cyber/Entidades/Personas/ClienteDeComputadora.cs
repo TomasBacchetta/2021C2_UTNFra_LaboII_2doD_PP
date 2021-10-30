@@ -7,7 +7,7 @@ using Datos;
 
 namespace Personas
 {
-    public class ClienteDeComputadora : Cliente
+    public sealed class ClienteDeComputadora : Cliente
     {
         private List<string> juegosFavoritos;
         private List<string> programasFavoritos;
@@ -40,7 +40,7 @@ namespace Personas
 
         
         //constructores de cliente de computadora con sobrecarga, se van llamando en cascada
-        public ClienteDeComputadora(string nombre, string apellido, long documento, Carga datos1) : base(nombre, apellido, documento, TipoCliente.ClienteComputadora)
+        public ClienteDeComputadora(string nombre, string apellido, int edad, long documento, Carga datos1) : base(nombre, apellido, edad, documento, TipoCliente.ClienteComputadora)
         {
             if (datos1 is Juegos)
             {
@@ -70,7 +70,7 @@ namespace Personas
                 this.perifericosFavoritos = new List<string>();
             }
         }
-        public ClienteDeComputadora(string nombre, string apellido, long documento, Carga datos1, Carga datos2) : this(nombre, apellido, documento, datos1)
+        public ClienteDeComputadora(string nombre, string apellido, int edad, long documento, Carga datos1, Carga datos2) : this(nombre, apellido, edad, documento, datos1)
         {
             if (datos2 is Juegos)
             {
@@ -88,7 +88,7 @@ namespace Personas
                 }
             }
         }
-        public ClienteDeComputadora(string nombre, string apellido, long documento, Carga datos1, Carga datos2, Carga datos3) : this(nombre, apellido, documento, datos1, datos2)
+        public ClienteDeComputadora(string nombre, string apellido, int edad, long documento, Carga datos1, Carga datos2, Carga datos3) : this(nombre, apellido, edad, documento, datos1, datos2)
         {
             
             if (datos3 is Juegos)

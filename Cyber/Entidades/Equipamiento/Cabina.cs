@@ -8,7 +8,7 @@ using Personas;
 
 namespace Equipos
 {
-    public class Cabina : Equipo
+    public sealed class Cabina : Equipo
     {
         //esto esta sólo como "flavor". No es una característica crucial de un teléfono
         public enum Tipo
@@ -23,6 +23,10 @@ namespace Equipos
             Local, Todas
         }
 
+        public enum TipoLlamadaTelefono
+        {
+            Local, LargaDistancia, Internacional
+        }
 
         private Tipo tipo;
         private TipoLlamadaCabina tipoLlamadaCabina;
@@ -64,15 +68,18 @@ namespace Equipos
         public static bool operator ==(Cabina cabina, Cliente cliente)
         {
             ClienteDeTelefono auxUsuario = (ClienteDeTelefono)cliente;
-            if (auxUsuario.TipoDeLlamada == ClienteDeTelefono.TipoLlamada.Local)
+            if (!string.IsNullOrEmpty(auxUsuario.Telefono))
             {
-                return true;
+                if (DeterminarTipoDeLlamada(auxUsuario.Telefono) == TipoLlamadaTelefono.Local)
+                {
+                    return true;
+                }
+                if ((DeterminarTipoDeLlamada(auxUsuario.Telefono) == TipoLlamadaTelefono.LargaDistancia || DeterminarTipoDeLlamada(auxUsuario.Telefono) == TipoLlamadaTelefono.Internacional) && cabina.tipoLlamadaCabina == TipoLlamadaCabina.Todas)
+                {
+                    return true;
+                }
             }
-            if ((auxUsuario.TipoDeLlamada == ClienteDeTelefono.TipoLlamada.LargaDistancia || auxUsuario.TipoDeLlamada == ClienteDeTelefono.TipoLlamada.Internacional)&& cabina.tipoLlamadaCabina == TipoLlamadaCabina.Todas)
-            {
-                return true;
-            }
-
+            
             return false;
             
 
@@ -100,7 +107,32 @@ namespace Equipos
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            HashCode hash = new HashCode();
+            hash.Add(base.Id);
+            return hash.ToHashCode();
+        }
+
+        /// <summary>
+        /// Determina el tipo de llamad en base al numero de telefono generado aleatoriamente
+        /// es la forma ideal de hacerlo si eventualmente se pudiese cargar a mano el número
+        /// </summary>
+        /// <returns></returns>
+        public static TipoLlamadaTelefono DeterminarTipoDeLlamada(string telIngresado)
+        {
+            string telefono = telIngresado;
+
+            if ($"{telefono[0]}{telefono[1]}" == "54")
+            {
+                if ($"{telefono[2]}{telefono[3]}" == "11")
+                {
+                    return TipoLlamadaTelefono.Local;
+                }
+                return TipoLlamadaTelefono.LargaDistancia;
+            }
+            else
+            {
+                return TipoLlamadaTelefono.Internacional;
+            }
         }
     }
 }

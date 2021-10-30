@@ -31,11 +31,11 @@ namespace Negocio
         /// son colecciones diccionario cuya key es un string que corresponde al id único de un equipo, sin importar el tipo, cuyo valor es una cola (independiente
         /// de la general) de clientes
         /// </summary>
-        private Dictionary<string, Queue<Cliente>> subColaClientes;
+        private Dictionary<string, Queue<Cliente>> colaDeClientesEnUnEquipo;
         /// <summary>
         /// la lista de productos es un diccionario que tiene como key el tipo de producto, y su valor será una cola de objetos de tipo consumible (los productos)
         /// </summary>
-        private Dictionary<TipoConsumible, Queue<Consumible>> listaProductos;
+        private List<Consumible> listaProductos;
         private string nombre;
         private string razonSocial;
 
@@ -54,7 +54,7 @@ namespace Negocio
                 return this.razonSocial;
             }
         }
-        public Dictionary<TipoConsumible, Queue<Consumible>> ListaProductos
+        public List<Consumible> ListaProductos
         {
             get
             {
@@ -115,7 +115,7 @@ namespace Negocio
             this.cantidadComputadoras = cantidadComputadoras;
             this.cantidadClientes = cantidadClientes;
             this.sesiones = new List<Sesion>();
-            this.subColaClientes = new Dictionary<string, Queue<Cliente>>();
+            this.colaDeClientesEnUnEquipo = new Dictionary<string, Queue<Cliente>>();
             this.nombre = nombre;
             this.razonSocial = razonSocial;
             this.CargarEquipos();
@@ -126,40 +126,49 @@ namespace Negocio
 
         }
         /// <summary>
-        /// Carga los diversos productos en la cola de productos, que a su vez se categorizan por la key que corresponde al tipo de producto
+        /// Instancia la lista de productos y le agrega productos
         /// </summary>
         private void CargarProductos()
         {
-            this.listaProductos = new Dictionary<TipoConsumible, Queue<Consumible>>();
-
-            listaProductos.Add(TipoConsumible.BebidaChina, new Queue<Consumible>());
-            listaProductos.Add(TipoConsumible.BebidaAlcoholica, new Queue<Consumible>());
-            listaProductos.Add(TipoConsumible.Coquita, new Queue<Consumible>());
-            listaProductos.Add(TipoConsumible.Cigarro, new Queue<Consumible>());
-            listaProductos.Add(TipoConsumible.Confitura, new Queue<Consumible>());
-
-            for (int x = 0; x < 10; x++)
-            {
-                listaProductos[TipoConsumible.BebidaChina].Enqueue(new Consumible(TipoConsumible.BebidaChina));
-                listaProductos[TipoConsumible.BebidaAlcoholica].Enqueue(new Consumible(TipoConsumible.BebidaAlcoholica));
-                listaProductos[TipoConsumible.Coquita].Enqueue(new Consumible(TipoConsumible.Coquita));
-                listaProductos[TipoConsumible.Cigarro].Enqueue(new Consumible(TipoConsumible.Cigarro));
-                listaProductos[TipoConsumible.Confitura].Enqueue(new Consumible(TipoConsumible.Confitura));
-            }
+            listaProductos = new List<Consumible>();
+            listaProductos.Add(new Consumible(TipoConsumible.BebidaChina, 6));
+            listaProductos.Add(new Consumible(TipoConsumible.BebidaAlcoholica, 8));
+            listaProductos.Add(new Consumible(TipoConsumible.Coquita, 15));
+            listaProductos.Add(new Consumible(TipoConsumible.Cigarro, 8));
+            listaProductos.Add(new Consumible(TipoConsumible.Confitura, 20));
             
-            
-                
                     
         }
         /// <summary>
-        /// Muestra el stock de un producto
+        /// Obtiene un producto en base a su tipo
         /// </summary>
-        /// <param name="tipo">Recibe el stock del producto</param>
-        /// <returns>Devuelve la cantidad entera de stock</returns>
-        public int MostrarStockProducto(TipoConsumible tipo)
+        /// <param name="tipo"></param>
+        /// <returns></returns>
+        public Consumible ObtenerProductoPorTipo(TipoConsumible tipo)
         {
-            return listaProductos[tipo].Count;
+            foreach (Consumible item in listaProductos)
+            {
+                if (item == tipo)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
+
+        public bool ActualizarStockListaProductos(TipoConsumible tipo)
+        {
+            
+            if (ObtenerProductoPorTipo(tipo).Stock > 0)
+            {
+                ObtenerProductoPorTipo(tipo).Stock--;
+                return true;
+            }
+            return false;
+            
+        }
+
+
         /// <summary>
         /// Carga la cola general de clientes de forma pseudo-aleatoria
         /// </summary>
@@ -167,8 +176,8 @@ namespace Negocio
         {
             NombresPersonas nombres = new NombresPersonas();
             ApellidosPersonas apellidos = new ApellidosPersonas();
-            NumeroTelefono numeroTelefono = new NumeroTelefono();
             Random dni = new Random();
+            Random edad = new Random();
             Random rnd = new Random();
             Carga datos1 = new Carga();
             Carga datos2 = new Carga();
@@ -198,7 +207,7 @@ namespace Negocio
                                 datos1 = new Perifericos();
                                 break;
                         }
-                        this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), datos1));
+                        this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), edad.Next(15,99), dni.Next(400000, 500000), datos1));
                     }
                     else
                     {
@@ -220,19 +229,19 @@ namespace Negocio
                                     datos2 = new Perifericos();
                                     break;
                             }
-                            this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), datos1, datos2));
+                            this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), edad.Next(15,99), dni.Next(400000, 500000), datos1, datos2));
                         } else//chance de 1/5 que tenga 3 categorias favoritas
                         {
                             datos1 = new Juegos();
                             datos2 = new Programas();
                             datos3 = new Perifericos();
-                            this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), datos1, datos2, datos3));
+                            this.colaClientes.Enqueue(new ClienteDeComputadora(nombres.CargarDatos(), apellidos.CargarDatos(), edad.Next(15, 99), dni.Next(400000, 500000), datos1, datos2, datos3));
                         }
                     }
                    
                 } else//chance de 2/5 de que sea cliente de teléfono
                 {
-                    this.colaClientes.Enqueue(new ClienteDeTelefono(nombres.CargarDatos(), apellidos.CargarDatos(), dni.Next(400000, 500000), numeroTelefono.GenerarNumeroTelefono()));
+                    this.colaClientes.Enqueue(new ClienteDeTelefono(nombres.CargarDatos(), apellidos.CargarDatos(), edad.Next(15, 99), dni.Next(400000, 500000)));
                 }
                 
             }
@@ -245,7 +254,7 @@ namespace Negocio
             foreach (Equipo item in this.Equipos)
             {
                 Queue<Cliente> subCola = new Queue<Cliente>();
-                this.subColaClientes.Add(item.Id, subCola);
+                this.colaDeClientesEnUnEquipo.Add(item.Id, subCola);
             }
         }
         /// <summary>
@@ -352,6 +361,11 @@ namespace Negocio
             return null;
         }
 
+        public Sesion BuscarSesionPorEquipo(Equipo equipo)
+        {
+            return BuscarSesionPorEquipo(equipo.Id);
+        }
+
         /// <summary>
         /// Carga un cliente de la cola general en la subcola de un equipo. También llama a una función que determina cuantos puntos se restan de su felicidad
         /// </summary>
@@ -359,7 +373,7 @@ namespace Negocio
         public void CargarClienteEnSubCola(string idEquipo)
         {
             this.AjustarPuntosDeFelicidad(idEquipo, this.ObtenerProximoCliente());
-            this.subColaClientes[idEquipo].Enqueue(this.ObtenerProximoCliente());
+            this.colaDeClientesEnUnEquipo[idEquipo].Enqueue(this.ObtenerProximoCliente());
             
         }
         /// <summary>
@@ -370,12 +384,12 @@ namespace Negocio
         {
             if (equipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
-                SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteSubcola(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
-                this.RestarFelicidadPorTabaco(sesionNueva);
+                SesionComputadora sesionNueva = new SesionComputadora(this.ObtenerProximoClienteEnColaDeUnEquipo(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
+                RestarFelicidadPorTabaco(sesionNueva);
                 this.sesiones.Add(sesionNueva);
             } else
             {
-                SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteSubcola(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
+                SesionCabina sesionNueva = new SesionCabina(this.ObtenerProximoClienteEnColaDeUnEquipo(equipo.Id), equipo, (Sesion.Efecto)equipo.EfectoDeLaMaquina);
                 this.sesiones.Add(sesionNueva);
             }
             equipo.EnUso = true;
@@ -385,7 +399,7 @@ namespace Negocio
         /// Ajusta la felicidad por la presencia del efecto del tabaco en la sesion
         /// </summary>
         /// <param name="sesion">recibe una sesión por parámetro</param>
-        private void RestarFelicidadPorTabaco(Sesion sesion)
+        private static void RestarFelicidadPorTabaco(Sesion sesion)
         {
             if (sesion.EfectoActual == Sesion.Efecto.Tabaco)
             {
@@ -406,7 +420,7 @@ namespace Negocio
         /// 2 si logró cargar en una cabina,
         ///-1 si no pudo cargar en una computadora por no cumplir con las especificaciones del cliente, 
         ///-2 si el tipo de equipo no era el indicado para el cliente</returns>
-        public int AsignarClienteAEquipo(string idEquipo)
+        public ResultadoAsignacion AsignarClienteAEquipo(string idEquipo)
         {
 
             Equipo auxEquipo = BuscarEquipoPorId(idEquipo);
@@ -423,18 +437,18 @@ namespace Negocio
                         if (auxEquipo.EnUso == false)
                         {
                             this.CargarSesionNueva(auxEquipo);
-                            this.subColaClientes[idEquipo].Dequeue();
+                            this.colaDeClientesEnUnEquipo[idEquipo].Dequeue();
 
                         } 
                         this.colaClientes.Dequeue();
 
-                        return 1;//logro cargar en una computadora
+                        return ResultadoAsignacion.CargoEnComputadora;//logro cargar en una computadora
                     }
                     else
                     {
-                        return -1;//no pudo cargar 
+                        return ResultadoAsignacion.NoPudoCargar;//no pudo cargar 
                     }
-                } else
+                } else //es de tipo cabina
                 {
                     if ((Cabina)auxEquipo == ObtenerProximoCliente())
                     {
@@ -443,21 +457,29 @@ namespace Negocio
                         if (auxEquipo.EnUso == false)
                         {
                             this.CargarSesionNueva(auxEquipo);
-                            this.subColaClientes[idEquipo].Dequeue();
+                            this.colaDeClientesEnUnEquipo[idEquipo].Dequeue();
 
                         } 
                         this.colaClientes.Dequeue();
                     } else
                     {
-                        return -1;//no pudo cargar 
+                        return ResultadoAsignacion.NoPudoCargar;//no pudo cargar 
                     }
                     
-                    return 2;//logro cargar en una cabina
+                    return ResultadoAsignacion.CargoEnCabina;//logro cargar en una cabina
                 }
                 
                 
             }
-            return -2;//el equipo no era el indicado para el cliente
+            return ResultadoAsignacion.EquipoNoIndicadoParaCliente;//el equipo no era el indicado para el cliente
+        }
+
+        public enum ResultadoAsignacion
+        {
+            CargoEnComputadora,
+            CargoEnCabina,
+            NoPudoCargar,
+            EquipoNoIndicadoParaCliente
         }
         /// <summary>
         /// Ajusta los puntos de felicidad iniciales, restando 1 por cada cliente que ya este en la subcola del equipo
@@ -474,7 +496,7 @@ namespace Negocio
                 clienteEnEquipo = 1;
             }
             //
-            cliente.PuntosDeFelicidad -= (this.subColaClientes[idEquipo].Count + clienteEnEquipo);
+            cliente.PuntosDeFelicidad -= (this.colaDeClientesEnUnEquipo[idEquipo].Count + clienteEnEquipo);
             if (cliente.PuntosDeFelicidad < 0)//si la felicidad llega a 0, se queda ahi
             {
                 cliente.PuntosDeFelicidad = 0;
@@ -502,9 +524,9 @@ namespace Negocio
         /// </summary>
         /// <param name="idEquipo">recibe el id del equipo</param>
         /// <returns>devuelve el cliente</returns>
-        public Cliente ObtenerProximoClienteSubcola(string idEquipo)
+        public Cliente ObtenerProximoClienteEnColaDeUnEquipo(string idEquipo)
         {
-            return this.ObtenerSubColaClientes(idEquipo).Peek();
+            return this.ObtenerColaDeClientesEnUnEquipo(idEquipo).Peek();
         }
 
         /// <summary>
@@ -512,20 +534,20 @@ namespace Negocio
         /// </summary>
         /// <param name="idEquipo">recibe el id del equipo</param>
         /// <returns>devuelve el cliente</returns>
-        public Cliente ObtenerAtenderProximoClienteSubcola(string idEquipo)
+        public Cliente ObtenerYAtenderProximoClienteEnColaDeUnEquipo(string idEquipo)
         {
-           return this.ObtenerSubColaClientes(idEquipo).Dequeue();
+           return this.ObtenerColaDeClientesEnUnEquipo(idEquipo).Dequeue();
                         
         }
 
         /// <summary>
-        /// obtiene la subcola de clientes en base a su id de equipo (su key)
+        /// obtiene la cola de clientes de un equipo en base a su id de equipo (su key)
         /// </summary>
         /// <param name="idEquipo">recibe el id del equipo</param>
         /// <returns>devuelve la subcola</returns>
-        public Queue<Cliente> ObtenerSubColaClientes(string idEquipo)
+        public Queue<Cliente> ObtenerColaDeClientesEnUnEquipo(string idEquipo)
         {
-            return this.subColaClientes[idEquipo];
+            return this.colaDeClientesEnUnEquipo[idEquipo];
         }
 
         
@@ -549,34 +571,8 @@ namespace Negocio
             
             return null;
         }
-        /// <summary>
-        /// obtiene el primer producto de una cola de productos en base a su tipo
-        /// </summary>
-        /// <param name="tipo">recibe el tipo de producto</param>
-        /// <returns>devuelve el producto</returns>
-        public Consumible ObtenerProductoPorTipo(TipoConsumible tipo)
-        {
-            Consumible auxProducto;
-            if (this.listaProductos[tipo].Count > 0)
-            {
-                auxProducto = this.listaProductos[tipo].Peek();
-            } else
-            {
-                auxProducto = new Consumible(tipo);
-            }
-            return auxProducto;
-            
-        }
-        /// <summary>
-        /// obtiene el primer producto de una cola de productos en base a su tipo y lo saca de su cola
-        /// </summary>
-        /// <param name="tipo">recibe el tipo de producto</param>
-        /// <returns>devuelve el producto</returns>
-        public Consumible ObtenerProductoPorTipoYRemoverDeInventario(TipoConsumible tipo)
-        {
-            return this.listaProductos[tipo].Dequeue();
-
-        }
+        
+        
         /// <summary>
         /// obtiene la lista de sesiones de un equipo
         /// </summary>
@@ -596,6 +592,12 @@ namespace Negocio
             }
 
             return listaSesionEquipo;
+        }
+
+        public List<Sesion> ObtenerSesionesDeEquipo(Equipo equipo)
+        {
+
+            return ObtenerSesionesDeEquipo(equipo.Id);
         }
 
     }

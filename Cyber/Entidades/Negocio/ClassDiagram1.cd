@@ -1,9 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Negocio.CyberCafe">
-    <Position X="5.5" Y="0.5" Width="5.5" />
+    <Position X="6.25" Y="2.5" Width="4.5" />
+    <NestedTypes>
+      <Enum Name="Negocio.CyberCafe.ResultadoAsignacion" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Negocio\CyberCafe.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>wMAAAECCAAAAAQCAgAECwABIJBgShCQEMIAABoCIAIE=</HashCode>
+      <HashCode>wMBAgECCAAAAAQCAgEEC4ABIBBgCBCQEEIAABoCIgAE=</HashCode>
       <FileName>Negocio\CyberCafe.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -68,15 +68,7 @@ namespace Equipos
             }
         }
 
-        public virtual List<string> Software { get; }
        
-        public virtual List<string> Juegos { get; }
-        
-        public virtual List<string> Perifericos { get; }
-
-           
-
-
         public Equipo(string id, TipoEquipo tipoDeEquipo)
         {
             this.id = id;
@@ -98,6 +90,8 @@ namespace Equipos
             return $"{buffer}";
 
         }
+
+        
 
         public static bool operator ==(Equipo e1, Equipo e2)
         {
@@ -136,7 +130,17 @@ namespace Equipos
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            HashCode hash = new HashCode();
+            hash.Add(id);
+            return hash.ToHashCode();
+        }
+        /// <summary>
+        /// Devuelve un string con todos los datos
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.Mostrar();
         }
     }
 

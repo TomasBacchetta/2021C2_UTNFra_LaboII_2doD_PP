@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Negocio;
 using Sesiones;
 using static Entidades.Consumible;
+using Entidades;
 
 namespace Cyber
 {
@@ -59,7 +60,7 @@ namespace Cyber
 
                     } else
                     {
-                        if (cyber.ListaProductos[(TipoConsumible)item.Tag].Count <= 0)
+                        if (cyber.ObtenerProductoPorTipo((TipoConsumible)item.Tag).Stock <= 0)
                         {
                             item.Enabled = false;
                             item.Text = "SIN STOCK";
@@ -112,16 +113,16 @@ namespace Cyber
         private void CargarPreciosYStock()
         {
             
-            lblCostoBebidaChin.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaChina)}";
+            lblCostoBebidaChin.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).MostrarCostos()} - Stock: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Stock}";
             if (this.sesionActual.EfectoActual == Sesion.Efecto.BebidaChina)
             {
-                lblCostoBebidaChin.Text = $"Precio: ${this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Precio} Costo de felicidad: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).CostoFelicidad - 5} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaChina)}";
+                lblCostoBebidaChin.Text = $"Precio: ${this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Precio} Costo de felicidad: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).CostoFelicidad - 5} - Stock: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaChina).Stock}";
             }
             
-            lblCostoCoquita.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Coquita).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.Coquita)}";
-            lblCostoCigarro.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Cigarro).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.Cigarro)}";
-            lblCostoConfitura.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Confitura).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.Confitura)}";
-            lblCostoBebidaAlcoh.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaAlcoholica).MostrarCostos()} - Stock: {this.cyber.MostrarStockProducto(TipoConsumible.BebidaAlcoholica)}";
+            lblCostoCoquita.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Coquita).MostrarCostos()} - Stock: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.Coquita).Stock}";
+            lblCostoCigarro.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Cigarro).MostrarCostos()} - Stock: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.Cigarro).Stock}";
+            lblCostoConfitura.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.Confitura).MostrarCostos()} - Stock: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.Confitura).Stock}";
+            lblCostoBebidaAlcoh.Text = $"{this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaAlcoholica).MostrarCostos()} - Stock: {this.cyber.ObtenerProductoPorTipo(TipoConsumible.BebidaAlcoholica).Stock}";
         }
 
         private void BtnComprar_Click(object sender, EventArgs e)
@@ -150,11 +151,12 @@ namespace Cyber
             {
                 foreach (Control item in Controls)
                 {
-                    if (item is CheckBox && ((CheckBox)item).Checked && item.Enabled)
+                    if (item is CheckBox && ((CheckBox)item).Checked && item.Enabled && cyber.ActualizarStockListaProductos((TipoConsumible)item.Tag))
                     {
-                        sesionActual.CarritoDeCompras.Add(cyber.ObtenerProductoPorTipoYRemoverDeInventario((TipoConsumible)item.Tag));
+                        
+                        sesionActual.CarritoDeCompras.Add(cyber.ObtenerProductoPorTipo((TipoConsumible)item.Tag));
                         algoComprado = true;
-
+                   
                     }
                 }
                 sesionActual.UsuarioActual.PuntosDeFelicidad -= costoEnFelicidad;

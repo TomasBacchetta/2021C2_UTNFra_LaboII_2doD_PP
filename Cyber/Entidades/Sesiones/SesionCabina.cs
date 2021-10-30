@@ -10,10 +10,10 @@ using Entidades;
 
 namespace Sesiones
 {
-    public class SesionCabina : Sesion
+    public sealed class SesionCabina : Sesion
     {
 
-        private TipoLlamada tipoLlamada;
+        private Cabina.TipoLlamadaTelefono tipoLlamada;
         /// <summary>
         /// el apartado set de la propiedad EnCurso se encarga de capturar el tiempo en que se cerro la sesion
         /// calcula el tiempo pasado
@@ -54,7 +54,7 @@ namespace Sesiones
             }
         }
 
-        public TipoLlamada TipoLlamada
+        public Cabina.TipoLlamadaTelefono TipoLlamada
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Sesiones
         public SesionCabina(Cliente usuarioActual, Equipo equipo, Efecto efectoActual) : base(usuarioActual, equipo, efectoActual)
         {
             ClienteDeTelefono auxClienteTel = (ClienteDeTelefono)usuarioActual;
-            this.tipoLlamada = auxClienteTel.TipoDeLlamada;
+            this.tipoLlamada = Cabina.DeterminarTipoDeLlamada(auxClienteTel.Telefono);
         }
 
         public override string MostrarSesion()
@@ -84,19 +84,19 @@ namespace Sesiones
         /// calcula el costo de la llamada en base a su tipo
         /// </summary>
         /// <returns>devuelve el costo resultante</returns>
-        public double CalcularCosto()
+        public override double CalcularCosto()
         {
             double multiplicador = 0;
             ClienteDeTelefono auxClienteTel = (ClienteDeTelefono)usuarioActual;
-            switch (auxClienteTel.TipoDeLlamada)
+            switch (Cabina.DeterminarTipoDeLlamada(auxClienteTel.Telefono))
             {
-                case TipoLlamada.Local:
+                case Cabina.TipoLlamadaTelefono.Local:
                     multiplicador = 1;
                     break;
-                case TipoLlamada.LargaDistancia:
+                case Cabina.TipoLlamadaTelefono.LargaDistancia:
                     multiplicador = 2.5;
                     break;
-                case TipoLlamada.Internacional:
+                case Cabina.TipoLlamadaTelefono.Internacional:
                     multiplicador = 5;
                     break;
             }

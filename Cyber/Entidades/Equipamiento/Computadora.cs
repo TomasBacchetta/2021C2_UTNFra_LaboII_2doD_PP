@@ -7,7 +7,7 @@ using Personas;
 
 namespace Equipos
 {
-    public class Computadora : Equipo
+    public sealed class Computadora : Equipo
     {
         /// <summary>
         /// Software, juego y periféricos se guardan en Listas de strings ya que puede haber más de uno. En cambio los componentes al ser únicos, son strings. 
@@ -21,21 +21,21 @@ namespace Equipos
         private string ram;
 
 
-        public override List<string> Software
+        public List<string> Software
         {
             get
             {
                 return this.software;
             }
         }
-        public override List<string> Juegos
+        public List<string> Juegos
         {
             get
             {
                 return this.juegos;
             }
         }
-        public override List<string> Perifericos
+        public List<string> Perifericos
         {
             get
             {

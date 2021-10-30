@@ -9,7 +9,7 @@ using Entidades;
 
 namespace Sesiones
 {
-    public class SesionComputadora : Sesion
+    public sealed class SesionComputadora : Sesion
     {
         private List<string> softwareUtilizado;
         private List<string> juegosUtilizados;
@@ -138,7 +138,7 @@ namespace Sesiones
         /// calcula el costo de la sesion en base a los bloques que pasaron
         /// </summary>
         /// <returns>devuelve el costo resultante</returns>
-        public double CalcularCosto()///este método tiene el mismo nombre que el de su hermana, pero son diferentes, por eso sus propiedades EnUso deben verse duplicadas
+        public override double CalcularCosto()///este método tiene el mismo nombre que el de su hermana, pero son diferentes, por eso sus propiedades EnUso deben verse duplicadas
         {
             return CalcularBloqueDeTiempo(this.tiempoPasado) * 0.5F;
         }
@@ -152,7 +152,7 @@ namespace Sesiones
             ClienteDeComputadora auxClienteComp = (ClienteDeComputadora)usuarioActual;
             foreach (string program in auxClienteComp.ProgramasFavoritos)
             {
-                if (this.equipoEnUso.Software.Contains(program))
+                if (((Computadora)this.equipoEnUso).Software.Contains(program))
                 {
                     programasUtilizados.Add(program);
                 }
@@ -171,7 +171,7 @@ namespace Sesiones
             ClienteDeComputadora auxClienteComp = (ClienteDeComputadora)usuarioActual;
             foreach (string juego in auxClienteComp.JuegosFavoritos)
             {
-                if (this.equipoEnUso.Juegos.Contains(juego))
+                if (((Computadora)this.equipoEnUso).Juegos.Contains(juego))
                 {
                     juegosUtilizados.Add(juego);
                 }
@@ -190,7 +190,7 @@ namespace Sesiones
             ClienteDeComputadora auxClienteComp = (ClienteDeComputadora)usuarioActual;
             foreach (string periferico in auxClienteComp.PerifericosFavoritos)
             {
-                if (this.equipoEnUso.Perifericos.Contains(periferico))
+                if (((Computadora)this.equipoEnUso).Perifericos.Contains(periferico))
                 {
                     perifericosUtilizados.Add(periferico);
                 }

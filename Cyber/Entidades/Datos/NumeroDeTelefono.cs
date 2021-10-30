@@ -13,7 +13,7 @@ namespace Datos
             Larga distancia: $2.50 por minuto. Se reconoce a una llamada como de larga distancia cuando el prefijo contiene un número distinto de '11' o '011' luego del código de país (54 - #### - #### - ####).
             Internacional: $5.00 por minuto. Se reconoce a una llamada como de larga distancia cuando el código de país es distinto de '54'.
          */
-        public string GenerarNumeroTelefono()
+        public static string GenerarNumeroTelefono()
         {
             Random rnd = new Random();
             int primerPrefijo;
@@ -39,7 +39,7 @@ namespace Datos
 
             }
 
-            return $"{primerPrefijo}-{segundoPrefijo}-{rnd.Next(2000, 9999)}-{rnd.Next(2000, 9000)}";
+            return $"{primerPrefijo}{segundoPrefijo}{rnd.Next(2000, 9999)}{rnd.Next(2000, 9000)}";
 
         }
     }

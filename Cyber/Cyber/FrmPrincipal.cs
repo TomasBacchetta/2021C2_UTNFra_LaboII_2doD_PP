@@ -31,11 +31,11 @@ namespace Cyber
         {
             this.ConfigurarGroupBoxPrincipal();
             ArchivosMedia.ReproducirSonidoFormPrincipal();
-            lblInfo.Text = $"{cyber1.Nombre} - {DateTime.Now}";
+            lblInfo.Text = $"{cyber1.Nombre} - {DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year} - Creado por Tomás Bacchetta";
             
             labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
             
-            richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+            richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().ToString();
 
             
         }
@@ -150,7 +150,7 @@ namespace Cyber
 
                 } else
                 {
-                    richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+                    richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().ToString();
                 }
                 labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
             }
@@ -160,7 +160,7 @@ namespace Cyber
         private void ButtonAsignar_Click(object sender, EventArgs e)
         {
            
-            int respuesta = 0;
+            CyberCafe.ResultadoAsignacion respuesta = CyberCafe.ResultadoAsignacion.EquipoNoIndicadoParaCliente;
             string idEquipo = ""; 
             
             if (cyber1.ColaClientes.Count > 0)
@@ -173,6 +173,11 @@ namespace Cyber
                         if (auxRadioButton.Checked)
                         {
                             idEquipo = item.Tag.ToString();
+                            if (cyber1.BuscarEquipoPorId(auxRadioButton.Tag.ToString()) is Cabina && cyber1.ObtenerProximoCliente() is ClienteDeTelefono)
+                            {
+                                FrmTelefono frmTel = new FrmTelefono((ClienteDeTelefono)cyber1.ObtenerProximoCliente());
+                                frmTel.ShowDialog();
+                            }
                             respuesta = cyber1.AsignarClienteAEquipo(item.Tag.ToString());
                             labelCantidadClientes.Text = $"Clientes en cola: {cyber1.ColaClientes.Count}";
 
@@ -182,11 +187,11 @@ namespace Cyber
                     }
                 }
 
-                if (respuesta == 1 || respuesta == 2)
+                if (respuesta == CyberCafe.ResultadoAsignacion.CargoEnComputadora || respuesta == CyberCafe.ResultadoAsignacion.CargoEnCabina)
                 {
                     if (cyber1.ColaClientes.Count > 0)
                     {
-                        richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().MostrarCliente();
+                        richTextBoxDatosCliente.Text = cyber1.ObtenerProximoCliente().ToString();
                     } else
                     {
                         richTextBoxDatosCliente.Text = "No hay más clientes";
@@ -201,7 +206,7 @@ namespace Cyber
                 }
                 else
                 {
-                    if (respuesta == -1)
+                    if (respuesta == CyberCafe.ResultadoAsignacion.NoPudoCargar)
                     {
                         ArchivosMedia.ReproducirSonidoProblema();
                         MessageBox.Show("El equipo no cumple los requerimientos del cliente.");
@@ -240,7 +245,7 @@ namespace Cyber
                 {
                     if (!(item.Tag is null) && item.Tag.ToString() == idEquipo)
                     {
-                        item.Text = $"{item.Tag} - {estado}\n{cyber1.ObtenerSubColaClientes(idEquipo).Count} clientes en cola";
+                        item.Text = $"{item.Tag} - {estado}\n{cyber1.ObtenerColaDeClientesEnUnEquipo(idEquipo).Count} clientes en cola";
                     }
                 }
                 
@@ -274,7 +279,6 @@ namespace Cyber
                         sesionesEnCurso = true;
                         MessageBox.Show("Aún hay sesiones abiertas. Los clientes no se pueden quedar a dormir. Cierre todas las sesiones antes de salir","Alerta");
                         break;
-
 
                     }
 

@@ -140,7 +140,7 @@ namespace Cyber
                             {
                                 foreach (Sesion sesion in sesionesArchivadas[tab.Text])
                                 {
-                                    sbHist.AppendLine(sesion.MostrarSesion());
+                                    sbHist.AppendLine($"{sesion}");
                                     sbHist.AppendLine("\n----------------\n");
                                 }
                                 richTextBox.Text = $"{sbHist}";
@@ -195,7 +195,7 @@ namespace Cyber
         {
             StringBuilder buffer = new StringBuilder();
             double gananciasTotales = 0;
-            Dictionary<TipoLlamada, double> recaudacionPorTipoLlamada = new Dictionary<TipoLlamada, double>();
+            Dictionary<Cabina.TipoLlamadaTelefono, double> recaudacionPorTipoLlamada = new Dictionary<Cabina.TipoLlamadaTelefono, double>();
             double tiempoTotalCabina = 0;
             double tiempoTotalComputadora = 0;
             ///Los siguientes diccionarios son contadores indexados por un elemento particular de una computadora, para cada categoría
@@ -310,17 +310,17 @@ namespace Cyber
                 buffer.AppendFormat($"Horas totales de uso de las cabinas: {tiempoTotalCabina} minutos\n");
                 buffer.AppendLine($"-----------------");
                 buffer.AppendLine($"Recaudacion por tipo de llamada: ");
-                if (recaudacionPorTipoLlamada.ContainsKey(TipoLlamada.Local))
+                if (recaudacionPorTipoLlamada.ContainsKey(Cabina.TipoLlamadaTelefono.Local))
                 {
-                    buffer.AppendFormat("\n-Local: ${0:0.00}", recaudacionPorTipoLlamada[TipoLlamada.Local]);
+                    buffer.AppendFormat("\n-Local: ${0:0.00}", recaudacionPorTipoLlamada[Cabina.TipoLlamadaTelefono.Local]);
                 }
-                if (recaudacionPorTipoLlamada.ContainsKey(TipoLlamada.LargaDistancia))
+                if (recaudacionPorTipoLlamada.ContainsKey(Cabina.TipoLlamadaTelefono.LargaDistancia))
                 {
-                    buffer.AppendFormat("\n-Larga distancia: ${0:0.00}", recaudacionPorTipoLlamada[TipoLlamada.LargaDistancia]);
+                    buffer.AppendFormat("\n-Larga distancia: ${0:0.00}", recaudacionPorTipoLlamada[Cabina.TipoLlamadaTelefono.LargaDistancia]);
                 }
-                if (recaudacionPorTipoLlamada.ContainsKey(TipoLlamada.Internacional))
+                if (recaudacionPorTipoLlamada.ContainsKey(Cabina.TipoLlamadaTelefono.Internacional))
                 {
-                    buffer.AppendFormat("\n-Internacional: ${0:0.00}", recaudacionPorTipoLlamada[TipoLlamada.Internacional]);
+                    buffer.AppendFormat("\n-Internacional: ${0:0.00}", recaudacionPorTipoLlamada[Cabina.TipoLlamadaTelefono.Internacional]);
                 }
                 
                 buffer.AppendLine($"\n-----------------\n");

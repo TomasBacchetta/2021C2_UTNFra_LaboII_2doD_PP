@@ -16,6 +16,7 @@ namespace Personas
         }
         private string nombre;
         private string apellido;
+        private int edad;
         private long documento;
         private TipoCliente tipoDeCliente;
         private int puntosDeFelicidad;
@@ -64,10 +65,11 @@ namespace Personas
             }
         }
 
-        protected Cliente(string nombre, string apellido, long documento, TipoCliente tipoDeCliente)
+        protected Cliente(string nombre, string apellido, int edad, long documento, TipoCliente tipoDeCliente)
         {
             this.nombre = nombre;
             this.apellido = apellido;
+            this.edad = edad;
             this.documento = documento;
             this.tipoDeCliente = tipoDeCliente;
             this.puntosDeFelicidad = 0;
@@ -79,6 +81,7 @@ namespace Personas
 
             buffer.AppendLine($"Nombre: {this.nombre}");
             buffer.AppendLine($"Apellido: {this.apellido}");
+            buffer.AppendLine($"Edad: {this.edad} años");
             buffer.AppendLine($"Documento: {this.documento}");
             buffer.AppendLine($"Tipo Cliente: ");
             if (this.tipoDeCliente == TipoCliente.ClienteComputadora)
@@ -92,6 +95,10 @@ namespace Personas
             return $"{buffer}";
         }
 
+        public override string ToString()
+        {
+            return this.MostrarCliente();
+        }
     }
 
     

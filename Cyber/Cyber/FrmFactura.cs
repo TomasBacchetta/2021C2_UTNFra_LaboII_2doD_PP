@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sesiones;
 using Entidades;
+using Equipos;
 
 namespace Cyber
 {
@@ -59,13 +60,13 @@ namespace Cyber
                 buffer.Append("TIPO DE LLAMADA: ");
                 switch (auxSesionCabina.TipoLlamada)
                 {
-                    case Personas.ClienteDeTelefono.TipoLlamada.Local:
+                    case Cabina.TipoLlamadaTelefono.Local:
                         buffer.Append("LOCAL\n");
                         break;
-                    case Personas.ClienteDeTelefono.TipoLlamada.LargaDistancia:
+                    case Cabina.TipoLlamadaTelefono.LargaDistancia:
                         buffer.Append("LARGA DISTANCIA\n");
                         break;
-                    case Personas.ClienteDeTelefono.TipoLlamada.Internacional:
+                    case Cabina.TipoLlamadaTelefono.Internacional:
                         buffer.Append("INTERNACIONAL\n");
                         break;
                 }
@@ -100,7 +101,7 @@ namespace Cyber
                     sesionActual.CostoFinal *= 3;
                     rtbFactura.Text = ImprimirFactura();
                     ArchivosMedia.ReproducirSonidoSobreFactExitosa();
-                    MessageBox.Show("¡Sobrefactura lograda exito! Se triplicó la facturación. El jefe y Lucifer estarán contentos.", "¡Excelente!");
+                    MessageBox.Show("¡Sobrefactura lograda exito! Se triplicó la facturación.", "¡Excelente!");
                 } else
                 {
                     ArchivosMedia.ReproducirSonidoSobreFactFracasada();

@@ -9,7 +9,7 @@ using static Entidades.Consumible;
 
 namespace Sesiones
 {
-    public class Sesion
+    public abstract class Sesion
     {
 
         public enum Efecto
@@ -27,6 +27,7 @@ namespace Sesiones
         protected List<Consumible> carritoDeCompras;//aquí se almacenan los productos comprados
         protected Efecto efectoActual;
         
+
         public double CostoFinal
         {
             get
@@ -120,7 +121,9 @@ namespace Sesiones
         }
 
        
-        public virtual bool EnCurso { get; set; }
+        public abstract bool EnCurso { get; set; }
+
+        public abstract double CalcularCosto();
        
         
         public Sesion(Cliente usuarioActual, Equipo equipoEnUso, Efecto efectoActual)
@@ -219,9 +222,15 @@ namespace Sesiones
             }
             return false;
         }
+        /// <summary>
+        /// Devuelve un string con todos los datos
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.MostrarSesion();
+        }
 
-        
-        
 
     }
     

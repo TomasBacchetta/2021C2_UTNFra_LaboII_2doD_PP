@@ -6,69 +6,37 @@ using System.Threading.Tasks;
 
 namespace Personas
 {
-    public class ClienteDeTelefono : Cliente
+    public sealed class ClienteDeTelefono : Cliente
     {
-        public enum TipoLlamada
-        {
-            Local, LargaDistancia, Internacional
-        }
-
-        private string telefono;
-        private TipoLlamada tipoLlamada;
-
-        public TipoLlamada TipoDeLlamada
-        {
-            get
-            {
-                return this.tipoLlamada;
-            }
-        }
-
+        private string telefonoAMarcar;
+        
         public string Telefono
         {
             get
             {
-                return this.telefono;
+                return this.telefonoAMarcar;
+            }
+            set
+            {
+                this.telefonoAMarcar = value;
             }
         }
-        public ClienteDeTelefono(string nombre, string apellido, long dni, string telefono) : base(nombre, apellido, dni, TipoCliente.ClienteTelefono)
+        public ClienteDeTelefono(string nombre, string apellido, int edad, long dni) : base(nombre, apellido, edad, dni, TipoCliente.ClienteTelefono)
         {
-            this.telefono = telefono;
-            this.tipoLlamada = this.DeterminarTipoDeLlamada();
+            telefonoAMarcar = "";
             base.PuntosDeFelicidad = 1;
         }
 
         public override string MostrarCliente()
         {
             StringBuilder buffer = new StringBuilder();
-
-            buffer.AppendLine($"Teléfono a marcar: {this.telefono}");
-            buffer.AppendLine($"Tipo de llamada: {this.tipoLlamada}");
-
-
-            return $"{base.MostrarCliente()}{buffer}";
-        }
-        /// <summary>
-        /// Determina el tipo de llamad en base al numero de telefono generado aleatoriamente
-        /// es la forma ideal de hacerlo si eventualmente se pudiese cargar a mano el número
-        /// </summary>
-        /// <returns></returns>
-        private TipoLlamada DeterminarTipoDeLlamada()
-        {
-            string telefono = this.telefono;
-
-            if ($"{telefono[0]}{telefono[1]}" == "54")
+            if (telefonoAMarcar != "")
             {
-                if ($"{telefono[3]}{telefono[4]}" == "11")
-                {
-                    return TipoLlamada.Local;
-                }
-                return TipoLlamada.LargaDistancia;
+                buffer.Append($"Telefono discado: {this.telefonoAMarcar}");
             }
-            else
-            {
-                return TipoLlamada.Internacional;
-            }
+            
+            return $"{base.MostrarCliente()} {buffer}";
         }
+        
     }
 }

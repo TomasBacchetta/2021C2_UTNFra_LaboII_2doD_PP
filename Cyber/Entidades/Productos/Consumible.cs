@@ -17,11 +17,13 @@ namespace Entidades
         private double precio;
         private int costoDeFelicidad;
         private string descripcion;
+        private int stock;
         private TipoConsumible tipo;
 
-        public Consumible(TipoConsumible tipo)
+        public Consumible(TipoConsumible tipo, int stock)
         {
             this.tipo = tipo;
+            this.stock = stock;
             EstablecerConsumible(tipo);
             
         }
@@ -94,6 +96,18 @@ namespace Entidades
                 return this.descripcion;
             }
         }
+
+        public int Stock
+        {
+            get
+            {
+                return this.stock;
+            }
+            set
+            {
+                this.stock = value;
+            }
+        }
         
         public TipoConsumible Tipo
         {
@@ -112,8 +126,36 @@ namespace Entidades
             return $"{buffer}";
         }
 
-        
+        public static bool operator ==(Consumible consumible, TipoConsumible tipo)
+        {
+            return consumible.tipo == tipo;
+        }
 
+        public static bool operator !=(Consumible consumible, TipoConsumible tipo)
+        {
+            return !(consumible == tipo);
+        }
 
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(tipo);
+            return hash.ToHashCode();
+        }
     }
 }

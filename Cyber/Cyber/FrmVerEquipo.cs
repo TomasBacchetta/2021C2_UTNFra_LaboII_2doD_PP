@@ -42,7 +42,7 @@ namespace Cyber
         {
 
             Equipo auxEquipo = cyber1.BuscarEquipoPorId(idEquipo);
-            richTextBoxDatosEquipo.Text = auxEquipo.Mostrar();
+            richTextBoxDatosEquipo.Text = auxEquipo.ToString();
             this.RefrescarForm();
             if (auxEquipo.TipoDeEquipo == Equipo.TipoEquipo.Computadora)
             {
@@ -55,9 +55,9 @@ namespace Cyber
                 ArchivosMedia.AsignarFondoPantallaCabina(this);
                 ArchivosMedia.ReproducirSonidoVerTelefono();
             }
-            if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
+            if (cyber1.ObtenerColaDeClientesEnUnEquipo(idEquipo).Count > 0)
             {
-                richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
+                richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteEnColaDeUnEquipo(idEquipo).MostrarCliente();
             }
             
             
@@ -65,7 +65,7 @@ namespace Cyber
             
             
         }
-
+        
         private void ButtonTerminarSesion_Click(object sender, EventArgs e)
         {
             if (!(this.sesionActual is null) && this.sesionActual.EnCurso == true)
@@ -78,19 +78,19 @@ namespace Cyber
                 factura.ShowDialog();
                 cyber1.BuscarEquipoPorId(idEquipo).EnUso = false;
                 
-                if (cyber1.ObtenerSubColaClientes(idEquipo).Count > 0)
+                if (cyber1.ObtenerColaDeClientesEnUnEquipo(idEquipo).Count > 0)
                 {
                     cyber1.CargarSesionNueva(cyber1.BuscarEquipoPorId(idEquipo));
                     
-                    cyber1.ObtenerAtenderProximoClienteSubcola(idEquipo);
+                    cyber1.ObtenerYAtenderProximoClienteEnColaDeUnEquipo(idEquipo);
                     this.sesionActual = cyber1.BuscarProximaSesionActivaDeUnEquipo(idEquipo);
-                    if (cyber1.ObtenerSubColaClientes(idEquipo).Count == 0)
+                    if (cyber1.ObtenerColaDeClientesEnUnEquipo(idEquipo).Count == 0)
                     {
                         richTextBoxProximoCliente.Text = "";
                        
                     } else
                     {
-                        richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteSubcola(idEquipo).MostrarCliente();
+                        richTextBoxProximoCliente.Text = cyber1.ObtenerProximoClienteEnColaDeUnEquipo(idEquipo).ToString();
                     }
                   
                 } 
@@ -109,7 +109,7 @@ namespace Cyber
         public void RefrescarForm()
         {
             
-            richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).Mostrar();
+            richTextBoxDatosEquipo.Text = cyber1.BuscarEquipoPorId(idEquipo).ToString();
 
             if (!(sesionActual is null) && sesionActual.EnCurso)
             {
@@ -118,7 +118,7 @@ namespace Cyber
                 btnComprarProd.Enabled = true;
                 pictureBoxJack.Visible = true;
                 labelFelicidad.Visible = true;
-                richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual.MostrarSesion()}");
+                richTextBoxDatosEquipo.AppendText($"\nSiendo utilizado por: \n{sesionActual}");
                 if (cyber1.BuscarEquipoPorId(idEquipo).EfectoDeLaMaquina == Equipo.Efecto.BebidaChina)
                 {
                     lblEfectos.Visible = true;
